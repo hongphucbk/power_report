@@ -1,0 +1,344 @@
+<html>
+<head>
+	<script src='js/mqtt.min.js'></script>
+	<script src='js/jquery-3.4.1.min.js'></script>
+	<script src='js/bootstrap.js'></script>
+	<script src='js/socket.io.js'></script>
+	<link href='css/Style_home.css' rel="stylesheet" type="text/css" />
+	<link href='css/map.css' rel="stylesheet" type="text/css" />
+	<meta name="viewport" content="initial-scale=1.0">
+	
+	<link href='js/socket.io.js.map' rel="stylesheet" type="text/css" />
+	<link href='js/socket.io.min.js.map' rel="stylesheet" type="text/css" />
+	<link href='js/socket.io.dev.js.map' rel="stylesheet" type="text/css" />
+	
+	
+
+</head>
+		
+<body>
+
+	<div id="main">
+		<div id="head">
+	    	<div id="head_logo">
+	    		
+				<img src='image/SmartAgriculture.png' style="margin-left: 0px; margin-top: 0px;" />
+			</div>
+
+			<div id="head_text" >
+				<h2 style="text-align:center; color:red;">abc</h2>
+				<h3 style="text-align:center; color:green;">Hệ thống điều khiển giám sát</h3>
+				
+			</div>
+	    </div>
+	
+		
+<div id="content">
+<div id="map"></div>
+
+		
+				<div id="content2">
+			      Học viện Bưu chính viễn thông<br>
+			      Nhiệt độ <div id='dataCD02_23'></div><br>
+			      Độ ẩm <div id='dataCD02_0'></div>
+			    </div>
+
+				<div id="content3">
+			      Đại học hà nội<br>
+			      Nhiệt độ <div id='dataCD02_1'></div><br>
+			      Độ ẩm <div id='dataCD02_2'></div>
+			    </div>
+
+				<div id="content3">
+			      Lotte Đống đa<br>
+			      Nhiệt độ <div id='dataCD02_3'></div><br>
+			      Độ ẩm <div id='dataCD02_4'></div>
+			    </div>
+
+				<div id="content4">
+			      Rạp xiếc trung ương<br>
+			      Nhiệt độ <div id='dataCD02_5'></div><br>
+			      Độ ẩm <div id='dataCD02_6'></div>
+			    </div>
+
+	<script type="text/javascript">
+	    	function abc(){
+	    		
+		    		popup = new Popup(new google.maps.LatLng(20.9765481,105.7832888,13),
+				      document.getElementById('content2'));
+				  	popup.setMap(map);
+				
+		    		popup = new Popup(new google.maps.LatLng(21.0009478,105.7843999,13),
+				      document.getElementById('content3'));
+				  	popup.setMap(map);
+				
+		    		popup = new Popup(new google.maps.LatLng(21.0033786,105.8162011,15),
+				      document.getElementById('content3'));
+				  	popup.setMap(map);
+				
+		    		popup = new Popup(new google.maps.LatLng(21.016755,105.842423,15),
+				      document.getElementById('content4'));
+				  	popup.setMap(map);
+					
+	    	}
+				
+	</script>
+
+	<script>
+			var map, popup, Popup;
+
+			/** Initializes the map and the custom popup. */
+			function initMap() {
+			  map = new google.maps.Map(document.getElementById('map'), {
+			    center: {lat: 21.0, lng: 105.81},
+			    zoom: 13,
+			  });
+
+			  Popup = createPopupClass();
+
+			  abc();
+
+			  // popup = new Popup(
+			  //     new google.maps.LatLng(10.8005689,106.7126631),
+			  //     document.getElementById('content'));
+			  // popup.setMap(map);
+
+			  // popup = new Popup(
+			  //     new google.maps.LatLng(10.7005689,106.6126631),
+			  //     document.getElementById('content2'));
+			  // popup.setMap(map);
+			}
+
+			/**
+			 * Returns the Popup class.
+			 *
+			 * Unfortunately, the Popup class can only be defined after
+			 * google.maps.OverlayView is defined, when the Maps API is loaded.
+			 * This function should be called by initMap.
+			 */
+			function createPopupClass() {
+			  /**
+			   * A customized popup on the map.
+			   * @param {!google.maps.LatLng} position
+			   * @param {!Element} content The bubble div.
+			   * @constructor
+			   * @extends {google.maps.OverlayView}
+			   */
+			  function Popup(position, content) {
+			    this.position = position;
+
+			    content.classList.add('popup-bubble');
+
+			    // This zero-height div is positioned at the bottom of the bubble.
+			    var bubbleAnchor = document.createElement('div');
+			    bubbleAnchor.classList.add('popup-bubble-anchor');
+			    bubbleAnchor.appendChild(content);
+
+			    // This zero-height div is positioned at the bottom of the tip.
+			    this.containerDiv = document.createElement('div');
+			    this.containerDiv.classList.add('popup-container');
+			    this.containerDiv.appendChild(bubbleAnchor);
+
+			    // Optionally stop clicks, etc., from bubbling up to the map.
+			    google.maps.OverlayView.preventMapHitsAndGesturesFrom(this.containerDiv);
+			  }
+			  // ES5 magic to extend google.maps.OverlayView.
+			  Popup.prototype = Object.create(google.maps.OverlayView.prototype);
+
+			  /** Called when the popup is added to the map. */
+			  Popup.prototype.onAdd = function() {
+			    this.getPanes().floatPane.appendChild(this.containerDiv);
+			  };
+
+			  /** Called when the popup is removed from the map. */
+			  Popup.prototype.onRemove = function() {
+			    if (this.containerDiv.parentElement) {
+			      this.containerDiv.parentElement.removeChild(this.containerDiv);
+			    }
+			  };
+
+			  /** Called each frame when the popup needs to draw itself. */
+			  Popup.prototype.draw = function() {
+			    var divPosition = this.getProjection().fromLatLngToDivPixel(this.position);
+
+			    // Hide the popup when it is far out of view.
+			    var display =
+			        Math.abs(divPosition.x) < 4000 && Math.abs(divPosition.y) < 4000 ?
+			        'block' :
+			        'none';
+
+			    if (display === 'block') {
+			      this.containerDiv.style.left = divPosition.x + 'px';
+			      this.containerDiv.style.top = divPosition.y + 'px';
+			    }
+			    if (this.containerDiv.style.display !== display) {
+			      this.containerDiv.style.display = display;
+			    }
+			  };
+
+			  return Popup;
+			}
+
+
+		</script>
+	
+	
+		<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXT_mFab6O8DorI-dERCmzzF946nqg2LU&callback=initMap">
+</script>
+	
+	
+		<div id="content-2" style="margin-left: 50px;margin-top: 10px;">
+		<h1> Giá trị nhận từ PLC</h1>
+			<form>
+			<div id='dataCD02_7'></div>
+		</form>
+		<form>
+			<div id='dataCD02_8'></div>
+		</form>
+			<form>
+			<div id='dataCD02_9'></div>
+		</form>
+
+		</p>
+		</div>
+	
+	
+</div>
+	
+
+</div>
+	
+    <script>
+     // var client = mqtt.connect('ws://192.168.1.100:1883');
+//	  var client = mqtt.connect('http://192.168.0.100:1883');
+//      console.log("Success");
+//      client.subscribe("topic1/demo");
+//
+//      client.on("message", function(topic, payload) {
+//      alert([topic, payload].join(": "));
+//      console.log(topic + " : " + payload);
+//      
+//      });
+		
+
+		var dataCD03_21;
+		var intdataCD03_11 = 0;
+		var dataCD03_22;
+		var intdataCD03_12 = 0;
+		var dataCD02_0;
+		var intdataCD02_0 = 0;
+		var dataCD02_1;
+		var intdataCD02_1 = 0;
+		var dataCD02_2;
+		var intdataCD02_2 = 0;
+		var dataCD02_3;
+		var intdataCD02_3 = 0;
+		
+		
+		
+		
+		var socket = io("http://27.71.231.45:3001");
+		socket.on('dataCD02_23', function(msg){
+      		document.getElementById("dataCD02_23").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_0', function(msg){
+      		//document.getElementById("dataCD02_0").innerHTML = msg; 
+			dataCD02_0= msg;
+			intdataCD02_0 = parseFloat(dataCD02_0);
+			});		
+		socket.on('dataCD02_1', function(msg){
+      		document.getElementById("dataCD02_1").innerHTML = msg;
+			//dataCD02_1= msg;
+			//intdataCD02_1 = parseFloat(dataCD02_1);
+			});
+    	socket.on('dataCD02_2', function(msg){
+      		document.getElementById("dataCD02_2").innerHTML = msg;
+			//dataCD02_2= msg;
+			//intdataCD02_2 = parseFloat(dataCD02_2);
+			});
+    	socket.on('dataCD02_3', function(msg){
+      		document.getElementById("dataCD02_3").innerHTML = msg;
+			//dataCD02_3= msg;
+			//intdataCD02_3 = parseFloat(dataCD02_3);
+			});
+    	socket.on('dataCD02_4', function(msg){
+      		document.getElementById("dataCD02_4").innerHTML = msg; 
+			});
+	    socket.on('dataCD02_5', function(msg){
+      		document.getElementById("dataCD02_5").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_6', function(msg){
+      		document.getElementById("dataCD02_6").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_7', function(msg){
+      		document.getElementById("dataCD02_7").innerHTML = msg;
+			});
+    	socket.on('dataCD02_8', function(msg){
+      		document.getElementById("dataCD02_8").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_9', function(msg){
+      		document.getElementById("dataCD02_9").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_10', function(msg){
+      		//document.getElementById("dataCD02_10").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_11', function(msg){
+      		//document.getElementById("dataCD02_11").innerHTML = msg;
+			});
+		
+    	socket.on('dataCD02_12', function(msg){
+      		//document.getElementById("dataCD02_12").innerHTML = msg; 
+			});
+	    socket.on('dataCD02_13', function(msg){
+      		//document.getElementById("dataCD02_13").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_14', function(msg){
+      		//document.getElementById("dataCD02_14").innerHTML = msg; 
+			});
+		
+		socket.on('dataCD03_15', function(msg){
+      		//document.getElementById("dataCD03_15").innerHTML = msg; 
+			});
+    	socket.on('dataCD03_16', function(msg){
+      		//document.getElementById("dataCD03_16").innerHTML = msg; 
+			});
+    	socket.on('dataCD03_17', function(msg){
+      		//document.getElementById("dataCD03_17").innerHTML = msg; 
+			});
+    	socket.on('dataCD03_18', function(msg){
+      		//document.getElementById("dataCD03_18").innerHTML = msg; 
+			});
+    	socket.on('dataCD03_19', function(msg){
+      		//document.getElementById("dataCD03_19").innerHTML = msg;
+			});
+		
+    	socket.on('dataCD03_20', function(msg){
+      		//document.getElementById("dataCD03_20").innerHTML = msg; 
+			});
+	    		socket.on('dataCD03_21', function(msg){
+			//document.getElementById("dataCD03_21").innerHTML = msg;
+      		//dataCD03_21= msg;
+			//intdata11 = parseFloat(dataCD03_21);
+			//console.log(dataCD03_21);
+			//console.log(intdata11);
+			//console.log("Success");
+   		});
+		socket.on('dataCD03_22', function(msg){
+			//document.getElementById("dataCD03_22").innerHTML = msg;
+      		//dataCD03_22= msg;
+			//intdata12 = parseFloat(dataCD03_22);
+			//console.log(dataCD03_22);
+			//console.log(intdata12);
+			//console.log("Success");
+				})// Socket on dataCD03_22
+    	
+			
+		
+			
+    </script>
+
+		
+</body>
+
+</html>

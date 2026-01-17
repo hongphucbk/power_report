@@ -1,0 +1,711 @@
+<html>
+<head>
+	<script src='js/mqtt.min.js'></script>
+	<script src='js/jquery-3.4.1.min.js'></script>
+	<script src='js/bootstrap.js'></script>
+	<script src='js/socket.io.js'></script>
+	<link href='css/Style_data.css' rel="stylesheet" type="text/css" />
+		<script src="js/raphael-2.1.4.min.js"></script>
+	
+	
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<title>SMART FACTORY | Home</title> -->
+  <!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="bower_components/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="bower_components/dist/css/skins/skin-blue.min.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  
+	
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+	<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<!-- Chartjs -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+	  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!--  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>-->
+
+  <!-- Optional theme -->
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+	<!-- font manu awesome -->
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	
+	<!-- font user awesome -->
+	
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+</head>	
+<body class="hold-transition skin-blue sidebar-mini">
+  
+<div class="wrapper">
+
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+<!-- Main Header -->
+<header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini">S</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg">SYSTEMS</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="/image/TangLoong.png" class="user-image" alt="">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs" id="username1"><%= user.username %></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="/image/TangLoong.png" class="img-circle" alt="User Image">
+                <p>
+                  <span ><%= user.username %></span>
+					        <small>CÔNG TY APATIT VIỆT NAM</small>
+                  <small>Chi Nhánh Tuyển Tằng Loỏng</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <!-- <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+              </li> -->
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <!-- <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div> -->
+                <div class="pull-right">
+                  <div><a href="/user/logout"><button id="button2">Logout</button></a></div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+          </li>
+        </ul>
+      </div>
+    </nav>
+ 
+  </header>
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+
+
+ 
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- Sidebar Menu -->
+          <ul class="sidebar-menu" data-widget="tree">
+
+            <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> -->          
+
+            <li class="treeview">
+              <a href="#"><i class="fa fa-industry"></i> <span>Giám sát Năng Lượng</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="/1ahome_GSNL_TL_01">Thông số Online</a></li>
+                <li><a href="/1ahome_GSNL_TL_Sodo01">Sơ đồ cung cấp điện</a></li>
+                <li><a href="/1ahome_GSNL_TL_KwhCa">Kwh theo Ca</a></li>
+                <li><a href="/1ahome_GSNL_TL_BieudoCa_TramRP1_A51_MV01">Biểu đồ Kwh Ca</a></li>
+                <li><a href="/1ahome_GSNL_TL_BieudoNgay_TramRP1_A51MV01">Biểu đồ Kwh Ngày</a></li>
+                <li><a href="/1ahome_GSNL_TL_BieudoThang_TramRP1_A51MV01">Biểu đồ Kwh Tháng</a></li>
+                <li><a href="/1ahome_GSNL_TL_BaocaoExcell_Kwh">Báo cáo Excell Kwh</a></li>
+                <li><a href="/1ahome_GSNL_TL_BaocaoExcell_KwhDay">Báo cáo Excell Kwh Day</a></li>
+                <li><a href="/1ahome_GSNL_TL_BaocaoExcell_Cosphi">Báo cáo Excell Cosphi</a></li>
+              </ul>
+            </li>
+
+          </ul>       
+        <!-- /.sidebar-menu -->
+      </section>
+      <!-- /.sidebar -->
+</aside>
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+
+
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Main content -->
+  <section>
+              <div class="row">
+                <div class="col-md-12">
+                <p style="color:blue; padding-top:10px; text-align:center; font-size: 18px;" >HỆ THỐNG GIÁM SÁT NĂNG LƯỢNG TUYỂN TẰNG LOỎNG</p>			
+                </div>
+              </div>
+            
+              <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="box">
+                      <div class="box-header">
+                          <h4 class="box-title">Thống kê trong tháng:</h4>
+                      </div>
+                      <div class="box-body no-padding">
+                              <div class='col-md-3 col-md-offset-1'>
+                                  <div class="form-group">
+                                    <div class='input-group'>
+                                      <lable style="color:black; text-align:right; font-size: 18px;"> Chọn Năm: </lable>
+                                      <select name="" id="year" style="color:black; text-align:right; font-size: 18px;">
+                                        <option value="2025">2025</option>
+                                        <option value="2026">2026</option>
+                                        <option value="2027">2027</option>
+                                        <option value="2028">2028</option>
+                                        <option value="2029">2029</option>
+                                        <option value="2030">2030</option>
+                                      </select>            
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class='col-md-3'>	
+                                <div class='input-group'>
+                                  <lable style="color:black; text-align:right; font-size: 18px;"> Chọn Tháng: </lable>
+                                  <select name="month" id="month" style="color:black; text-align:right; font-size: 18px;">
+                                    <% for(var i=1; i <= 12; i++) { %>
+                                      <option value="<%= i %>"
+                                      <% if( (moment().month() + 1) == i ){ %>
+                                        selected=""
+                                      <% } %>
+                                      ><%= i %></option>
+                                    <% } %>
+                                  </select>
+                                </div>
+                            </div>
+                          
+                            <div class="col-md-2">
+                              <button onclick="updateChart()" class="form-control">View</button>
+                            </div>
+                            <div class="col-md-2">
+                              <a href="1ahome_GSNL_TL_BieudoThang_TramRP2_A51MV01">
+                                <button class="form-control">Today</button>
+                              </a>
+                            </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          
+              <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="box box-default">
+                      <div class="box-header with-border">
+                        <i class="fa fa-bullhorn"></i>
+                        <h3 class="box-title">MV01</h3>
+                      </div>
+                      <div class="box-body">
+                        <canvas id="myChart"></canvas>
+                      </div>
+                    </div>
+                </div>
+
+
+              <!-- /Start Dieu huong 01---------------------------------------------------->
+              <div class="col-md-10 col-md-offset-1" style="padding-bottom:20px;">
+                <!----->
+                <div class="col-md-1 col-md-offset-0">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong11()">TramRP1_MV01</button>
+                  <script>
+                      function dieu_huong11(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP1_A51MV01");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong12()">TramRP1_MV02</button>
+                  <script>
+                      function dieu_huong12(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP1_A51MV02");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong13()">TramRP1_MV03</button>
+                  <script>
+                      function dieu_huong13(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP1_A51MV03");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong14()">TramRP1_MV04</button>
+                  <script>
+                      function dieu_huong14(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP1_A51MV04");
+                      }
+                  </script>
+                </div>
+                <!----->
+                
+              </div>
+              <!-- /End Dieu huong 01--------------------------------------->
+
+              <!-- /Start Dieu huong 02---------------------------------------------------->
+              <div class="col-md-10 col-md-offset-1" style="padding-bottom:20px;">
+                <!----->
+                <div class="col-md-1 col-md-offset-0">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong21()">TramRP2_MV01</button>
+                  <script>
+                      function dieu_huong21(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP2_A51MV01");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong22()">TramRP2_MV02</button>
+                  <script>
+                      function dieu_huong22(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP2_A51MV02");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong23()">TramRP2_MV03</button>
+                  <script>
+                      function dieu_huong23(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP2_A51MV03");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong24()">TramRP2_MV04</button>
+                  <script>
+                      function dieu_huong24(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP2_A51MV04");
+                      }
+                  </script>
+                </div>
+                <!----->
+                
+              </div>
+              <!-- /End Dieu huong 02--------------------------------------->
+
+               <!-- /Start Dieu huong 03---------------------------------------------------->
+              <div class="col-md-10 col-md-offset-1" style="padding-bottom:20px;">
+                <!----->
+                <div class="col-md-1 col-md-offset-0">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong31()">TramRP2_MV05</button>
+                  <script>
+                      function dieu_huong31(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP2_A52MV05");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong32()">TramRP2_MV06</button>
+                  <script>
+                      function dieu_huong32(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP2_A52MV06");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong33()">TramRP2_MV07</button>
+                  <script>
+                      function dieu_huong33(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP2_A52MV07");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong34()">TramRP2_MV08</button>
+                  <script>
+                      function dieu_huong34(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP2_A52MV08");
+                      }
+                  </script>
+                </div>
+                <!----->
+                
+              </div>
+              <!-- /End Dieu huong 03--------------------------------------->
+
+              <!-- /Start Dieu huong 04---------------------------------------------------->
+              <div class="col-md-10 col-md-offset-1" style="padding-bottom:20px;">
+                <!----->
+                <div class="col-md-1 col-md-offset-0">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong41()">TramRP3_MV01</button>
+                  <script>
+                      function dieu_huong41(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP3_A51MV01");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong42()">TramRP3_MV02</button>
+                  <script>
+                      function dieu_huong42(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP3_A51MV02");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong43()">TramRP3_MV03</button>
+                  <script>
+                      function dieu_huong43(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP3_A51MV03");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong44()">TramRP3_MV04</button>
+                  <script>
+                      function dieu_huong44(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP3_A51MV04");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong45()">TramRP3_MV05</button>
+                  <script>
+                      function dieu_huong45(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramRP3_A52MV05");
+                      }
+                  </script>
+                </div>
+                <!----->
+                
+              </div>
+              <!-- /End Dieu huong 04--------------------------------------->
+
+               <!-- /Start Dieu huong 05---------------------------------------------------->
+              <div class="col-md-10 col-md-offset-1" style="padding-bottom:20px;">
+                <!----->
+                <div class="col-md-1 col-md-offset-0">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong51()">TramKTP55_MV01</button>
+                  <script>
+                      function dieu_huong51(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramKTP55_A51MV01");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong52()">TramKTP56_MV01</button>
+                  <script>
+                      function dieu_huong52(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramKTP56_A51MV01");
+                      }
+                  </script>
+                </div>
+                <!----->
+                
+              </div>
+              <!-- /End Dieu huong 05--------------------------------------->
+
+              <!-- /Start Dieu huong 06---------------------------------------------------->
+              <div class="col-md-10 col-md-offset-1" style="padding-bottom:20px;">
+                <!----->
+                <div class="col-md-1 col-md-offset-0">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong61()">TramKTP7_MV01</button>
+                  <script>
+                      function dieu_huong61(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramKTP7_A51MV01");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong62()">TramKTP7_MV02</button>
+                  <script>
+                      function dieu_huong62(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramKTP7_A51MV02");
+                      }
+                  </script>
+                </div>
+                <!----->
+                
+              </div>
+              <!-- /End Dieu huong 06--------------------------------------->
+
+              <!-- /Start Dieu huong 07---------------------------------------------------->
+              <div class="col-md-10 col-md-offset-1" style="padding-bottom:20px;">
+                <!----->
+                <div class="col-md-1 col-md-offset-0">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong71()">Tram1306B_MV01</button>
+                  <script>
+                      function dieu_huong71(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_Tram1306B_A51MV01");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong72()">Tram1306B_MV02</button>
+                  <script>
+                      function dieu_huong72(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_Tram1306B_A51MV02");
+                      }
+                  </script>
+                </div>
+                <!----->
+                
+              </div>
+              <!-- /End Dieu huong 07--------------------------------------->
+
+             
+
+             
+
+  </section>
+</div> 
+<!-- /.content-wrapper -->
+<!--------------------------------------------------------------->
+
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+<!-- Main Footer START-------------------------------->
+<footer class="main-footer">
+  <!-- To the right -->
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 2.99.25
+  </div>
+  <!-- Default to the left -->
+  <strong>Copyright &copy; 2019-2030 <a href="https://www.finet.vn">Finet Industry</a>.</strong> All rights reserved.
+</footer>
+<!-- Main Footer END-------------------------------->
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+
+
+  <!-- Control Sidebar -->
+  <!-- < include rightsidebar > -->
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/bower_components/dist/js/adminlte.min.js"></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+
+
+<!-- DataTables -->
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+</body>	
+
+
+<script type="text/javascript">
+		let labels = []; let vals = []; let tblData = [];
+  		var ctx = document.getElementById('myChart').getContext('2d');
+		var chart = new Chart(ctx, {
+			// The type of chart we want to create
+			//type: 'line',
+			type: 'bar',
+
+			// The data for our dataset
+			data: {
+				labels: [],
+				datasets: [{
+					label: 'Năng lượng A51MV01 [Kwh]',
+					//backgroundColor: 'rgba(255, 255, 255, 0.1)', // for line
+					backgroundColor: 'rgba(255, 99, 132)', // for bar
+					borderColor: 'rgb(255, 99, 132)',
+					data: []
+				}]
+			},
+
+			// Configuration options go here
+			options: {
+				legend: {
+			  display: true,
+			  labels: {
+				  fontColor: 'rgb(255, 99, 1)'
+			  }
+			}
+			}
+		});
+
+
+	$.ajax({
+    url: '/apiGetDataChart_GSNL_TL_BieudoThang_TramRP2_A51MV01',
+    method: 'post',
+    data: { }
+    }).done(function(res) {
+        if (true) {
+	        console.log(res);
+	        res.forEach(function(dt){
+	        	labels.push(dt.TL_Kwh_timestamp)
+	        	vals.push(dt.value)
+
+	        	tblData.push({ time: dt.TL_Kwh_timestamp, val:dt.value})
+	        })
+	        console.log(vals)
+	        chart.data.labels = labels;
+	        chart.data.datasets[0].data = vals;
+	      	chart.update();
+					
+		    } else {
+		        console.log('error...ajax');
+		    }
+		  });
+
+  function updateChart(){
+  	//let startDate = $('#startdate1').val();
+	var year = $('#year').val();
+	var month = $('#month').val();
+	  
+  	console.log(year, month)
+  	$.ajax({
+    url: '/apiGetDataChart_GSNL_TL_BieudoThang_TramRP2_A51MV01',
+    method: 'post',
+    data: { year: year, month: month}
+    }).done(function(res) {
+        if (true) {
+        	labels = []; vals = []; tblData = [];
+	        console.log(res);
+	        res.forEach(function(dt){
+	        	labels.push(dt.TL_Kwh_timestamp)
+	        	vals.push(dt.value)
+	        	//tblData.push({ time: dt.timestamp, val:dt.value})
+	        })
+	      	chart.data.datasets[0].data = vals;
+			    chart.data.labels = labels;
+	      	chart.update();
+	      	console.log(labels)
+	        //window.location.reload();
+		    } else {
+		        console.log('error...ajax');
+		    }
+		  });
+  }
+		
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+  
+
+<script type="text/javascript">
+      $('#startdate').datetimepicker({
+          useCurrent: false,
+          format: 'DD-MMM-YYYY',
+          minDate: moment()
+      });
+   
+      $('#startdate').datetimepicker().on('dp.change', function (e) {
+          var incrementDay = moment(new Date(e.date));
+          incrementDay.add(-1, 'days');
+          $(this).data("DateTimePicker").hide();
+      });
+	  
+	  $('#fromdate').datetimepicker({
+          useCurrent: false,
+          format: 'DD-MMM-YYYY',
+          minDate: moment()
+      });
+	  
+	  $('#todate1').datetimepicker({
+          useCurrent: false,
+          format: 'DD-MMM-YYYY',
+          minDate: moment()
+      });
+   
+      
+	  
+    $(document).ready(function() {
+      $(function() {
+        $('#datetimepicker6').datetimepicker({format: 'DD-MMM-YYYY'});
+        $('#datetimepicker2').datetimepicker({format: 'DD-MMM-YYYY'});
+		$('#datetimepicker3').datetimepicker({format: 'DD-MMM-YYYY'});
+
+        
+      });
+    });
+
+$(document).ready(function(){
+			$("#head_frame_12").click(function(){
+    var x = document.getElementById('head_frame_12b');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+			});
+			
+		});
+</script>
+
+	
+
+
+</html>

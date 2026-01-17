@@ -1,0 +1,650 @@
+<html>
+<head>
+	<script src='js/mqtt.min.js'></script>
+	<script src='js/jquery-3.4.1.min.js'></script>
+	<script src='js/bootstrap.js'></script>
+	<script src='js/socket.io.js'></script>
+	<link href='css/Style_data.css' rel="stylesheet" type="text/css" />
+		<script src="js/raphael-2.1.4.min.js"></script>
+	
+	
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<title>SMART FACTORY | Home</title> -->
+  <!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="bower_components/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="bower_components/dist/css/skins/skin-blue.min.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+ 
+	
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+	<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<!-- Chartjs -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+	  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!--  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>-->
+
+  <!-- Optional theme -->
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+	<!-- font manu awesome -->
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	
+	<!-- font user awesome -->
+	
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+</head>	
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  <!-- Main Header -->
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini">S</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg">SYSTEMS</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="/image/BacNhacSon.png" class="user-image" alt="">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs" id="username1"><%= user.username %></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="/image/BacNhacSon.png" class="img-circle" alt="User Image">
+                <p>
+                  <span ><%= user.username %></span>
+					<small>CÔNG TY APATIT VIỆT NAM</small>
+                  <small>Chi Nhánh Tuyển Bắc Nhạc Sơn</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <!-- <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+              </li> -->
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <!-- <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div> -->
+                <div class="pull-right">
+                  <div><a href="/user/logout"><button>Logout</button></a></div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+          </li>
+        </ul>
+      </div>
+    </nav>
+ 
+  </header>
+  
+ 
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+  <!-- Sidebar Menu -->
+  <ul class="sidebar-menu" data-widget="tree">
+
+    <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> -->
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>Thuốc tuyển</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="/home01">Trang chủ</a></li>
+        <li><a href="/home12">Biểu đồ</a></li>
+		<li><a href="/home131">Đồ thị</a></li>
+		<li><a href="/home02a">Báo cáo Ca</a></li>
+		<li><a href="/home321">Báo cáo Ngày</a></li>
+		<li><a href="/home31">Báo cáo Tháng Năm</a></li>
+		<li><a href="/home02">Cài đặt</a></li>
+      </ul>
+    </li>
+
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>Máy đo nồng độ bùn</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="/homebNS01BaocaoExcell">Báo cáo excell</a></li>
+      </ul>
+    </li>
+
+  </ul>
+		
+ 
+  <!-- /.sidebar-menu -->
+</section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    
+<!-- Main content -->
+
+	
+	
+	<section>
+		
+	<div class="row">
+    <div class="col-md-12">
+	
+<p style="color:blue; padding-top:10px; text-align:center; font-size: 18px;" >HỆ THỐNG ĐỊNH LƯỢNG THUỐC TUYỂN BẮC NHẠC SƠN</p>
+		
+			
+	</div>
+</div>
+    
+		
+		<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+<div class="box">
+    <div class="box-header">
+      <h4 class="box-title">Thống kê trong ngày:</h4>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body no-padding">
+	
+		
+		<!-- Main content -->
+<!-- Main content -->
+<section class="content container-fluid">
+	<div class="panel-heading">
+		<div class="row">
+      <div class="col-md-1">
+        <label style="float: right;">Năm</label>
+      </div>
+      <div class='col-md-1'>
+        <div class="form-group">
+          <select class='form-control' name="year" id="year">
+            
+              <option value="2019" 
+                
+                >2019</option>
+            
+              <option value="2020" 
+                
+                >2020</option>
+            
+          </select>
+        </div>
+      </div>
+      <!-- Month -->
+      <div class="col-md-1">
+        <label style="float: right;">Tháng</label>
+      </div>
+      <div class='col-md-1'>
+        <div class="form-group">
+          <select class='form-control' name="month" id="month">
+            
+              <option value="1"
+                
+                >1</option>
+            
+              <option value="2"
+                
+                >2</option>
+            
+              <option value="3"
+                
+                >3</option>
+            
+              <option value="4"
+                
+                >4</option>
+            
+              <option value="5"
+                
+                selected=""
+                
+                >5</option>
+            
+              <option value="6"
+                
+                >6</option>
+            
+              <option value="7"
+                
+                >7</option>
+            
+              <option value="8"
+                
+                >8</option>
+            
+              <option value="9"
+                
+                >9</option>
+            
+              <option value="10"
+                
+                >10</option>
+            
+              <option value="11"
+                
+                >11</option>
+            
+              <option value="12"
+                
+                >12</option>
+            
+          </select>
+        </div>
+      </div>
+
+        <div class="col-md-1">
+          <label style="float: right;">Station</label>
+        </div>
+        <div class='col-md-2'>
+          <div class="form-group">
+            <select class='form-control' name="area" id="area">
+              
+                <option value="1">1</option>
+              
+                <option value="2">2</option>
+              
+                <option value="3">3</option>
+              
+                <option value="4">4</option>
+              
+                <option value="5">5</option>
+              
+                <option value="6">6</option>
+              
+                <option value="7">7</option>
+              
+                <option value="8">8</option>
+              
+                <option value="9">9</option>
+              
+                <option value="10">10</option>
+              
+                <option value="11">11</option>
+              
+                <option value="12">12</option>
+              
+            </select>
+          </div>
+        </div>
+        
+        <div class="col-md-1">
+          <button onclick="updateChart()" class="form-control">View</button>
+        </div>
+
+        <div class="col-md-1">
+        	<a href="/home326">
+          	<button class="form-control">Today</button>
+          </a>
+        </div>
+        
+      </div>
+	</div>
+
+  <div id="loadding" style="color:red; text-align: center;">The system is processing data. Please wait a minute...</div>
+
+	<div class="row">
+    <div class="col-md-10">
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <i class="fa fa-bullhorn"></i>
+
+          <h3 class="box-title">POWER [kWH]</h3>
+        </div>
+        
+        <div class="box-body">
+          <canvas id="myChart"></canvas>
+  
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+    	<table class="table table-condensed" id='items_table'>
+      
+      </table>
+    </div>
+  </div>
+</section>
+		
+		
+		
+    </div>
+    <!-- /.box-body -->
+  </div>
+</div>
+</div>		
+		
+
+			
+	</section>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+	
+<footer class="main-footer">
+  	<!-- To the right -->
+<div class="pull-right hidden-xs">
+  <b>Version</b> 2.7.20
+</div>
+<!-- Default to the left -->
+
+<strong>Copyright &copy; 2019-2020 <a href="https://www.finet.vn">Finet Industry</a>.</strong> All rights reserved.
+    
+  </footer>
+
+  <!-- Control Sidebar -->
+  <!-- < include rightsidebar > -->
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/bower_components/dist/js/adminlte.min.js"></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+
+
+<!-- DataTables -->
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+</body>	
+
+
+    <script>
+      //var client = mqtt.connect('ws://192.168.1.100:1883');
+//	  var client = mqtt.connect('http://192.168.0.100:1883');
+//      console.log("Success");
+//      client.subscribe("topic1/demo");
+//
+//      client.on("message", function(topic, payload) {
+//      alert([topic, payload].join(": "));
+//      console.log(topic + " : " + payload);
+//      
+//      });
+		
+		var socket = io("http://27.71.231.45:3001");
+	
+	
+    	socket.on('data3', function(msg){
+      		document.getElementById("data3").innerHTML = msg; 
+			});
+    	socket.on('data4', function(msg){
+      		document.getElementById("data4").innerHTML = msg; 
+			});
+    	socket.on('data5', function(msg){
+      		document.getElementById("data5").innerHTML = msg; 
+			});
+    	socket.on('data6', function(msg){
+      		document.getElementById("data6").innerHTML = msg; 
+			});
+	    socket.on('data7', function(msg){
+      		document.getElementById("data7").innerHTML = msg; 
+			});
+    	socket.on('data8', function(msg){
+      		document.getElementById("data8").innerHTML = msg; 
+			});
+    	socket.on('data9', function(msg){
+      		document.getElementById("data9").innerHTML = msg; 
+			});
+    	socket.on('data10', function(msg){
+      		document.getElementById("data10").innerHTML = msg; 
+			});
+    	socket.on('data11', function(msg){
+      		document.getElementById("data11").innerHTML = msg; 
+			});
+    	socket.on('data12', function(msg){
+      		document.getElementById("data12").innerHTML = msg; 
+			});
+    		
+		  $(document).ready(function(){
+			$("#btnDOWNLOAD").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data30", $("#Textsend").val());
+			});
+		});
+
+
+</script>
+
+	<script type="text/javascript">
+	let labels = []; let vals = []; let tblData = [];
+  var ctx = document.getElementById('myChart').getContext('2d');
+	var chart = new Chart(ctx, {
+	    type: 'bar',
+	    data: {
+	        labels: [],
+	        datasets: [{
+	            label: "Station " + 1,
+	            backgroundColor: 'rgb(255, 99, 132)',
+	            borderColor: 'rgb(255, 99, 150)',
+	            data: []
+	        }]
+	    },
+	    // Configuration options go here
+	    options: {
+	    	legend: {
+          display: true,
+          labels: {
+              fontColor: 'rgb(255, 99, 1)'
+          }
+        }
+	    }
+	});
+
+
+	$.ajax({
+    url: '/apiGetDataChart6',
+    method: 'post',
+    data: { area: $('#area').val(), year: $('#year').val(), month: $('#month').val() }
+    }).done(function(res) {
+        $('#loadding').hide();
+        if (true) {
+	        console.log(res);
+	        res.forEach(function(dt){
+	        	labels.push(dt.date)
+	        	vals.push(dt.value)
+
+	        	tblData.push({ time: dt.date, val:dt.value})
+	        })
+	        //console.log(vals)
+	        chart.data.labels = labels;
+	        chart.data.datasets[0].data = vals;
+          
+
+	      	chart.update();
+	      	
+	      	updateDigitalData(tblData);
+
+		    } else {
+          $('#loadding').hide();
+		      console.log('error...ajax');
+		    }
+		  });
+
+  function updateChart(){
+  	let area = $('#area').val();
+    let year = $('#year').val();
+    let month = $('#month').val();
+
+    $('#loadding').show();
+
+  	$.ajax({
+    url: '/apiGetDataChart6',
+    method: 'post',
+    data: { area: area, year: year, month: month }
+    }).done(function(res) {
+        $('#loadding').hide();
+        if (true) {
+        	labels = []; vals = []; tblData = [];
+	        console.log("res = " + res);
+	        res.forEach(function(dt){
+	        	labels.push(dt.date)
+	        	vals.push(dt.value)
+	        	tblData.push({ time: dt.date, val:dt.value})
+	        })
+	      	chart.data.datasets[0].data = vals;
+          chart.data.datasets[0].label = "Station " + area;
+	      	chart.update();
+	      	updateDigitalData(tblData);
+	        //window.location.reload();
+		    } else {
+          $('#loadding').hide();
+		        console.log('error...ajax');
+		    }
+		  });
+  }
+
+  function updateDigitalData(datas){
+  	let strHTML = "", strHeader = "";
+  	strHeader = `<tr>
+          <th>Day</th>
+          <th>kWH</th>
+        </tr>`
+    // console.log(datas)
+  	datas.forEach(function(dt){
+  		strHTML += 
+  		`<tr>
+          <td>`+ dt.time +`</td>
+          <td>`+ dt.val + `</td>  
+      </tr>`
+  	})
+  	document.getElementById('items_table').innerHTML =  strHeader + strHTML;
+
+  }
+</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+  
+
+  <script type="text/javascript">
+      $('#startdate').datetimepicker({
+          useCurrent: false,
+          format: 'DD-MMM-YYYY',
+          minDate: moment()
+      });
+   
+      $('#startdate').datetimepicker().on('dp.change', function (e) {
+          var incrementDay = moment(new Date(e.date));
+          incrementDay.add(-1, 'days');
+          $(this).data("DateTimePicker").hide();
+      });
+	  
+	  $('#fromdate').datetimepicker({
+          useCurrent: false,
+          format: 'DD-MMM-YYYY',
+          minDate: moment()
+      });
+	  
+	  $('#todate1').datetimepicker({
+          useCurrent: false,
+          format: 'DD-MMM-YYYY',
+          minDate: moment()
+      });
+   
+      
+	  
+    $(document).ready(function() {
+      $(function() {
+        $('#datetimepicker6').datetimepicker({format: 'DD-MMM-YYYY'});
+        $('#datetimepicker2').datetimepicker({format: 'DD-MMM-YYYY'});
+		$('#datetimepicker3').datetimepicker({format: 'DD-MMM-YYYY'});
+
+        
+      });
+    });
+
+$(document).ready(function(){
+			$("#head_frame_12").click(function(){
+    var x = document.getElementById('head_frame_12b');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+			});
+			
+		});
+  </script>
+
+	
+
+
+</html>

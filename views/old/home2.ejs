@@ -1,0 +1,534 @@
+<html>
+<head>
+	<script src='js/mqtt.min.js'></script>
+	<script src='js/jquery-3.4.1.min.js'></script>
+	<script src='js/bootstrap.js'></script>
+	<script src='js/socket.io.js'></script>
+	<link href='css/Style.css' rel="stylesheet" type="text/css" />
+	<script src="js/raphael-2.1.4.min.js"></script>
+	
+	<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<!-- Gause -->
+  <script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
+	<!-- Level -->
+  <script src="visualize/d3.v3.min.js"></script>
+  <script src='visualize/liquidFillGauge.js'></script>
+	
+	<!-- Chart -->
+  <script src="visualize/smoothie.js"></script>
+	
+	<!-- font awesome -->
+	
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+	
+</head>
+		
+<body>
+	
+	<div id="main">
+		<div id="head">
+	    	<div id="head_logo">
+	    		
+				<img src='image/SmartFactory.png' style="margin-left: 0px; margin-top: 0px;" />
+			</div>
+
+			<div id="head_text" >
+				<h1 style="text-align:center; color:red;">GIẢI PHÁP NHÀ MÁY THÔNG MINH</h1>
+				<h3 style="text-align:center; color:green;">Hệ thống giám sát điện năng</h3>
+				
+			</div>
+	    </div>
+	
+	    
+	<div id="content_1">	
+			<div id="content_2">	
+<div id="menu">
+  <ul>
+    <li><a href="#">TRANG CHỦ</a></li>
+    <li><a href="#">XƯỞNG SẢN XUẤT 1</a></li>
+    <li><a href="#">XƯỞNG SẢN XUẤT 2</a></li>
+	<li><a href="#">XƯỞNG SẢN XUẤT 3</a></li>
+	<li><a href="#">XƯỞNG SẢN XUẤT 4</a></li>
+	<li><a href="#">XƯỞNG SẢN XUẤT 5</a></li>
+    <li><a href="#">HƯỚNG DẪN</a></li>
+  </ul>
+
+</div>
+		<div id="content_21">
+			<div id="frame_small_1">
+			<p style="color:white; text-align:center; font-size: 15px;">
+				NGƯỜI DÙNG</p>
+				
+				</div>
+			<div id="frame_small_2">
+				<p style="color:blue; text-align:center;"><%= user.username %></span></p>
+		</div>
+		
+		<p style="margin-left: 70px;"><a href="/user/logout"><button>Logout</button></a></p>
+						
+				
+				
+		</div>
+	
+	<div id="content_3">
+				
+		<p  style="color:blue; text-align:center; font-size: 20px;" >Giá trị điện năng tiêu thụ hiện tại</p>
+		
+		<p>
+		<table border="1" width="600px" style="margin-left: 160px; margin-top: 0px;text-align:center;">
+		
+		<tr>		
+			<tr>
+			<th style="width:200px; text-align:top";>Xưởng sản xuất </th>
+			<th>Công suất Kw</th>
+			<th>Công suất Kvar</th>
+			<th>Dòng điện Ampe</th>
+			<th>Cosphi</th>
+			</tr>
+		
+			<tr>
+			<th>Xưởng 1 </th>	
+			<td class="output_field">
+				<div id="data3"></div>
+			</td>
+			
+			<td class="output_field">
+				<div id="data4"></div>
+			</td>
+			<td class="output_field">
+				<div id="data5"></div>
+			</td>
+			<td class="output_field">
+				<div id="data6"></div>
+			</td>
+           </tr>
+	        <tr>
+			<th>Xưởng 2</th>	
+			<td class="output_field">
+				<div id="data7"></div>
+			</td>
+			
+			<td class="output_field">
+				<div id="data8"></div>
+			</td>
+			<td class="output_field">
+				<div id="data9"></div>
+			</td>
+			<td class="output_field">
+				<div id="data10"></div>
+			</td>
+           </tr>
+		        <tr>
+			<th>Xưởng 3</th>	
+			<td class="output_field">
+				<div id="data11"></div>
+			</td>
+			
+			<td class="output_field">
+				<div id="data12"></div>
+			</td>
+			<td class="output_field">
+				<div id="data13"></div>
+			</td>
+			<td class="output_field">
+				<div id="data14"></div>
+			</td>
+           </tr>
+		        <tr>
+			<th>Xưởng 4</th>	
+			<td class="output_field">
+				<div id="data15"></div>
+			</td>
+			
+			<td class="output_field">
+				<div id="data16"></div>
+			</td>
+			<td class="output_field">
+				<div id="data17"></div>
+			</td>
+			<td class="output_field">
+				<div id="data18"></div>
+			</td>
+           </tr>
+		        <tr>
+			<th>Xưởng 5</th>	
+			<td class="output_field">
+				<div id="data19"></div>
+			</td>
+			
+			<td class="output_field">
+				<div id="data20"></div>
+			</td>
+			<td class="output_field">
+				<div id="data21"></div>
+			</td>
+			<td class="output_field">
+				<div id="data22"></div>
+			</td>
+           </tr>
+        </tr>
+		</table>
+		</p>
+	<div id="gauge">
+	  
+	  <div id="gauge_1">
+		<canvas id="gauge_01">guage</canvas>
+		<p  style="color:blue; text-align:center" >Áp suất vị trị H1 = <span id="gaugeH1_value" style="color: red;"></span></p>
+	  </div>
+		
+	<div id="gauge_2">
+		<canvas id="gauge_02">guage</canvas>
+		<p  style="color:blue; text-align:center" >Áp suất vị trị H2 = <span id="gaugeH2_value" style="color: red;"></span></p>
+	  </div>
+				
+	</div>	
+	<div id="gauge_4">
+	<div id="fillgauge">
+
+		 <svg id="fillgauge1" style="width: 150px"; "height: 20px";></svg>
+		<p  style="color:blue; text-align:center" >Nhiệt độ vị trí 1 </p>
+			  </div>
+	 </div>
+		<div id="gauge_5">
+	<div id="fillgauge">
+
+		 <svg id="fillgauge2" style="width: 150px"; "height: 20px";></svg>
+		<p  style="color:blue; text-align:center" >Nhiệt độ vị trí 2 </p>
+			  </div>
+	 </div>
+	
+	
+<div id="chart1">   
+
+			<canvas id="mycanvas_chart_1" width="800px"; height="200px";></canvas>
+			<p  style="color:blue; text-align:center" >Áp suất vị trí 1 và 2 </p>
+  </div>		
+<div id="frame_test">      
+	<p>
+	<h1> Wellcome to IOT</h1>
+		<div id="data"></div>
+		
+		<p>user: <span style="color:green"><%= user.username %></span></p>
+		<div><a href="/user/logout"><button>Logout</button></a></div>
+			  				
+			
+		<div id="data3"></div>
+	
+	<form>
+		<div id="mrON">ON</div>	
+	</form>
+		<form>
+		<div id="mrOFF">OFF</div>
+	</form>
+
+	<form>
+		<div> 
+			<input type="button" id="btnON" value="ON"/>
+
+			<input type="button" id="btnOFF" value="OFF"/>
+
+		</div>
+		
+		<div> 
+			<input type="text" id="Textsend"/>
+            <input type="button" id="btnSEND" value="SEND"/>
+		</div>
+			
+
+		<div>
+		 
+	Gia tri nhan duoc tu PLC la
+	<form>
+		<div id='dataH1_1'></div>
+	</form>
+		
+		<form>
+	  	<div id="Lamp_Display_Home"></div>
+		</form>
+	
+	</div>
+
+	</div>
+	</div>
+	</div>
+	
+	
+	<!-- Gause -->
+	<script type="text/javascript">
+	  var opts = {
+		lines: 5,
+		angle: -0.15,
+		lineWidth: 0.3,
+		pointer: {
+		  length: 0.4,
+		  strokeWidth: 0.035,
+		  color: '#000000'
+		},
+		staticLabels: {
+		  font: "10px sans-serif",  // Specifies font
+		  labels: [0, 10, 20, 30, 40, 50],  // Print labels at these values
+		  color: "#000000",  // Optional: Label text color
+		  fractionDigits: 0  // Optional: Numerical precision. 0=round off.
+		},
+
+		limitMax: 'false', 
+		percentColors: [[0.0, "#a9d70b" ], [0.50, "#f9c802"], [1.0, "#ff0000"]], // !!!!
+		strokeColor: '#E0E0E0',
+		generateGradient: true
+	  };
+
+
+	  var target = document.getElementById('gauge_01');
+	  var gaugeT1 = new Gauge(target).setOptions(opts);
+	  gaugeT1.maxValue = 50;
+	  gaugeT1.animationSpeed = 10;
+	  gaugeT1.set(10);
+		
+	  var target2 = document.getElementById('gauge_02');
+	  var gaugeT2 = new Gauge(target2).setOptions(opts);
+	  gaugeT2.maxValue = 50;
+	  gaugeT2.animationSpeed = 10;
+	  gaugeT2.set(40);
+		
+	</script>
+    <script>
+      //var client = mqtt.connect('ws://192.168.1.100:1883');
+//	  var client = mqtt.connect('http://192.168.0.100:1883');
+//      console.log("Success");
+//      client.subscribe("topic1/demo");
+//
+//      client.on("message", function(topic, payload) {
+//      alert([topic, payload].join(": "));
+//      console.log(topic + " : " + payload);
+//      
+//      });
+		
+		var dataH1;
+		var dataH100;
+	
+		var intH1 = 0;
+		var socket = io("http://27.71.231.45:3001");
+    	 socket.on('dataH1', function(msg){
+			//console.log('dataH1 = ' + msg)
+			dataH1 = msg;
+			dataH100 = dataH1;
+			 
+			intH1 = parseFloat(dataH1);
+			// console.log(typeof(Math.round(parseFloat(intT1) * 100)/100))
+			gaugeT1.set(intH1); 
+			document.getElementById("gaugeH1_value").innerHTML = intH1;
+			document.getElementById("dataH1_1").innerHTML = intH1;
+			 
+      		//document.getElementById("dataH1").innerHTML = msg; 
+			 status_Lamp(intH1)
+			 gauge1.update(intH1+ 30);
+			});
+    	 socket.on('dataH2', function(msg){
+      		dataH2 = msg;
+			intH2 = parseFloat(dataH2);
+			// console.log(typeof(Math.round(parseFloat(intT1) * 100)/100))
+			gaugeT2.set(intH2); 
+			document.getElementById("gaugeH2_value").innerHTML = intH2;
+			gauge2.update(intH2+ 30);
+			 			});		
+    	 socket.on('dataH3', function(msg){
+      		//document.getElementById("dataH3").innerHTML = msg; 
+			});	
+    	 socket.on('dataH4', function(msg){
+      		//document.getElementById("dataH4").innerHTML = msg; 
+			});
+		
+		socket.on('data', function(msg){
+      		document.getElementById("data").innerHTML = msg; 
+			});
+    	socket.on('data3', function(msg){
+      		document.getElementById("data3").innerHTML = msg; 
+			});
+    	socket.on('data4', function(msg){
+      		document.getElementById("data4").innerHTML = msg; 
+			});
+    	socket.on('data5', function(msg){
+      		document.getElementById("data5").innerHTML = msg; 
+			});
+    	socket.on('data6', function(msg){
+      		document.getElementById("data6").innerHTML = msg; 
+			});
+	    socket.on('data7', function(msg){
+      		document.getElementById("data7").innerHTML = msg; 
+			});
+    	socket.on('data8', function(msg){
+      		document.getElementById("data8").innerHTML = msg; 
+			});
+    	socket.on('data9', function(msg){
+      		document.getElementById("data9").innerHTML = msg; 
+			});
+    	socket.on('data10', function(msg){
+      		document.getElementById("data10").innerHTML = msg; 
+			});
+    	socket.on('data11', function(msg){
+      		document.getElementById("data11").innerHTML = msg; 
+			});
+    	socket.on('data12', function(msg){
+      		document.getElementById("data12").innerHTML = msg; 
+			});
+    	socket.on('data13', function(msg){
+      		document.getElementById("data13").innerHTML = msg; 
+			});
+    	socket.on('data14', function(msg){
+      		document.getElementById("data14").innerHTML = msg; 
+			});
+	    	socket.on('data15', function(msg){
+      		document.getElementById("data15").innerHTML = msg; 
+			});
+    	socket.on('data16', function(msg){
+      		document.getElementById("data16").innerHTML = msg; 
+			});
+    	socket.on('data17', function(msg){
+      		document.getElementById("data17").innerHTML = msg; 
+			});
+    	socket.on('data18', function(msg){
+      		document.getElementById("data18").innerHTML = msg; 
+			});
+	    	socket.on('data19', function(msg){
+      		document.getElementById("data19").innerHTML = msg; 
+			});
+    	socket.on('data20', function(msg){
+      		document.getElementById("data20").innerHTML = msg; 
+			});
+    	socket.on('data21', function(msg){
+      		document.getElementById("data21").innerHTML = msg; 
+			});
+    	socket.on('data22', function(msg){
+      		document.getElementById("data22").innerHTML = msg; 
+			});
+		
+		
+		$(document).ready(function(){
+			$("#mrON").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data30", 'on1');
+			});
+			$("#mrOFF").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data30", 'off1');
+			});
+		});
+   		$(document).ready(function(){
+			$("#btnON").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data30", 'on1');
+			});
+			$("#btnOFF").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data30", 'off1');
+			});
+		});     
+	
+		  $(document).ready(function(){
+			$("#btnSEND").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data30", $("#Textsend").val());
+			});
+		});
+		
+		function status_Lamp(data){
+			if (data == 8.2){
+			 lamp_color_home = "green";
+			   document.getElementById("Lamp_Display_Home").style.background = lamp_color_home;
+			 }else { 
+			   lamp_color_home = "red";
+			   document.getElementById("Lamp_Display_Home").style.background = lamp_color_home;
+			}
+		}
+
+		
+
+</script>
+
+	<!-- Level -->
+<script type="text/javascript">
+	var level1 = 100;
+	var level2 = 100;
+  var config1 = liquidFillGaugeDefaultSettings();
+  config1.displayPercent = false;
+  var gauge1 = loadLiquidFillGauge("fillgauge1", 0, config1);
+
+  var config2 = liquidFillGaugeDefaultSettings();
+  config2.displayPercent = false;
+  var gauge2 = loadLiquidFillGauge("fillgauge2", 0, config2);
+  
+  function NewValue(){
+      if(Math.random() > .5){
+          return Math.round(Math.random()*100);
+      } else {
+          return (Math.random()*100).toFixed(1);
+      }
+  }
+</script>
+		
+<script type="text/javascript">
+  	function myYRangeFunction(range) {
+		// TODO implement your calculation using range.min and range.max
+		var min = 0;
+		var max = 100;
+		return {min: min, max: max}
+	  };
+	function myYRangeFunction() {
+		return {min: 0, max: 50}; 
+	}
+	
+	var smoothie = new SmoothieChart({
+		tooltip:true,
+		timestampFormatter:SmoothieChart.timeFormatter,
+        grid: { 
+			strokeStyle:'rgb(215, 227, 245)', 
+			fillStyle:'rgb(255, 255, 255)',
+        	lineWidth: 1, 
+			//millisPerLine: 250, 
+			millisPerLine:2000,
+			verticalSections: 6, 
+			maxValue: 10,
+			minValue: 0,
+			//
+
+		},
+		maxValue:10,
+		minValue:0,
+  		labels: { fillStyle:'rgb(40, 0, 0)' }
+
+                    });
+	smoothie.streamTo(document.getElementById("mycanvas_chart_1"));
+
+	
+	
+	// Data
+	var line1 = new TimeSeries();
+	var line2 = new TimeSeries();
+
+	// Add a random value to each line every second
+	setInterval(function() {
+	  line1.append(new Date().getTime(), intH1 + Math.random(), 'h1'  );
+	  line2.append(new Date().getTime(), intH2, 'h2');
+	}, 1000);
+
+	smoothie.streamTo(document.getElementById("mycanvas_chart_1"), 1000 /*delay*/); 
+	// Add to SmoothieChart
+	smoothie.addTimeSeries(line1, { strokeStyle:'rgb(0, 255, 0)', lineWidth:3, tooltipLabel:'LINE 1' });
+	smoothie.addTimeSeries(line2, { strokeStyle:'rgb(0, 255, 246)', lineWidth:3, tooltipLabel:'LINE 2' });
+
+	
+
+
+</script>
+		
+
+	
+</body>
+
+</html>

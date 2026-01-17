@@ -1,0 +1,23 @@
+{
+  "name": "iotserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "finet",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.9.7",
+    "mqtt": "^3.0.0",
+    "node-excel-export": "^1.4.4",
+    "node-rtsp-stream": "0.0.9",
+    "socket.io": "^2.2.0"
+  }
+}

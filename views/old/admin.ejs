@@ -1,0 +1,317 @@
+<html>
+<head>
+	<script src='js/mqtt.min.js'></script>
+	<script src='js/jquery-3.4.1.min.js'></script>
+	<script src='js/bootstrap.js'></script>
+	<script src='js/socket.io.js'></script>
+	<link href='css/Style_home.css' rel="stylesheet" type="text/css" />
+	<script src="js/raphael-2.1.4.min.js"></script>
+	
+	
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<title>SMART FACTORY | Home</title> -->
+  <!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="bower_components/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="bower_components/dist/css/skins/skin-blue.min.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+	
+	<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<!-- font manu awesome -->
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	
+	<!-- font user awesome -->
+	
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"></script>
+
+	
+</head>
+		
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  <!-- Main Header -->
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini">S</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg">SYSTEMS</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="/image/Cargo.png" class="user-image" alt="">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs" id="username1"><%= user.username %></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="/image/Cargo.png" class="img-circle" alt="User Image">
+                <p>
+                  <span ><%= user.username %></span>
+                  <small>User </small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <!-- <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+              </li> -->
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <!-- <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div> -->
+                <div class="pull-right">
+                  <div><a href="/user/logout"><button>Logout</button></a></div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+          </li>
+        </ul>
+      </div>
+    </nav>
+ 
+  </header>
+  
+ 
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+  <!-- Sidebar Menu -->
+  <ul class="sidebar-menu" data-widget="tree">
+
+    <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> -->
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>Năng lượng</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="/Realtime">Item 1</a></li>
+        <li><a href="/history/chart">Item 2</a></li>
+      </ul>
+    </li>
+
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>Andon</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="/power">Item 1</a></li>
+        <li><a href="/power/real">Item 2</a></li>
+        <li><a href="/power/chart">Item 3</a></li>
+        <li><a href="/power/allchart">Item 4</a></li>
+      </ul>
+    </li>
+
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>abc</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+      </a>
+      <ul class="treeview-menu">
+
+        <li><a href="/flexy">Item 1</a></li>
+
+      </ul>
+    </li>
+
+    
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>kh</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+      </a>
+      
+    </li>
+
+  </ul>
+		
+ 
+  <!-- /.sidebar-menu -->
+</section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    
+<!-- Main content -->
+
+<section>    
+	
+	<div id="content_1">
+			
+	<table border="1" width="600px" style="margin-left: 25%; margin-top: 0px;text-align:center;">
+		<tr>
+			<th>#</th>
+			<th>Username</th>
+			<th>Password</th>
+			<th>Role</th>
+			<th>Information</th>
+			<th>Action</th>
+		</tr>
+		<% users.forEach(function(user) { %>
+		<tr>
+			<td></td>
+			<td><%= user.username %></td>
+			<td><%= user.password %></td>
+			<td><%= user.role %></td>
+			<td><%= user.information %></td>
+			<td>
+				<a href="admin/delete/<%= user.id %>">Delete</a>
+			</td>
+		</tr>
+		<% }) %>
+	</table>
+		</div>
+		<div id="content_2">
+		<div>
+			<form action="/admin" method="post">
+				<p>User: <input type="text" id="txtUser" name="username"/></p>
+				<p>Pass: <input type="text" id="txtPass" name="password"/></p>
+				<p>Role: <input type="text" id="" name="role"/></p>
+				<p>Information: <input type="text" id="txtInformation" name="information"/></p>
+				<p><input type="submit" id="btnAdduser" value="ADD USER"/></p>
+			</form>
+			
+		</div>
+		</div>	
+	
+		
+	
+	
+</section>
+
+
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+  	<!-- To the right -->
+<div class="pull-right hidden-xs">
+  abc
+</div>
+<!-- Default to the left -->
+
+<strong>Copyright &copy; 2019 - 2020 <a href="#"></a>.</strong>
+    
+  </footer>
+
+  <!-- Control Sidebar -->
+  <!-- < include rightsidebar > -->
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/bower_components/dist/js/adminlte.min.js"></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+
+
+<!-- DataTables -->
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+</body>
+
+
+<script>
+
+
+ 
+   		$(document).ready(function(){
+			$("#head_frame_12").click(function(){
+    var x = document.getElementById('head_frame_12b');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+			});
+			
+		});
+		
+
+</script>
+
+
+		
+	
+
+
+</html>

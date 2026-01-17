@@ -1,0 +1,1024 @@
+<html>
+<head>
+	<script src='js/mqtt.min.js'></script>
+	<script src='js/jquery-3.4.1.min.js'></script>
+	<script src='js/bootstrap.js'></script>
+	<script src='js/socket.io.js'></script>
+	<link href='css/Style_data.css' rel="stylesheet" type="text/css" />
+		<script src="js/raphael-2.1.4.min.js"></script>
+	
+	
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<title>SMART FACTORY | Home</title> -->
+  <!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="bower_components/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="bower_components/dist/css/skins/skin-blue.min.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  
+	
+	<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<!-- Chartjs -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+	  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!--  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>-->
+
+  <!-- Optional theme -->
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+	
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	
+	<!-- font user awesome -->
+	
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+	<!-- Solid gauge -->
+	<script src="js/justgage.min.js"></script>
+	
+	
+	<!-- Chart -->
+  <script src="visualize/smoothie.js"></script>
+	  <script src="chart.js/chart/Chart.min.js"></script>
+	<script src="chart.js/chart/bootstrap.bundle.min.js"></script>
+	
+	
+	<script src="js/jquery.flot.js"></script>
+	
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/jquery.overlayScrollbars.min.js"></script>
+	
+	
+	<!-- Realtime Chart 3 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<!--    <script src="https://playground.abysscorp.org/chartjs/livecharts/dist/Chart.min.js"></script>-->
+	
+</head>
+		
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  <!-- Main Header -->
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini">S</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg">SYSTEMS</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="/image/TuyenCamDuong.png" class="user-image" alt="">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs" id="username1"><%= user.username %></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="/image/TuyenCamDuong.png" class="img-circle" alt="User Image">
+                <p>
+                  <span ><%= user.username %></span>
+				 <small>CÔNG TY APATIT VIỆT NAM</small>
+                  <small>Chi Nhánh Tuyển Cam Đường</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <!-- <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+              </li> -->
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <!-- <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div> -->
+                <div class="pull-right">
+                  <div><a href="/user/logout"><button id="button2">Logout</button></a></div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+          </li>
+        </ul>
+      </div>
+    </nav>
+ 
+  </header>
+  
+ 
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+  <!-- Sidebar Menu -->
+  <ul class="sidebar-menu" data-widget="tree">
+
+    <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> -->
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>Điện nước</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="/home01">Trang chủ</a></li>
+        <li><a href="/home12">Biểu đồ</a></li>
+		<li><a href="/home131">Đồ thị</a></li>
+		<li><a href="/home02a">Báo cáo Ca</a></li>
+		<li><a href="/home321">Báo cáo Ngày</a></li>
+		<li><a href="/home31">Báo cáo Tháng Năm</a></li>
+		<li><a href="/home02">Cài đặt</a></li>
+      </ul>
+    </li>
+
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>Điều khiển Van DN200</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="/homeCD3201">Van bùn DN200</a></li>
+      </ul>
+    </li>
+
+  </ul>
+		
+ 
+  <!-- /.sidebar-menu -->
+</section>
+    <!-- /.sidebar -->
+  </aside>
+
+	
+	
+	
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    
+<!-- Main content -->
+	  
+<section>
+<div class="row">
+	
+
+	<p style="color:blue; padding-top:5px; text-align:center; font-size: 16px;" >HỆ THỐNG ĐO ĐIỀU KHIỂN VÀ GIÁM SÁT CHIẾU SÁNG</p>
+
+	
+		<div class="col-md-6 col-md-offset-0">
+				<!-- small box -->
+			  <div class="small-box bg-green" style="margin-left:17px; height:155px;" >
+				<div class="inner">
+				  <h3><span  style="font-size: 20px"><div id="dataCD01_1"></div></span></h3>
+				  <h5><span  style="font-size: 20px">%</span></h5>
+
+				  <p>Dòng điện pha A</p>
+				</div>
+				<div class="icon">
+				  <i class="ion ion-stats-bars"></i>
+				</div>
+				</div>
+		</div>
+	
+		
+		
+	<!--Solid gauge 01 Start -->
+	<div class="col-md-3 col-md-offset-1">
+	<div class="box box-info" style="margin-left:50px;">
+		
+	<!-- /.box-header -->	
+	<div class="box-header with-border" Style="background-color:#17a2b8;color: white;"
+>
+		<i class="fa fa-industry"></i>
+		<h3 class="box-title">Dòng điện pha A</h3>
+	<div class="box-tools pull-right">
+		<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+		</button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>            
+	</div>				
+	</div>
+	<!-- /.box-header -->
+		
+	<div class="box-body">
+		<!-- Row 1 -->
+	<div class="row">
+		<div style="width:220px ; height:92px; display: inline-block; margin-left:30px;" id="g1"></div>
+	</div>
+		
+		
+	<!-- -------- -->	
+	</div>
+	<!-- /.box-body -->
+	</div>	
+	</div>
+		
+	<!--Solid gauge 01 End -->	
+	
+	<!-- Real time Chart 1 Start--> 
+		
+		<div class="col-md-12">	
+			
+		<div class="col-md-6 col-md-offset-0">
+		<div class="box box-info">
+        <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">Real time Chart 1</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>		
+        </div>
+	
+        <!-- /.box-header -->
+        <div class="box-body">
+		<div class="card-body">
+  		  <canvas id="mycanvas" width="510px"; height="230px"></canvas>
+          <br>
+						
+          <button onclick="toggle(1)" style="width:80px;height:30px; margin-top:10px;" ><span id="btn_1" ></span></button>
+          <button onclick="toggle(2)" style="width:80px;height:30px; margin-top:10px;" ><span id="btn_2" ></span></button>
+          <button onclick="toggle(3)" style="width:80px;height:30px; margin-top:10px;" ><span id="btn_3" ></span></button>
+          <button onclick="toggle(4)" style="width:80px;height:30px; margin-top:10px;" ><span id="btn_4" ></span></button>
+         </div>
+
+        
+			</div>
+              </div>
+		
+        </div>
+        <!-- /.card-body -->
+            <!-- /.card -->
+       
+          <!-- /.col -->
+      	
+		<!-- Real time Chart 1 End-->
+	
+		<div class="col-md-6 col-md-offset-0">
+		<div class="box box-info">
+        <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">Dòng điện pha A</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>		
+        </div>
+	
+        <!-- /.box-header -->
+        <div class="box-body">
+		<div class="card-body">
+  		 <canvas id="myChart" width="510px"; height="223px"></canvas>
+			
+			
+				
+		<div class='col-md-3' style="width:120px;height:30px; margin-top:18px;">
+			<p style="color:black; text-align:right; font-size: 16px;" >Chọn ngày:</p>
+		</div>
+		
+		<div class='col-md-3' style="width:160px;height:30px; margin-top:10px;">
+			
+          <div class="form-group">
+            <div class='input-group date' id='datetimepicker6'>
+              <input type='text' class="form-control" id="startdate1" name="startdate" value="<%= moment(startdate).format('DD-MMM-YYYY') %>" />
+              <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-2" style="width:90px;height:30px; margin-top:10px;">
+          <button onclick="updateChart()" class="form-control">View</button>
+        </div>
+
+        <div class="col-md-2" style="width:90px;height:30px; margin-top:10px;">
+        	<a href="/homeCD01Dashboard">
+          	<button class="form-control">Today</button>
+          </a>
+        </div>		
+			
+			
+			
+        </div>
+        <!-- /.card-body -->
+        </div>
+		
+		</div>
+			
+			</div>
+			
+			
+			</div>
+	
+
+		<!--Thong ke 24h End -->	
+	
+</section>
+</div>
+<!-- /.content-wrapper -->
+
+
+
+<!-- Main Footer -->
+<footer class="main-footer">
+<!-- To the right -->
+<div class="pull-right hidden-xs">
+  <b>Version</b> 2.7.20
+</div>
+<!-- Default to the left -->
+<strong>Copyright &copy; 2019-2020 <a href="https://www.finet.vn">Finet Industry</a>.</strong> All rights reserved.
+    
+</footer>
+
+  <!-- Control Sidebar -->
+  <!-- < include rightsidebar > -->
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+	
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/bower_components/dist/js/adminlte.min.js"></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+
+
+<!-- DataTables -->
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+	
+	
+	
+</body>	
+	
+    <script>
+      //var client = mqtt.connect('ws://192.168.1.100:1883');
+//	  var client = mqtt.connect('http://192.168.0.100:1883');
+//      console.log("Success");
+//      client.subscribe("topic1/demo");
+//
+//      client.on("message", function(topic, payload) {
+//      alert([topic, payload].join(": "));
+//      console.log(topic + " : " + payload);
+//      
+//      });
+		var dataCD01_1;
+		var intdataCD01_1a = 0;
+		var dataCD01_2;
+		var intdataCD01_2a = 0;
+		var dataCD01_3;
+		var intdataCD01_3a = 0;
+		var dataCD01_4;
+		var intdataCD01_4a = 0;
+		
+		var dataCD03_21;
+		var intdataCD03_11 = 0;
+		var dataCD03_22;
+		var intdataCD03_12 = 0;
+		
+		var socket = io("http://27.71.231.45:3001");
+		socket.on('dataCD01_1', function(msg){
+      		document.getElementById("dataCD01_1").innerHTML = msg;
+			dataCD01_1 = msg; 
+			console.log(dataCD01_1);
+			intdataCD01_1a = parseFloat(dataCD01_1);
+			console.log(intdataCD03_1a);
+			document.getElementsByClassName('intdataCD01_1')[0].value = intdataCD01_1 ;
+			$(".intdataCD01_1").trigger('change');
+			
+			});
+    	socket.on('dataCD01_2', function(msg){
+      		document.getElementById("dataCD01_2").innerHTML = msg;
+			});
+    	socket.on('dataCD01_3', function(msg){
+      		document.getElementById("dataCD01_3").innerHTML = msg;
+			});
+    	socket.on('dataCD01_4', function(msg){
+      		document.getElementById("dataCD01_4").innerHTML = msg;
+			});
+	    socket.on('dataCD01_5', function(msg){
+      		document.getElementById("dataCD01_5").innerHTML = msg;
+			});
+	    socket.on('dataCD03_21', function(msg){
+      		dataCD03_21 = msg; 
+			console.log(dataCD03_21);
+			intdataCD03_11 = parseFloat(dataCD03_21);
+			console.log(intdataCD03_11);
+			document.getElementsByClassName('intdataCD03_11')[0].value = intdataCD03_11 ;
+			$(".intdataCD03_11").trigger('change');
+			});		// Socket on
+			
+			
+		socket.on('dataCD03_22', function(msg){
+      		dataCD03_22 = msg; 
+			console.log(dataCD03_22);
+
+			intdataCD03_12 = parseFloat(dataCD03_22);
+			console.log(intdataCD03_12);
+//			document.getElementsByClassName('intdataCD03_12')[0].value = intdataCD03_12 ;
+			$(".intdataCD03_12").val(intdataCD03_12)
+			$(".intdataCD03_12").trigger('change'); // jquery
+//			document.getElementsByClassName('intdataCD03_12') // 2 cái này tương duong nhau
+			
+			$('.knob').knob({
+		
+    		change : function (value) {
+    		console.log(898 , "change : " + value); 
+			},		
+			}); // End knob	
+			});	// End socket
+			
+				
+
+	let count01 = 0;
+		
+		
+		//socket.on('dataCD03_21', function(msg){
+			//document.getElementById("dataCD03_21").innerHTML = msg;
+      		//dataCD03_21= msg;
+			//intdata11 = parseFloat(dataCD03_21);
+			//console.log(dataCD03_21);
+			//console.log(intdata11);
+			//console.log("Success");
+   		
+		//socket.on('dataCD03_22', function(msg){
+			//document.getElementById("dataCD03_22").innerHTML = msg;
+      		//dataCD03_22= msg;
+			//intdata12 = parseFloat(dataCD03_22);
+			//console.log(dataCD03_22);
+			//console.log(intdata12);
+			//console.log("Success");
+				//})// Socket on dataCD03_22
+	
+	$(function () {
+		
+	
+		   
+	const interval01 = setInterval(() => {
+    console.log("Hello", count01++);
+		
+	if ( count01 <2){	
+	
+		/*Solid gauge Start*/
+		
+      $(function () {
+	
+        var g1 = new JustGage({
+          id: "g1",
+          value: intdataCD03_11,
+          min: 0,
+          max: 100,
+          title: "Big Fella",
+          label: "%",
+			//valueFontColor: '#FF0000',
+			//labelFontColor: '#FF0000',
+		 formatNumber: true,
+			decimals: 2,
+			gaugeWidthScale: 1,
+			showInnerShadow: true,
+    customSectors: {
+      percents: true,
+      ranges: [
+        {lo: 0, hi: 33, color: '#13ED5A'}, // lo and hi values are in %
+        {lo: 34, hi: 67, color: '#FFFF00'},
+        {lo: 68, hi: 100, color: '#FF0000'}
+      ]
+    }
+        });
+		
+	  setInterval(function() {
+       g1.refresh(intdataCD03_11);
+      }, 1000);
+
+	/*Solid gauge End*/		
+ });
+	} // End if	
+		
+		
+	if ( 2<= count01 <= 4){
+	setInterval(function() {
+        g1.refresh(intdataCD03_11);
+      }, 1000);	
+		//console.log(intdata11);
+		console.log("abc");
+			
+	/* START Inline Charts */
+	
+	    /* jQueryKnob */
+
+	//$(element).knob({
+   // 'draw': function() {
+   // console.log(this.$.val());
+    // }
+  // });
+		// doan nay co ve lai ko ?
+		// interval sẽ vẽ lại chỉ là anh chưa truyền được giá trị sau khi thay đổi
+		
+ 	$('.knob').knob({
+		
+    change : function (value) {
+    console.log(898 , "change : " + value); 
+	},
+      //release : function (value) {
+      //console.log("release : " + value);
+      //},
+      //cancel : function () {
+      //console.log("cancel : " + this.value);
+       //},
+		//,*/
+		// anh lấy giá trị mới ở đâu anh
+      draw: function () {
+		  console.log(911,intdataCD03_12)
+		  
+		  console.log("Hello", count01++);
+		 
+        // "tron" case  
+        if (this.$.data('skin') == 'tron') {
+
+          var a   = this.angle(this.cv)  // Angle
+            ,
+              sa  = this.startAngle          // Previous start angle
+            ,
+              sat = this.startAngle         // Start angle
+            ,
+              ea                            // Previous end angle
+            ,
+              eat = sat + a                 // End angle
+            ,
+              r   = true
+		  console.log(925,a,sa,sat,ea,eat,r)
+          this.g.lineWidth = this.lineWidth
+			console.log(927,this.g.lineWidth)
+          this.o.cursor
+          && (sat = eat - 0.3)
+          && (eat = eat + 0.3)
+
+          if (this.o.displayPrevious) {
+            ea = this.startAngle + this.angle(this.value)
+            this.o.cursor
+            && (sa = ea - 0.3)
+            && (ea = ea + 0.3)
+            this.g.beginPath()
+            this.g.strokeStyle = this.previousColor
+			  console.log(943,this.g.strokeStyle)
+            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false)
+            this.g.stroke()
+          }
+
+          this.g.beginPath()
+          this.g.strokeStyle = r ? this.o.fgColor : this.fgColor
+//			console.log(946,this.g.strokeStyle)		// ve mau ben trong
+			let end = sat + (intdataCD03_12/100*2*Math.PI)
+          this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, end, false)
+		 	// xy tọa độ tâm đường tròn
+			// radius : bán kính 
+			console.log(940,sat,end)
+
+          this.g.stroke()
+
+          this.g.lineWidth = 2
+          this.g.beginPath()
+          this.g.strokeStyle = this.o.fgColor
+			console.log(962,this.g.strokeStyle)
+          this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false)
+			// chay từ 0 => 2pi là vẽ cả đường tròn
+          this.g.stroke()
+
+          return false
+        }
+      }
+    })
+		
+		
+    /* END JQUERY KNOB */
+    /* END Inline Charts */
+	
+
+		
+		
+	} // if	
+
+		if ( count01 > 5){
+        count01 = 2;
+    	}	
+	}, 3000);
+		
+	
+	
+	}); // function
+	
+   //})// Socket on
+		
+
+
+	</script>
+	
+	
+<script type="text/javascript">
+$(window).on('load', function(){
+	//alert("Hello! I am an alert box!!");
+	/* START Inline Charts */
+	
+	    /* jQueryKnob */
+
+	//$(element).knob({
+   // 'draw': function() {
+   // console.log(this.$.val());
+    // }
+  // });
+		// doan nay co ve lai ko ?
+		// interval sẽ vẽ lại chỉ là anh chưa truyền được giá trị sau khi thay đổi
+		
+ 	$('.knob').knob({
+		
+    change : function (value) {
+    console.log(898 , "change : " + value); 
+	},
+      //release : function (value) {
+      //console.log("release : " + value);
+      //},
+      //cancel : function () {
+      //console.log("cancel : " + this.value);
+       //},
+		//,*/
+		// anh lấy giá trị mới ở đâu anh
+      draw: function () {
+		  console.log(911,12)
+		 
+        // "tron" case  
+        if (this.$.data('skin') == 'tron') {
+
+          var a   = this.angle(this.cv)  // Angle
+            ,
+              sa  = this.startAngle          // Previous start angle
+            ,
+              sat = this.startAngle         // Start angle
+            ,
+              ea                            // Previous end angle
+            ,
+              eat = sat + a                 // End angle
+            ,
+              r   = true
+		  console.log(925,a,sa,sat,ea,eat,r)
+          this.g.lineWidth = this.lineWidth
+			console.log(927,this.g.lineWidth)
+          this.o.cursor
+          && (sat = eat - 0.3)
+          && (eat = eat + 0.3)
+
+          if (this.o.displayPrevious) {
+            ea = this.startAngle + this.angle(this.value)
+            this.o.cursor
+            && (sa = ea - 0.3)
+            && (ea = ea + 0.3)
+            this.g.beginPath()
+            this.g.strokeStyle = this.previousColor
+			  console.log(943,this.g.strokeStyle)
+            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false)
+            this.g.stroke()
+          }
+
+          this.g.beginPath()
+          this.g.strokeStyle = r ? this.o.fgColor : this.fgColor
+//			console.log(946,this.g.strokeStyle)		// ve mau ben trong
+			let end = sat + (intdataCD03_12/100*2*Math.PI)
+          this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, end, false)
+		 	// xy tọa độ tâm đường tròn
+			// radius : bán kính 
+			console.log(940,sat,end)
+
+          this.g.stroke()
+
+          this.g.lineWidth = 2
+          this.g.beginPath()
+          this.g.strokeStyle = this.o.fgColor
+			console.log(962,this.g.strokeStyle)
+          this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false)
+			// chay từ 0 => 2pi là vẽ cả đường tròn
+          this.g.stroke()
+
+          return false
+        }
+      }
+    })
+		
+		
+    /* END JQUERY KNOB */
+    /* END Inline Charts */
+});
+    
+</script>
+	
+
+ 
+	<script type="text/javascript">
+		let labels = []; let vals = []; let tblData = [];
+  		var ctx = document.getElementById('myChart').getContext('2d');
+		var chart = new Chart(ctx, {
+			// The type of chart we want to create
+			//type: 'line',
+			type: 'bar',
+
+			// The data for our dataset
+			data: {
+				labels: [],
+				datasets: [{
+					label: 'Dòng điện pha A [Ampe]',
+					//backgroundColor: 'rgba(255, 255, 255, 0.1)', // for line
+					backgroundColor: 'rgba(255, 99, 132)', // for bar
+					borderColor: 'rgb(255, 99, 132)',
+					data: []
+				}]
+			},
+			// Configuration options go here
+			options: {
+				legend: {
+			  display: true,
+			  labels: {
+				  fontColor: 'rgb(255, 99, 1)'
+			  }
+			}
+			}
+		});
+
+
+	$.ajax({
+    url: '/apiGetDataChartCD01Baocaongay',
+    method: 'post',
+    data: { id: 1}
+    }).done(function(res) {
+        if (true) {
+	        console.log(res);
+	        res.forEach(function(dt){
+	        	labels.push(dt.CD01_timestamp)
+	        	vals.push(dt.value)
+
+	        	tblData.push({ time: dt.CD01_timestamp, val:dt.value})
+	        })
+	        console.log(vals)
+	        chart.data.labels = labels;
+	        chart.data.datasets[0].data = vals;
+	      	chart.update();
+					
+		    } else {
+		        console.log('error...ajax');
+		    }
+		  });
+
+  function updateChart(){
+  	let startDate = $('#startdate1').val();
+
+  	console.log(startDate)
+  	$.ajax({
+    url: '/apiGetDataChartCD01Baocaongay',
+    method: 'post',
+    data: { startDate: startDate}
+    }).done(function(res) {
+        if (true) {
+        	labels = []; vals = []; tblData = [];
+	        console.log(res);
+	        res.forEach(function(dt){
+	        	labels.push(dt.CD01_timestamp)
+	        	vals.push(dt.value)
+	        	tblData.push({ time: dt.CD01_timestamp, val:dt.value})
+	        })
+	      	chart.data.datasets[0].data = vals;
+	      	chart.update();
+	      	
+	        //window.location.reload();
+		    } else {
+		        console.log('error...ajax');
+		    }
+		  });
+  }
+		
+</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+  
+
+  <script type="text/javascript">
+      $('#startdate').datetimepicker({
+          useCurrent: false,
+          format: 'DD-MMM-YYYY',
+          minDate: moment()
+      });
+   
+      $('#startdate').datetimepicker().on('dp.change', function (e) {
+          var incrementDay = moment(new Date(e.date));
+          incrementDay.add(-1, 'days');
+          $(this).data("DateTimePicker").hide();
+      });
+	  
+	  $('#fromdate').datetimepicker({
+          useCurrent: false,
+          format: 'DD-MMM-YYYY',
+          minDate: moment()
+      });
+	  
+	  $('#todate1').datetimepicker({
+          useCurrent: false,
+          format: 'DD-MMM-YYYY',
+          minDate: moment()
+      });
+   
+      
+	  
+    $(document).ready(function() {
+      $(function() {
+        $('#datetimepicker6').datetimepicker({format: 'DD-MMM-YYYY'});
+        $('#datetimepicker2').datetimepicker({format: 'DD-MMM-YYYY'});
+		$('#datetimepicker3').datetimepicker({format: 'DD-MMM-YYYY'});
+
+        
+      });
+    });
+
+$(document).ready(function(){
+			$("#head_frame_12").click(function(){
+    var x = document.getElementById('head_frame_12b');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+			});
+			
+		});
+  </script>
+
+ <!-- Chart Start -->
+ <script type="text/javascript">
+  var arrLine = [
+      objL0 = {isDiplay: 0},
+      objL1 = {isDiplay: 1, tooltipLabel: 'LINE 1', color: 'blue', value : 20 },
+      objL2 = {isDiplay: 1, tooltipLabel: 'LINE 2', color:'green', value : 10},
+      objL3 = {isDiplay: 1, tooltipLabel: 'LINE 3',color:'pink', value : 0},
+      objL4 = {isDiplay: 1, tooltipLabel: 'LINE 4', color:'red', value : 0},
+    ];
+
+  // Data
+  var line0 = new TimeSeries();
+  var line1 = new TimeSeries();
+  var line2 = new TimeSeries();
+  var line3 = new TimeSeries();
+  var line4 = new TimeSeries();
+
+  var arrLineInst = [line0, line1, line2, line3, line4 ];
+  for (let i = 1; i <= 4; i++) {
+    document.getElementById("btn_"+i).innerHTML = arrLine[i].tooltipLabel
+  }
+
+
+  
+  // function myYRangeFunction(range) {
+  //   // TODO implement your calculation using range.min and range.max
+  //   var min = 0;
+  //   var max = 1000;
+  //   return {min: min, max: max};
+  // }
+
+  // var chart = new SmoothieChart({millisPerPixel:21,maxValueScale:1.22,scaleSmoothing:0.098,grid:{fillStyle:'#ffffff',strokeStyle:'#c0c0c0',sharpLines:true,millisPerLine:3000},tooltip:true,timestampFormatter:SmoothieChart.timeFormatter,yRangeFunction:myYRangeFunction,horizontalLines:[{color:'#ffffff',lineWidth:1,value:0},{color:'#880000',lineWidth:2,value:3333},{color:'#880000',lineWidth:2,value:-3333}]}),
+  //     canvas = document.getElementById('smoothie-chart'),
+  //     series = new TimeSeries();
+
+  // chart.addTimeSeries(series, {lineWidth:2,strokeStyle:'#ff0000',fillStyle:'rgba(0,255,0,0.30)'});
+  // chart.streamTo(canvas, 500);
+  function myYRangeFunction(range) {
+    // TODO implement your calculation using range.min and range.max
+    var min = 0;
+    var max = 100;
+    return {min: min, max: max}
+  };
+
+
+
+  var smoothie = new SmoothieChart({
+                      tooltip:true,
+                      timestampFormatter:SmoothieChart.timeFormatter,
+                      grid: { strokeStyle:'rgb(215, 227, 245)', 
+                              fillStyle:'rgb(255, 255, 255)',
+                              lineWidth: 1, 
+                              millisPerLine: 250, 
+                              verticalSections: 6,
+                              millisPerLine:2000,
+                              maxValue:100,
+                              minValue:0,
+                              yRangeFunction:myYRangeFunction,
+                            },
+                      labels: { fillStyle:'rgb(60, 0, 0)' }
+                    });
+  smoothie.streamTo(document.getElementById("mycanvas"));
+
+  
+
+  // Add a random value to each line every second
+  setInterval(function() {
+    for (let i = 1; i <= 4 ; i++) {
+      if (arrLine[i].isDisplay == 1) {
+        arrLineInst[i].append(new Date().getTime(), arrLine[i].value , arrLine[i].tooltipLabel); //Math.random()*100
+      }
+    }
+
+  }, 1000);
+
+  // Add to SmoothieChart
+  //smoothie.addTimeSeries(arrLineInst[1], { strokeStyle:'rgb(0, 255, 0)', lineWidth:3, tooltipLabel:'LINE 1' });
+  //smoothie.addTimeSeries(arrLineInst[2], { strokeStyle:'rgb(255, 0, 255)', lineWidth:3, tooltipLabel:'LINE 2' }); //fillStyle:'rgba(0, 255, 0, 0.3)'
+
+  smoothie.streamTo(document.getElementById("mycanvas"), 1000 /*delay*/); 
+
+
+</script>
+
+<script type="text/javascript">
+  function toggle(i){
+    if(arrLine[i].isDisplay == 1){
+      arrLine[i].isDisplay = 0;
+      smoothie.removeTimeSeries(arrLineInst[i], { strokeStyle:'rgb(43, 76, 181)', lineWidth:3,  });
+      
+    }else{
+      arrLine[i].isDisplay = 1;
+      smoothie.addTimeSeries(arrLineInst[i], { strokeStyle:arrLine[i].color , lineWidth:3, tooltipLabel:arrLine[i].tooltipLabel });
+    }
+    
+  }
+
+  toggle(1);
+  toggle(2);
+  toggle(3);
+  toggle(4);
+
+  
+
+</script>    <!-- /.content -->
+		
+		
+</html>

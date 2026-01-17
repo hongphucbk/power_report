@@ -1,0 +1,495 @@
+<html>
+<head>
+	<script src='js/mqtt.min.js'></script>
+	<script src='js/jquery-3.4.1.min.js'></script>
+	<script src='js/bootstrap.js'></script>
+	<script src='js/socket.io.js'></script>
+<link href='css/Style_home.css' rel="stylesheet" type="text/css" />
+	<script src="js/raphael-2.1.4.min.js"></script>
+	
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<title>SMART FACTORY | Home</title> -->
+  <!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	
+	
+	
+  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="bower_components/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="bower_components/dist/css/skins/skin-blue.min.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+	</script>
+	<!-- Gause -->
+  <script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
+	<!-- Level -->
+  <script src="visualize/d3.v3.min.js"></script>
+  <script src='visualize/liquidFillGauge.js'></script>
+	
+	<!-- Chart -->
+  <script src="visualize/smoothie.js"></script>
+	
+	<!-- font manu awesome -->
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	
+	<!-- font user awesome -->
+	
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+	
+</head>
+		
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+    <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+    <!-- Main Header -->
+     <header class="main-header">
+       <!-- Logo -->
+       <a href="/" class="logo">
+         <!-- mini logo for sidebar mini 50x50 pixels -->
+         <span class="logo-mini">S</span>
+         <!-- logo for regular state and mobile devices -->
+         <span class="logo-lg">SYSTEMS</span>
+       </a>
+     
+       <!-- Header Navbar -->
+       <nav class="navbar navbar-static-top" role="navigation">
+         <!-- Sidebar toggle button-->
+         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+           <span class="sr-only">Toggle navigation</span>
+         </a>
+         <!-- Navbar Right Menu -->
+         <div class="navbar-custom-menu">
+           <ul class="nav navbar-nav">
+             <!-- User Account Menu -->
+             <li class="dropdown user user-menu">
+               <!-- Menu Toggle Button -->
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                 <!-- The user image in the navbar-->
+                 <img src="/image/TuyenCamDuong.png" class="user-image" alt="">
+                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                 <span class="hidden-xs" id="username1"><%= user.username %></span>
+               </a>
+               <ul class="dropdown-menu">
+                 <!-- The user image in the menu -->
+                 <li class="user-header">
+                   <img src="/image/TuyenCamDuong.png" class="img-circle" alt="User Image">
+                   <p>
+                     <span ><%= user.username %></span>
+                     <small>CÔNG TY APATIT VIỆT NAM</small>
+                     <small>Chi Nhánh Tuyển Cam Đường</small>
+                   </p>
+                 </li>
+                 <!-- Menu Body -->
+                 <!-- <li class="user-body">
+                   <div class="row">
+                     <div class="col-xs-4 text-center">
+                       <a href="#">Followers</a>
+                     </div>
+                     <div class="col-xs-4 text-center">
+                       <a href="#">Sales</a>
+                     </div>
+                     <div class="col-xs-4 text-center">
+                       <a href="#">Friends</a>
+                     </div>
+                   </div>
+                 </li> -->
+                 <!-- Menu Footer-->
+                 <li class="user-footer">
+                   <!-- <div class="pull-left">
+                     <a href="#" class="btn btn-default btn-flat">Profile</a>
+                   </div> -->
+                   <div class="pull-right">
+                     <div><a href="/user/logout"><button id="button2">Logout</button></a></div>
+                   </div>
+                 </li>
+               </ul>
+             </li>
+             <!-- Control Sidebar Toggle Button -->
+             <li>
+               <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+             </li>
+           </ul>
+         </div>
+       </nav>
+     
+     </header>
+     <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+     
+     
+     
+     
+     <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+     <!-- Left side column. contains the logo and sidebar -->
+     <aside class="main-sidebar">
+       <!-- sidebar: style can be found in sidebar.less -->
+         <section class="sidebar">
+           <!-- Sidebar Menu -->
+             <ul class="sidebar-menu" data-widget="tree">
+     
+               <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> -->
+               <li class="treeview">
+                 <a href="#"><i class="fa fa-industry"></i> <span>Nồng độ bùn 01</span>
+                   <span class="pull-right-container">
+                       <i class="fa fa-angle-left pull-right"></i>
+                   </span>
+                 </a>
+                 <ul class="treeview-menu">
+                   <li><a href="/homeCD02">Hôm nay</a></li>
+                   <li><a href="/homeCD02a">Hôm qua</a></li>
+                   <li><a href="/homeCD01Baocaongay">Báo cáo ngày</a></li>
+                   <li><a href="/homeCD01Baocaothang">Báo cáo tháng</a></li>
+                   <li><a href="/homeCD01BaocaoExcell">Xuất file Excel</a></li>
+                   <li><a href="/homeCD03Setup">Cài đặt</a></li>
+                 </ul>
+               </li>
+     
+               <li class="treeview">
+                 <a href="#"><i class="fa fa-industry"></i> <span>Điều khiển Van DN200</span>
+                   <span class="pull-right-container">
+                       <i class="fa fa-angle-left pull-right"></i>
+                   </span>
+                 </a>
+                 <ul class="treeview-menu">
+                   <li><a href="/homeCD3201">Van bùn DN200</a></li>
+                 </ul>
+               </li>
+     
+               <li class="treeview">
+                 <a href="#"><i class="fa fa-industry"></i> <span>Giám sát Năng Lượng</span>
+                   <span class="pull-right-container">
+                       <i class="fa fa-angle-left pull-right"></i>
+                   </span>
+                 </a>
+                 <ul class="treeview-menu">
+                   <li><a href="/1ahome_GSNL_CD_01">Năng lượng 01</a></li>
+                   <li><a href="/1ahome_GSNL_CD_02">Năng lượng 02</a></li>
+                   <li><a href="/1ahome_GSNL_CD_03">Năng lượng 03</a></li>
+                   <li><a href="/1ahome_GSNL_CD_Sodo01">Sơ đồ cung cấp điện</a></li>
+                   <li><a href="/1ahome_GSNL_CD_KwhCa">Kwh theo Ca</a></li>
+                   <li><a href="/1ahome_GSNL_BieudoCa_CD_Tram01_A51_MV01">Biểu đồ Kwh Ca</a></li>
+                   <li><a href="/1ahome_GSNL_BieudoNgay_CD_Tram01_A51MV01">Biểu đồ Kwh Ngày</a></li>
+                   <li><a href="/1ahome_GSNL_BieudoThang_CD_Tram01_A51MV01">Biểu đồ Kwh Tháng</a></li>
+                   <li><a href="/1ahome_GSNL_BaocaoExcell_CD_Kwh">Báo cáo Excell Kwh</a></li>
+                   <li><a href="/1ahome_GSNL_BaocaoExcell_CD_KwhDay">Báo cáo Excell Kwh Day</a></li>
+                   <li><a href="/1ahome_GSNL_BaocaoExcell_CD_Cosphi">Báo cáo Excell Cosphi</a></li>
+                 </ul>
+               </li>
+     
+             </ul>       
+           <!-- /.sidebar-menu -->
+         </section>
+         <!-- /.sidebar -->
+     </aside>
+     <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+	
+	
+	
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    
+<!-- Main content -->
+	  
+<section>
+		
+
+	<div class="row">
+            <div class="col-md-12">
+	
+		<p style="color:blue; padding-top:10px; text-align:center; font-size: 18px;" >HỆ THỐNG ĐIỀU KHIỂN VAN CẤP BÙN DN200</p>
+				
+		<div class="col-md-10">	
+			
+		<div class="col-md-10 col-md-offset-2">
+		<div class="box box-info">
+            <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">VAN CẤP BÙN DN200</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>	
+				
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+			<div class="row">
+            <div class="col-md-4 col-md-offset-0">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Thông số</p>
+            </div>
+            <div class="col-md-2 col-md-offset-0" id="content_text2d">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Giá trị </p>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_text2aaa">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Đơn vị</p>
+            </div>
+          </div>
+			
+          <div class="row">
+            <div class="col-md-4 col-md-offset-0">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Mức bùn trong bể</p>
+            </div>
+            <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="dataCD11_1"></div></span></h5>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_text2aaa">
+              <p style="text-align:center; padding-top:15px; padding-left:20px; font-size: 16px;" >cm</p>
+            </div>
+			  
+
+          </div>
+			
+			<div class="row">
+			 <h5><span  style="font-size: 10px"></span></h5>
+			 </div>
+			<div class="row">
+            <div class="col-md-4 col-md-offset-0">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Giá trị cài đặt cho van</p>
+            </div>
+            <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="dataCD11_2"></div></span></h5>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_text2aaa">
+              <p style="text-align:center; padding-top:15px; padding-left:20px; font-size: 16px;" >%</p>
+            </div>
+				</div>
+			
+			
+         
+			 <div class="row">
+			 <h5><span  style="font-size: 10px"></span></h5>
+			 </div>
+		
+			 
+				
+				<div class="row">
+			 <h5><span  style="font-size: 10px"></span></h5>
+			 </div>
+			<div class="row">
+            <div class="col-md-4 col-md-offset-0">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Độ mở Van</p>
+            </div>
+            <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="dataCD11_3"></div></span></h5>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_text2aaa">
+              <p style="text-align:center; padding-top:15px; padding-left:20px; font-size: 16px;" >%</p>
+            </div>
+				
+          </div>
+				
+			
+			
+          <div class="row">
+			 <h5><span  style="font-size: 10px"></span></h5>
+			 </div>
+			<div class="row">
+            <div class="col-md-4 col-md-offset-0">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Chế độ điều khiển</p>
+            </div>
+            <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="StatusCD11_1"></div></span></h5>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_text2aaa">
+              <p style="text-align:center; padding-top:15px; padding-left:20px; font-size: 16px;" ></p>
+            </div>
+			</div>	
+				
+			<div class="row">
+			 <h5><span  style="font-size: 10px"></span></h5>
+			 </div>
+          <div class="row">
+			  
+            <div class="col-md-4 col-md-offset-0">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Trạng thái động cơ</p>
+            </div>
+            <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="StatusCD11_2"></div></span></h5>
+            </div>
+			  <div class="col-md-1 col-md-offset-0" id="content_text2aaa">
+              <p style="text-align:center; padding-top:15px; padding-left:20px; font-size: 16px;" ></p>
+            </div>
+          </div>
+			
+				<div class="row">
+			 <h5><span  style="font-size: 10px"></span></h5>
+			 </div>
+          <div class="row">
+			  
+            <div class="col-md-4 col-md-offset-0">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Trạng thái Cảm biến 1</p>
+            </div>
+            <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="StatusCD11_3"></div></span></h5>
+            </div>
+			  <div class="col-md-1 col-md-offset-0" id="content_text2aaa">
+              <p style="text-align:center; padding-top:15px; padding-left:20px; font-size: 16px;" ></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <h5><span  style="font-size: 10px"></span></h5>
+            </div>
+               <div class="row">
+             
+                 <div class="col-md-4 col-md-offset-0">
+                   <p style="text-align:center; padding-top:15px; font-size: 16px;" >Trạng thái Cảm biến 2</p>
+                 </div>
+                 <div class="col-md-2 col-md-offset-0" id="content_text2">
+                   <h5><span  style="font-size: 20px"><div id="StatusCD11_4"></div></span></h5>
+                 </div>
+             <div class="col-md-1 col-md-offset-0" id="content_text2aaa">
+                   <p style="text-align:center; padding-top:15px; padding-left:20px; font-size: 16px;" ></p>
+                 </div>
+               </div>
+						         			
+        </div>
+        <!-- /.box-body -->
+      
+          </div>	
+			
+			
+				
+	</div>			
+		
+		
+	
+	</div>
+</div>
+
+	
+		
+</section>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+
+
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+<!-- Main Footer START-------------------------------->
+<footer class="main-footer">
+  <!-- To the right -->
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 2.99.25
+  </div>
+  <!-- Default to the left -->
+  <strong>Copyright &copy; 2019-2030 <a href="https://www.finet.vn">Finet Industry</a>.</strong> All rights reserved.
+</footer>
+<!-- Main Footer END-------------------------------->
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+  <!-- Control Sidebar -->
+  <!-- < include rightsidebar > -->
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/bower_components/dist/js/adminlte.min.js"></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+
+
+<!-- DataTables -->
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	
+ 
+
+	
+	
+	
+</body>	
+	
+    <script>
+      //var client = mqtt.connect('ws://192.168.1.100:1883');
+//	  var client = mqtt.connect('http://192.168.0.100:1883');
+//      console.log("Success");
+//      client.subscribe("topic1/demo");
+//
+//      client.on("message", function(topic, payload) {
+//      alert([topic, payload].join(": "));
+//      console.log(topic + " : " + payload);
+//      
+//      });
+		
+
+		var socket = io("http://27.71.231.45:3201");
+    	 		
+    	socket.on('dataCD11_1', function(msg){
+      		document.getElementById("dataCD11_1").innerHTML = msg;
+			});
+    	socket.on('dataCD11_2', function(msg){
+      		document.getElementById("dataCD11_2").innerHTML = msg;
+			});
+    	socket.on('dataCD11_3', function(msg){
+      		document.getElementById("dataCD11_3").innerHTML = msg;
+			});
+    	socket.on('dataCD11_4', function(msg){
+      		document.getElementById("dataCD11_4").innerHTML = msg;
+			});
+	    socket.on('dataCD11_5', function(msg){
+      		document.getElementById("dataCD11_5").innerHTML = msg;
+			});
+		socket.on('dataCD11_6', function(msg){
+      		document.getElementById("dataCD11_6").innerHTML = msg;
+			});
+		socket.on('dataCD11_7', function(msg){
+      		document.getElementById("dataCD11_7").innerHTML = msg;
+			});
+    
+    socket.on('StatusCD11_1', function(msg){
+        document.getElementById("StatusCD11_1").innerHTML = msg;
+    });
+    socket.on('StatusCD11_2', function(msg){
+        document.getElementById("StatusCD11_2").innerHTML = msg;
+    });
+    socket.on('StatusCD11_3', function(msg){
+        document.getElementById("StatusCD11_3").innerHTML = msg;
+    });
+    socket.on('StatusCD11_4', function(msg){
+        document.getElementById("StatusCD11_4").innerHTML = msg;
+    });
+
+</script>
+ 		
+		
+</html>

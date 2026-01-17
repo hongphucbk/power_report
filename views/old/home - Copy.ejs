@@ -1,0 +1,910 @@
+<html>
+<head>
+	<script src='js/mqtt.min.js'></script>
+	<script src='js/jquery-3.4.1.min.js'></script>
+	<script src='js/bootstrap.js'></script>
+	<script src='js/socket.io.js'></script>
+<link href='css/Style_home.css' rel="stylesheet" type="text/css" />
+	<script src="js/raphael-2.1.4.min.js"></script>
+	
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<title>SMART FACTORY | Home</title> -->
+  <!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="bower_components/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="bower_components/dist/css/skins/skin-blue.min.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=33wK4pHCQwmEvEnf0tMHp2mvQ3nMuVXExrN0EphNHmDrLKd6kRbyMVkWvZX1JAlcMhyt8xrcDHFr9eANUJp5dA" charset="UTF-8"></script>
+	<script type="text/javascript" src="/chart/js/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+	</script>
+	<!-- Gause -->
+  <script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
+	<!-- Level -->
+  <script src="visualize/d3.v3.min.js"></script>
+  <script src='visualize/liquidFillGauge.js'></script>
+	
+	<!-- Chart -->
+  <script src="visualize/smoothie.js"></script>
+	
+	<!-- font manu awesome -->
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	
+	<!-- font user awesome -->
+	
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+	
+</head>
+		
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  <!-- Main Header -->
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini">S</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg">SYSTEMS</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="/image/Cargo.png" class="user-image" alt="">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs" id="username1"><%= user.username %></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="/image/Cargo.png" class="img-circle" alt="User Image">
+                <p>
+                  <span ><%= user.username %></span>
+                  <small>User </small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <!-- <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+              </li> -->
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <!-- <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div> -->
+                <div class="pull-right">
+                  <div><a href="/user/logout"><button id="button2">Logout</button></a></div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+          </li>
+        </ul>
+      </div>
+    </nav>
+ 
+  </header>
+  
+ 
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+  <!-- Sidebar Menu -->
+  <ul class="sidebar-menu" data-widget="tree">
+
+    <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> -->
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>Thuốc tuyển</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="/home">Real time</a></li>
+        <li><a href="/home12">Dashboard</a></li>
+		  <li><a href="/home131">Chart</a></li>
+		   <li><a href="/home3">History</a></li>
+		  <li><a href="/home14">Setup</a></li>
+      </ul>
+    </li>
+
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>Andon</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="/power">Item 1</a></li>
+        <li><a href="/power/real">Item 2</a></li>
+        <li><a href="/power/chart">Item 3</a></li>
+        <li><a href="/power/allchart">Item 4</a></li>
+      </ul>
+    </li>
+
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>abc</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+      </a>
+      <ul class="treeview-menu">
+
+        <li><a href="/flexy">Item 1</a></li>
+
+      </ul>
+    </li>
+
+    
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>kh</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+      </a>
+      
+    </li>
+
+  </ul>
+		
+ 
+  <!-- /.sidebar-menu -->
+</section>
+    <!-- /.sidebar -->
+  </aside>
+
+	
+	
+	
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    
+<!-- Main content -->
+	  
+<section>
+		
+
+	<div class="row">
+            <div class="col-md-12">
+	
+		<p style="color:blue; padding-top:10px; text-align:center; font-size: 18px;" >HỆ THỐNG ĐỊNH LƯỢNG THUỐC TUYỂN BẮC NHẠC SƠN</p>
+				
+		<div class="col-md-10">	
+			
+		<div class="col-md-10 col-md-offset-2">
+		<div class="box box-info">
+            <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">HỆ THỐNG THUỐC TUYỂN</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>	
+				
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+			<div class="row">
+            <div class="col-md-2 col-md-offset-0" id="content_text2a">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Thuốc tuyển</p>
+            </div>
+            <div class="col-md-2 col-md-offset-0" id="content_text2c">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Giá trị đặt</p>
+            </div>
+            <div class="col-md-2 col-md-offset-0" id="content_text2c">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Giá trị thực</p>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_text2c">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Đơn vị</p>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_text2d">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Trạng thái</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 col-md-offset-0" id="content_text2a">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Sô Đa</p>
+            </div>
+            <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="data3"></div></span></h5>
+            </div>
+			  <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="data4"></div></span></h5>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_text2c">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Lít/phút</p>
+            </div>
+			  <div class="col-md-1 col-md-offset-0" id="content_text2d">
+              <p><div style="text-align:center; padding-top:5px; font-size: 16px;" id="Status1"></div></p>
+            </div>
+          </div>
+         <div class="row">
+			 <h5><span  style="font-size: 10px"></span></h5>
+			 </div>
+          <div class="row">
+            <div class="col-md-2 col-md-offset-0" id="content_text2a">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Thủy tinh lỏng</p>
+            </div>
+            <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="data5"></div></span></h5>
+            </div>
+			  <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="data6"></div></span></h5>
+            </div>
+            <div class="col-md-1 col-md-offset-0" id="content_text2c">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Lít/phút</p>
+            </div>
+			  <div class="col-md-1 col-md-offset-0" id="content_text2d">
+              <p><div style="text-align:center; padding-top:5px; font-size: 16px;" id="Status2"></div></p>
+            </div>
+          </div>
+			         <div class="row">
+			 <h5><span  style="font-size: 10px"></span></h5>
+			 </div>
+			<div class="row">
+            <div class="col-md-2 col-md-offset-0" id="content_text2a">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >MD1</p>
+            </div>
+            <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="data7"></div></span></h5>
+            </div>
+			  <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="data8"></div></span></h5>
+            </div>
+            <div class="col-md-1 col-md-offset-0" id="content_text2c">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Lít/phút</p>
+            </div>
+				<div class="col-md-1 col-md-offset-0" id="content_text2d">
+              <p><div style="text-align:center; padding-top:5px; font-size: 16px;" id="Status3"></div></p>
+            </div>
+          </div>
+			         <div class="row">
+			 <h5><span  style="font-size: 10px"></span></h5>
+			 </div>
+          <div class="row">
+            <div class="col-md-2 col-md-offset-0" id="content_text2a">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >MD2</p>
+            </div>
+            <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="data9"></div></span></h5>
+            </div>
+			  <div class="col-md-2 col-md-offset-1" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="data10"></div></span></h5>
+            </div>
+            <div class="col-md-1 col-md-offset-0" id="content_text2c">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Lít/phút</p>
+            </div>
+			  <div class="col-md-1 col-md-offset-0" id="content_text2d">
+              <p><div style="text-align:center; padding-top:5px; font-size: 16px;" id="Status4"></div></p>
+            </div>
+          </div>
+			         <div class="row">
+			 <h5><span  style="font-size: 10px"></span></h5>
+			 </div>
+          <div class="row">
+            <div class="col-md-2 col-md-offset-0" id="content_text2a">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >MD3</p>
+            </div>
+            <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="data11"></div></span></h5>
+            </div>
+			  <div class="col-md-2 col-md-offset-0" id="content_text2">
+              <h5><span  style="font-size: 20px"><div id="data12"></div></span></h5>
+            </div>
+            <div class="col-md-1 col-md-offset-0" id="content_text2c">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Lít/phút</p>
+            </div>
+			  <div class="col-md-1 col-md-offset-0" id="content_text2d">
+              <p><div style="text-align:center; padding-top:5px; font-size: 16px;" id="Status5"></div></p>
+            </div>
+          </div>
+			         			
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+    </div>	
+			
+			
+				
+	</div>			
+		
+		
+	
+	</div>
+</div>
+
+	<div class="row">
+            <div class="col-md-12">
+	  <p style="color:blue; text-align:center; font-size: 18px;" >Giá trị áp suất tại vị trí H1 và H2</p>
+		</div>
+	  <div class="col-md-6 col-md-offset-0">
+		  <div id="content_21_a">
+		<canvas id="gauge_01">guage</canvas>
+		<p  style="color:blue; margin-left: 25%" >Áp suất vị trị H1 = <span id="gaugeH1_value" style="color: red;"></span></p>
+	  </div>
+		</div>
+	<div class="col-md-6 col-md-offset-0">
+		<div id="content_22_a">
+		<canvas id="gauge_02">guage</canvas>
+		<p  style="color:blue; margin-left: 25%;" >Áp suất vị trị H2 = <span id="gaugeH2_value" style="color: red;"></span></p>
+	  </div>
+	</div>		
+		
+
+
+	<div class="row">
+            <div class="col-md-12">
+		<p style="color:blue; text-align:center; font-size: 18px;" >Giá trị Nhiệt độ tại vị trí H1 và H2</p>
+	<div class="col-md-6 col-md-offset-0">
+		<div id="content_31_a">
+	<div id="fillgauge">
+
+		 <svg id="fillgauge1" style="width: 150px"; "height: 20px";></svg>
+		<p  style="color:blue; text-align:center" >Nhiệt độ vị trí 1 </p>
+			  </div>
+	 </div>
+			</div>
+		<div class="col-md-6">
+			<div id="content_32_a">
+	<div id="fillgauge">
+
+		 <svg id="fillgauge2" style="width: 150px"; "height: 20px";></svg>
+		<p  style="color:blue; text-align:center" >Nhiệt độ vị trí 2 </p>
+			  </div>
+	 </div>
+	</div>
+	</div>
+		</div>
+	
+		
+		<div class="row">
+    <div class="col-md-12 col-md-offset-0">
+
+			  <p style="color:blue; text-align:center; font-size: 18px;" >ÁP SUẤT VỊ TRÍ H1 và H2</p>
+  		</div>
+	</div>	
+	
+		<!-- /.col (LEFT) -->
+        <div class="col-md-8 col-md-offset-2">
+          <!-- LINE CHART -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Line Chart</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+				  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="chart">
+               <canvas id="mycanvas_chart_1" width="800px"; height="200px";></canvas>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+ </div>
+	<div class="row">
+            <div class="col-md-12 col-md-offset-2">
+	
+	<p>
+	<h1> Wellcome to IOT</h1>
+		<div id="data"></div>
+		
+		<p>user: <span style="color:green"><%= user.username %></span></p>
+		<div><a href="/user/logout"><button>Logout</button></a></div>
+			  				
+			
+		<div id="data3"></div>
+	
+	<form>
+		<div id="mrON">ON</div>	
+	</form>
+		<form>
+		<div id="mrOFF">OFF</div>
+	</form>
+
+	<form>
+		<div> 
+			<input type="button" id="btnON" value="ON"/>
+
+			<input type="button" id="btnOFF" value="OFF"/>
+
+		</div>
+		
+		<div> 
+			<input type="text" id="Textsend1"/>
+            <input type="button" id="btnSEND1" value="SEND1"/>
+		</div>
+		
+		<div> 
+			<input type="text" id="Textsend2"/>
+            <input type="button" id="btnSEND2" value="SEND2"/>
+		</div>
+
+		<div> 
+			<input type="text" id="Textsend3"/>
+            <input type="button" id="btnSEND3" value="SEND3"/>
+		</div>
+		
+		<div> 
+			<input type="text" id="Textsend4"/>
+            <input type="button" id="btnSEND4" value="SEND4"/>
+		</div>
+
+		<div> 
+			<input type="text" id="Textsend5"/>
+            <input type="button" id="btnSEND5" value="SEND5"/>
+		</div>
+		
+
+	<div>
+		 
+	Gia tri nhan duoc tu PLC la
+	<form>
+		<div id='dataH1_1'></div>
+	</form>
+		
+	<form>
+	  	<div id="Lamp_Display_Home"></div>
+	</form>
+	
+	</div>
+
+	</div>
+	</div>
+		
+	
+
+    
+  </div>
+		
+</section>
+
+
+
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+  	<!-- To the right -->
+<div class="pull-right hidden-xs">
+  abc
+</div>
+<!-- Default to the left -->
+
+<strong>Copyright &copy; 2019 - 2020 <a href="#"></a>.</strong>
+    
+  </footer>
+
+  <!-- Control Sidebar -->
+  <!-- < include rightsidebar > -->
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/bower_components/dist/js/adminlte.min.js"></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+
+
+<!-- DataTables -->
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	
+ 
+
+	
+	
+	
+</body>	
+	<!-- Gause -->
+	<script type="text/javascript">
+	  var opts = {
+		lines: 5,
+		angle: -0.15,
+		lineWidth: 0.3,
+		pointer: {
+		  length: 0.4,
+		  strokeWidth: 0.035,
+		  color: '#000000'
+		},
+		staticLabels: {
+		  font: "10px sans-serif",  // Specifies font
+		  labels: [0, 10, 20, 30, 40, 50],  // Print labels at these values
+		  color: "#000000",  // Optional: Label text color
+		  fractionDigits: 0  // Optional: Numerical precision. 0=round off.
+		},
+
+		limitMax: 'false', 
+		percentColors: [[0.0, "#a9d70b" ], [0.50, "#f9c802"], [1.0, "#ff0000"]], // !!!!
+		strokeColor: '#E0E0E0',
+		generateGradient: true
+	  };
+
+
+	  var target = document.getElementById('gauge_01');
+	  var gaugeT1 = new Gauge(target).setOptions(opts);
+	  gaugeT1.maxValue = 50;
+	  gaugeT1.animationSpeed = 10;
+	  gaugeT1.set(10);
+		
+	  var target2 = document.getElementById('gauge_02');
+	  var gaugeT2 = new Gauge(target2).setOptions(opts);
+	  gaugeT2.maxValue = 50;
+	  gaugeT2.animationSpeed = 10;
+	  gaugeT2.set(40);
+		
+	</script>
+    <script>
+      //var client = mqtt.connect('ws://192.168.1.100:1883');
+//	  var client = mqtt.connect('http://192.168.0.100:1883');
+//      console.log("Success");
+//      client.subscribe("topic1/demo");
+//
+//      client.on("message", function(topic, payload) {
+//      alert([topic, payload].join(": "));
+//      console.log(topic + " : " + payload);
+//      
+//      });
+		
+		var dataH1;
+		var dataH100;
+	
+		var intH1 = 0;
+		var socket = io("http://192.168.1.100:3001");
+    	 socket.on('dataH1', function(msg){
+			//console.log('dataH1 = ' + msg)
+			dataH1 = msg;
+			dataH100 = dataH1;
+			 
+			intH1 = parseFloat(dataH1);
+			// console.log(typeof(Math.round(parseFloat(intT1) * 100)/100))
+			gaugeT1.set(intH1); 
+			document.getElementById("gaugeH1_value").innerHTML = intH1;
+			document.getElementById("dataH1_1").innerHTML = intH1;
+			 
+      		//document.getElementById("dataH1").innerHTML = msg; 
+			 status_Lamp(intH1)
+			 gauge1.update(intH1+ 30);
+			});
+    	 socket.on('dataH2', function(msg){
+      		dataH2 = msg;
+			intH2 = parseFloat(dataH2);
+			// console.log(typeof(Math.round(parseFloat(intT1) * 100)/100))
+			gaugeT2.set(intH2); 
+			document.getElementById("gaugeH2_value").innerHTML = intH2;
+			gauge2.update(intH2+ 30);
+			 			});		
+    	 socket.on('dataH3', function(msg){
+      		//document.getElementById("dataH3").innerHTML = msg; 
+			});	
+    	 socket.on('dataH4', function(msg){
+      		//document.getElementById("dataH4").innerHTML = msg; 
+			});
+		
+		socket.on('data', function(msg){
+      		document.getElementById("data").innerHTML = msg; 
+			});
+    	socket.on('data3', function(msg){
+      		document.getElementById("data3").innerHTML = msg; 
+			});
+    	socket.on('data4', function(msg){
+      		document.getElementById("data4").innerHTML = msg; 
+			});
+    	socket.on('data5', function(msg){
+      		document.getElementById("data5").innerHTML = msg; 
+			});
+    	socket.on('data6', function(msg){
+      		document.getElementById("data6").innerHTML = msg; 
+			});
+	    socket.on('data7', function(msg){
+      		document.getElementById("data7").innerHTML = msg; 
+			});
+    	socket.on('data8', function(msg){
+      		document.getElementById("data8").innerHTML = msg; 
+			});
+    	socket.on('data9', function(msg){
+      		document.getElementById("data9").innerHTML = msg; 
+			});
+    	socket.on('data10', function(msg){
+      		document.getElementById("data10").innerHTML = msg; 
+			});
+    	socket.on('data11', function(msg){
+      		document.getElementById("data11").innerHTML = msg; 
+			});
+    	socket.on('data12', function(msg){
+      		document.getElementById("data12").innerHTML = msg; 
+			});
+    	socket.on('data13', function(msg){
+      		document.getElementById("data13").innerHTML = msg;
+			});
+		
+    	socket.on('data14', function(msg){
+      		document.getElementById("data14").innerHTML = msg; 
+			});
+	    	socket.on('data15', function(msg){
+      		document.getElementById("data15").innerHTML = msg; 
+			});
+    	socket.on('data16', function(msg){
+      		document.getElementById("data16").innerHTML = msg; 
+			});
+    	socket.on('data17', function(msg){
+      		document.getElementById("data17").innerHTML = msg; 
+			});
+    	socket.on('data18', function(msg){
+      		document.getElementById("data18").innerHTML = msg; 
+			});
+	    	socket.on('data19', function(msg){
+      		document.getElementById("data19").innerHTML = msg; 
+			});
+    	socket.on('data20', function(msg){
+      		document.getElementById("data20").innerHTML = msg; 
+			});
+    	socket.on('data21', function(msg){
+      		document.getElementById("data21").innerHTML = msg; 
+			});
+    	socket.on('data22', function(msg){
+      		document.getElementById("data22").innerHTML = msg; 
+			});
+		
+		socket.on('Status1', function(msg){
+      		document.getElementById("Status1").innerHTML = msg; 
+			});
+		
+		socket.on('Status2', function(msg){
+      		document.getElementById("Status2").innerHTML = msg; 
+			});
+		socket.on('Status3', function(msg){
+      		document.getElementById("Status3").innerHTML = msg; 
+			});
+		socket.on('Status4', function(msg){
+      		document.getElementById("Status4").innerHTML = msg; 
+			});
+		socket.on('Status5', function(msg){
+      		document.getElementById("Status5").innerHTML = msg; 
+			});
+		
+		
+		$(document).ready(function(){
+			$("#mrON").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data31", 'on1');
+			});
+			$("#mrOFF").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data31", 'off1');
+			});
+		});
+   		$(document).ready(function(){
+			$("#btnON").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data31", 'on1');
+			});
+			$("#btnOFF").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data31", 'off1');
+			});
+		});     
+	
+		  $(document).ready(function(){
+			$("#btnSEND1").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data31", "MD1" + $("#Textsend1").val());
+			});
+		});
+		
+		$(document).ready(function(){
+			$("#btnSEND2").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data32", "MD2" + $("#Textsend2").val());
+			});
+		});
+
+		
+		  $(document).ready(function(){
+			$("#btnSEND3").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data33", "MD3" + $("#Textsend3").val());
+			});
+		});
+		
+		$(document).ready(function(){
+			$("#btnSEND4").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data34", "XOD" + $("#Textsend4").val());
+			});
+		});
+		$(document).ready(function(){
+			$("#btnSEND5").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data35", "TTL" + $("#Textsend5").val());
+			});
+		});
+		
+		
+		
+		
+		function status_Lamp(data){
+			if (data == 8.2){
+			 lamp_color_home = "green";
+			   document.getElementById("Lamp_Display_Home").style.background = lamp_color_home;
+			 }else { 
+			   lamp_color_home = "red";
+			   document.getElementById("Lamp_Display_Home").style.background = lamp_color_home;
+			}
+		}
+
+ 
+   		$(document).ready(function(){
+			$("#head_frame_12").click(function(){
+    var x = document.getElementById('head_frame_12b');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+			});
+			
+		});
+		
+
+</script>
+
+	<!-- Level -->
+<script type="text/javascript">
+	var level1 = 100;
+	var level2 = 100;
+  var config1 = liquidFillGaugeDefaultSettings();
+  config1.displayPercent = false;
+  var gauge1 = loadLiquidFillGauge("fillgauge1", 0, config1);
+
+  var config2 = liquidFillGaugeDefaultSettings();
+  config2.displayPercent = false;
+  var gauge2 = loadLiquidFillGauge("fillgauge2", 0, config2);
+  
+  function NewValue(){
+      if(Math.random() > .5){
+          return Math.round(Math.random()*100);
+      } else {
+          return (Math.random()*100).toFixed(1);
+      }
+  }
+</script>
+		
+<script type="text/javascript">
+  	function myYRangeFunction(range) {
+		// TODO implement your calculation using range.min and range.max
+		var min = 0;
+		var max = 100;
+		return {min: min, max: max}
+	  };
+	function myYRangeFunction() {
+		return {min: 0, max: 50}; 
+	}
+	
+	var smoothie = new SmoothieChart({
+		tooltip:true,
+		timestampFormatter:SmoothieChart.timeFormatter,
+        grid: { 
+			strokeStyle:'rgb(215, 227, 245)', 
+			fillStyle:'rgb(255, 255, 255)',
+        	lineWidth: 1, 
+			//millisPerLine: 250, 
+			millisPerLine:2000,
+			verticalSections: 6, 
+			maxValue: 10,
+			minValue: 0,
+			//
+
+		},
+		maxValue:10,
+		minValue:0,
+  		labels: { fillStyle:'rgb(40, 0, 0)' }
+
+                    });
+	smoothie.streamTo(document.getElementById("mycanvas_chart_1"));
+
+	
+	
+	// Data
+	var line1 = new TimeSeries();
+	var line2 = new TimeSeries();
+
+	// Add a random value to each line every second
+	setInterval(function() {
+	  line1.append(new Date().getTime(), intH1 + Math.random(), 'h1'  );
+	  line2.append(new Date().getTime(), intH2, 'h2');
+	}, 1000);
+
+	smoothie.streamTo(document.getElementById("mycanvas_chart_1"), 1000 /*delay*/); 
+	// Add to SmoothieChart
+	smoothie.addTimeSeries(line1, { strokeStyle:'rgb(0, 255, 0)', lineWidth:3, tooltipLabel:'LINE 1' });
+	smoothie.addTimeSeries(line2, { strokeStyle:'rgb(0, 255, 246)', lineWidth:3, tooltipLabel:'LINE 2' });
+
+	
+
+
+</script>
+
+
+</html>

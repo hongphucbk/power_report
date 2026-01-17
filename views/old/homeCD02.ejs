@@ -1,0 +1,1669 @@
+<html>
+<head>
+	<script src='js/mqtt.min.js'></script>
+	<script src='js/jquery-3.4.1.min.js'></script>
+	<script src='js/bootstrap.js'></script>
+	<script src='js/socket.io.js'></script>
+<link href='css/Style_home.css' rel="stylesheet" type="text/css" />
+	<script src="js/raphael-2.1.4.min.js"></script>
+	
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<title>SMART FACTORY | Home</title> -->
+  <!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="bower_components/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="bower_components/dist/css/skins/skin-blue.min.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+
+	
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+	</script>
+	<!-- Gause -->
+  <script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
+	<!-- Level -->
+  <script src="visualize/d3.v3.min.js"></script>
+  <script src='visualize/liquidFillGauge.js'></script>
+	
+	<!-- Chart -->
+  <script src="visualize/smoothie.js"></script>
+	
+	<!-- font manu awesome -->
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	
+	<!-- font user awesome -->
+	
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+	
+</head>
+		
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+    <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+    <!-- Main Header -->
+     <header class="main-header">
+       <!-- Logo -->
+       <a href="/" class="logo">
+         <!-- mini logo for sidebar mini 50x50 pixels -->
+         <span class="logo-mini">S</span>
+         <!-- logo for regular state and mobile devices -->
+         <span class="logo-lg">SYSTEMS</span>
+       </a>
+     
+       <!-- Header Navbar -->
+       <nav class="navbar navbar-static-top" role="navigation">
+         <!-- Sidebar toggle button-->
+         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+           <span class="sr-only">Toggle navigation</span>
+         </a>
+         <!-- Navbar Right Menu -->
+         <div class="navbar-custom-menu">
+           <ul class="nav navbar-nav">
+             <!-- User Account Menu -->
+             <li class="dropdown user user-menu">
+               <!-- Menu Toggle Button -->
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                 <!-- The user image in the navbar-->
+                 <img src="/image/TuyenCamDuong.png" class="user-image" alt="">
+                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                 <span class="hidden-xs" id="username1"><%= user.username %></span>
+               </a>
+               <ul class="dropdown-menu">
+                 <!-- The user image in the menu -->
+                 <li class="user-header">
+                   <img src="/image/TuyenCamDuong.png" class="img-circle" alt="User Image">
+                   <p>
+                     <span ><%= user.username %></span>
+                     <small>CÔNG TY APATIT VIỆT NAM</small>
+                     <small>Chi Nhánh Tuyển Cam Đường</small>
+                   </p>
+                 </li>
+                 <!-- Menu Body -->
+                 <!-- <li class="user-body">
+                   <div class="row">
+                     <div class="col-xs-4 text-center">
+                       <a href="#">Followers</a>
+                     </div>
+                     <div class="col-xs-4 text-center">
+                       <a href="#">Sales</a>
+                     </div>
+                     <div class="col-xs-4 text-center">
+                       <a href="#">Friends</a>
+                     </div>
+                   </div>
+                 </li> -->
+                 <!-- Menu Footer-->
+                 <li class="user-footer">
+                   <!-- <div class="pull-left">
+                     <a href="#" class="btn btn-default btn-flat">Profile</a>
+                   </div> -->
+                   <div class="pull-right">
+                     <div><a href="/user/logout"><button id="button2">Logout</button></a></div>
+                   </div>
+                 </li>
+               </ul>
+             </li>
+             <!-- Control Sidebar Toggle Button -->
+             <li>
+               <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+             </li>
+           </ul>
+         </div>
+       </nav>
+     
+     </header>
+     <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+     
+     
+     
+    <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- Sidebar Menu -->
+          <ul class="sidebar-menu" data-widget="tree">
+
+            <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> -->
+            <li class="treeview">
+              <a href="#"><i class="fa fa-industry"></i> <span>Nồng độ bùn 01</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="/homeCD02">Hôm nay</a></li>
+                <li><a href="/homeCD02a">Hôm qua</a></li>
+                <li><a href="/homeCD01Baocaongay">Báo cáo ngày</a></li>
+                <li><a href="/homeCD01Baocaothang">Báo cáo tháng</a></li>
+                <li><a href="/homeCD01BaocaoExcell">Xuất file Excel</a></li>
+                <li><a href="/homeCD03Setup">Cài đặt</a></li>
+              </ul>
+            </li>
+
+            <li class="treeview">
+              <a href="#"><i class="fa fa-industry"></i> <span>Điều khiển Van DN200</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="/homeCD3201">Van bùn DN200</a></li>
+              </ul>
+            </li>
+
+            <li class="treeview">
+              <a href="#"><i class="fa fa-industry"></i> <span>Giám sát Năng Lượng</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="/1ahome_GSNL_CD_01">Thông số Online</a></li>
+                <li><a href="/1ahome_GSNL_CD_Sodo01">Sơ đồ cung cấp điện</a></li>
+                <li><a href="/1ahome_GSNL_CD_KwhCa">Kwh theo Ca</a></li>
+                <li><a href="/1ahome_GSNL_BieudoCa_CD_Tram01_A51_MV01">Biểu đồ Kwh Ca</a></li>
+                <li><a href="/1ahome_GSNL_BieudoNgay_CD_Tram01_A51MV01">Biểu đồ Kwh Ngày</a></li>
+                <li><a href="/1ahome_GSNL_BieudoThang_CD_Tram01_A51MV01">Biểu đồ Kwh Tháng</a></li>
+                <li><a href="/1ahome_GSNL_BaocaoExcell_CD_Kwh">Báo cáo Excell Kwh</a></li>
+                <li><a href="/1ahome_GSNL_BaocaoExcell_CD_KwhDay">Báo cáo Excell Kwh Day</a></li>
+                <li><a href="/1ahome_GSNL_BaocaoExcell_CD_Cosphi">Báo cáo Excell Cosphi</a></li>
+              </ul>
+            </li>
+
+          </ul>       
+        <!-- /.sidebar-menu -->
+      </section>
+      <!-- /.sidebar -->
+</aside>
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+	
+	
+	
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    
+<!-- Main content -->
+	  
+  <section>
+	  <div class="row">
+      <div class="col-md-12">
+        <p style="color:blue; padding-top:10px; text-align:center; font-size: 18px;" >HỆ THỐNG ĐO NỒNG ĐỘ BÙN</p>
+      </div>
+
+
+		    <div class="col-md-11">	
+		      <div class="col-md-11 col-md-offset-1">
+		        <div class="box box-info">
+              <div class="box-header with-border">
+                <i class="fa fa-industry"></i>
+                <h3 class="box-title">ĐO NỒNG ĐỘ BÙN MÁY 01</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>  
+                </div>		
+              </div>
+            
+              <!-- /.box-header -->
+              <div class="box-body">
+                <!-- Star Row 1-------------------------------------------------------------------------------------- -->
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-0">
+                      <p style="text-align:center;font-weight: bold; padding-top:5px; font-size: 16px;" >Hôm nay</p>
+                    </div>
+                </div>
+                <!-- End Row 1-------------------------------------------------------------------------------------- -->
+                <!-- Start Row 2-------------------------------------------------------------------------------------- -->
+                <div class="row">
+                    <div class="col-md-12 col-md-offset-0">
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Ca1</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >23h</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >0h</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >1h</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >2h</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >3h</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >4h</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >5h</p>
+                      </div>	
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >6h</p>
+                      </div>
+                    </div>
+                </div>
+                <!-- End Row 2------------------------------------------------------------------------------------------->
+                <!-- Start Row 3----------------------------------------------------------------------------------------->
+                <div class="row">
+                      <div class="col-md-12 col-md-offset-0">
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                          <p style="text-align:center; padding-top:15px; font-size: 16px;" >Nồng độ</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_23"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_0"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_1"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_2"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_3"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_4"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_5"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_6"></div></span></h5>
+                        </div>
+                      </div>
+                  </div>
+                <!-- End Row 3------------------------------------------------------------------------------------------->
+                <!-- Start Row 4----------------------------------------------------------------------------------------->
+                  <div class="row">
+                    <h5><span  style="font-size: 10px"></span></h5>
+                  </div>
+                <!-- End Row 4------------------------------------------------------------------------------------------->
+                <!-- Start Row 5----------------------------------------------------------------------------------------->         
+                  <div class="row">
+                    <div class="col-md-12 col-md-offset-0">
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                          <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Ca2</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                          <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >7h</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                          <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >8h</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                          <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >9h</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                          <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >10h</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                          <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >11h</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                          <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >12h</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                          <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >13h</p>
+                        </div>			
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                          <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >14h</p>
+                        </div>
+                      </div>
+                  </div>
+                <!-- End Row 5------------------------------------------------------------------------------------------->
+                <!-- Start Row 6----------------------------------------------------------------------------------------->      
+                  <div class="row">
+                    <div class="col-md-12 col-md-offset-0">
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                          <p style="text-align:center; padding-top:15px; font-size: 16px;" >Nồng độ</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_7"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_8"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_9"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_10"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_11"></div></span></h5>
+                        </div>
+                          <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_12"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_13"></div></span></h5>
+                        </div> 
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD02_14"></div></span></h5>
+                        </div>
+                    </div>
+                  </div>
+                <!-- End Row 6------------------------------------------------------------------------------------------->
+                <!-- Start Row 7----------------------------------------------------------------------------------------->
+                  <div class="row">
+                  <h5><span  style="font-size: 10px"></span></h5>
+                  </div>
+                <!-- End Row 7------------------------------------------------------------------------------------------->
+                <!-- Start Row 8----------------------------------------------------------------------------------------->
+                <div class="row">
+                  <div class="col-md-12 col-md-offset-0">
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Ca3</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >15h</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >16h</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >17h</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >18h</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >19h</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >20h</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >21h</p>
+                      </div>			
+                      <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                        <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >22h</p>
+                      </div>
+                  </div>
+                </div>
+                <!-- End Row 8------------------------------------------------------------------------------------------->
+                <!-- Start Row 9----------------------------------------------------------------------------------------->
+                <div class="row">
+                  <div class="col-md-12 col-md-offset-0">
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+                          <p style="text-align:center; padding-top:15px; font-size: 16px;" >Nồng độ</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD03_15"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD03_16"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD03_17"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD03_18"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD03_19"></div></span></h5>
+                        </div>
+                          <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD03_20"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD03_21"></div></span></h5>
+                        </div> 
+                        <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+                          <h5><span  style="font-size: 20px"><div id="dataCD03_22"></div></span></h5>
+                        </div>
+                    </div>
+                  </div>
+                 <!-- End Row 9-----------------------------------------------------------------------------------------> 
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>				
+	      </div>			
+	    </div>
+      <!------------------------------------------------------------------------------------------------------ -->
+
+            <!-- /.Start Row A06----Table Trạng thái I/O PLC------------------------------------------------- -->
+            <div class="row">
+              <div class="col-md-11">	
+              <div class="col-md-11 col-md-offset-1">
+                  <!-- -------------------------------------------------------------------------------------- -->
+                  <div class="box box-info">
+                      <div class="box-header with-border">
+                          <i class="fa fa-industry"></i>
+                          <h3 class="box-title">TRẠNG THÁI ĐẦU VÀO RA PLC MÁY ĐO NỒNG ĐỘ BÙN</h3>
+                          <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>    
+                          </div>		
+                      </div>
+                  <!-- ------------------------------------------------------------------------------------------ -->       
+              <!-- /.box-header -->
+              <div class="box-body">
+                <!-- /.Start Row 1------------------------------------------------------------------------------- -->   
+                <div class="row" style="margin-left: 10px;">
+                  <div class="col-md-11 col-md-offset-0">
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H01_01">
+                        <p style="text-align:center;font-weight: bold; padding-top:7px; font-size: 14px;" >
+                          PLC</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H01_02">
+                        <p style="text-align:center;font-weight: bold; padding-top:7px; font-size: 14px;" >
+                          Trạng thái</p>
+                      </div>
+                      <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H01_03">
+                        <p style="text-align:center;font-weight: bold; padding-top:7px; font-size: 14px;" >
+                          Mô tả</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H01_01">
+                        <p style="text-align:center;font-weight: bold; padding-top:7px; font-size: 14px;" >
+                          PLC</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H01_02">
+                        <p style="text-align:center;font-weight: bold; padding-top:7px; font-size: 14px;" >
+                          Trạng thái</p>
+                      </div>
+                      <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H01_03">
+                        <p style="text-align:center;font-weight: bold; padding-top:7px; font-size: 14px;" >
+                          Mô tả</p>
+                      </div> 
+                  </div>
+                </div>
+                <!-- /.End Row 1-------------------------------------------------------------------------------- -->
+
+                <!-- /.Start Row 2------------------------------------------------------------------------------ -->     
+                <div class="row" style="margin-left: 10px;">
+                      <div class="col-md-11 col-md-offset-0">
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >I0.0</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                          <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I00_CBAxisXa"></div></span></h5>
+                        </div>
+                        <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến X+</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >I0.1</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                          <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I01_CBAxisX0"></div></span></h5>
+                        </div>
+                        <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến X0</p>
+                        </div>
+                      </div>
+                  </div>
+
+                <!-- /.End Row 2------------------------------------------------------------------------------------- -->
+                <!-- /.Start Row 3----------------------------------------------------------------------------------- -->     
+                <div class="row" style="margin-left: 10px;">
+                  <div class="col-md-11 col-md-offset-0">
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_01">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >I0.2</p>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_02">
+                      <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I02_CBAxisYa"></div></span></h5>
+                    </div>
+                    <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_03">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến Y+</p>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_01">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >I0.3</p>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_02">
+                      <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I03_CBAxisY0"></div></span></h5>
+                    </div>
+                    <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_03">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến Y0</p>
+                    </div>
+                  </div>
+              </div>
+                <!-- /.End Row 3------------------------------------------------------------------------------------- -->
+
+                <!-- /.Start Row 4------------------------------------------------------------------------------ -->     
+                <div class="row" style="margin-left: 10px;">
+                  <div class="col-md-11 col-md-offset-0">
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >I0.4</p>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                      <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I04_CBCaLen"></div></span></h5>
+                    </div>
+                    <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến ca lên</p>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >I0.5</p>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                      <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I05_CBCaXuong"></div></span></h5>
+                    </div>
+                    <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến ca xuống</p>
+                    </div>
+                  </div>
+              </div>
+              <!-- /.End Row 4------------------------------------------------------------------------------------- -->
+              <!-- /.Start Row 5----------------------------------------------------------------------------------- -->     
+              <div class="row" style="margin-left: 10px;">
+                <div class="col-md-11 col-md-offset-0">
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_01">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >I0.6</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_02">
+                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I06_CBApsuat"></div></span></h5>
+                  </div>
+                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_03">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến áp suất</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_01">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >I0.7</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_02">
+                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I07_CBKepCa"></div></span></h5>
+                  </div>
+                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_03">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến kẹp ca</p>
+                  </div>
+                </div>
+            </div>
+              <!-- /.End Row 5------------------------------------------------------------------------------------- -->
+
+              <!-- /.Start Row 6------------------------------------------------------------------------------ -->     
+              <div class="row" style="margin-left: 10px;">
+                <div class="col-md-11 col-md-offset-0">
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >I1.0</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I10_CBNhaCa"></div></span></h5>
+                  </div>
+                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến nhả ca</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >I1.1</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I11_CBCaLen"></div></span></h5>
+                  </div>
+                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến ca lên</p>
+                  </div>
+                </div>
+            </div>
+              <!-- /.End Row 6------------------------------------------------------------------------------------- -->
+
+              <!-- /.Start Row 7----------------------------------------------------------------------------------- -->     
+              <div class="row" style="margin-left: 10px;">
+                <div class="col-md-11 col-md-offset-0">
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_01">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >I1.2</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_02">
+                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I12_CBCaXuong"></div></span></h5>
+                  </div>
+                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_03">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến ca xuống</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_01">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >I1.3</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_02">
+                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I13_AlarmAxisX"></div></span></h5>
+                  </div>
+                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_03">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Alarm Trục X</p>
+                  </div>
+                </div>
+            </div>
+              <!-- /.End Row 7------------------------------------------------------------------------------------- -->
+
+              <!-- /.Start Row 8------------------------------------------------------------------------------ -->     
+              <div class="row" style="margin-left: 10px;">
+                <div class="col-md-11 col-md-offset-0">
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >I1.4</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I14_AlarmAxisY"></div></span></h5>
+                  </div>
+                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >Alarm Trục Y</p>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" ></p>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                      <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"></span></h5>
+                    </div>
+                    <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" ></p>
+                    </div>
+                  </div>
+              </div>
+              <!-- /.End Row 8------------------------------------------------------------------------------------- -->
+
+               <!-- /.Start Row 9------------------------------------------------------------------------------ -->     
+               <div class="row" style="margin-left: 10px;">
+                <div class="col-md-11 col-md-offset-0">
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >I2.0</p>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                      <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I20_CBVTCan"></div></span></h5>
+                    </div>
+                    <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến vị trí cân</p>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >I2.1</p>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                      <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I21_CBVTLaymau"></div></span></h5>
+                    </div>
+                    <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến VT lấy mẫu</p>
+                    </div>
+                  </div>
+                </div>
+              <!-- /.End Row 9------------------------------------------------------------------------------------- -->
+              <!-- /.Start Row 10------------------------------------------------------------------------------ -->     
+              <div class="row" style="margin-left: 10px;">
+                <div class="col-md-11 col-md-offset-0">
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >I2.2</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I22_CBVTRua"></div></span></h5>
+                  </div>
+                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến vị trí rửa</p>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >I2.3</p>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                      <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_I23_CBCoCa"></div></span></h5>
+                    </div>
+                    <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cảm biến có ca</p>
+                    </div>
+                  </div>
+              </div>
+              <!-- /.End Row 10------------------------------------------------------------------------------------- -->
+
+
+              <!-- /.Start Row 9----------------------------------------------------------------------------------- -->     
+              <div class="row" style="margin-left: 10px;">
+                <div class="col-md-11 col-md-offset-0">
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_01">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Q0.0</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_02">
+                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_Q00_XAXISPULSE"></div></span></h5>
+                  </div>
+                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_03">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Xung trục X</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_01">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Q0.1</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_02">
+                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_Q01_XAXISDIR"></div></span></h5>
+                  </div>
+                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_03">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Hướng trục X</p>
+                  </div>
+                </div>
+            </div>
+              <!-- /.End Row 9------------------------------------------------------------------------------------- -->
+
+              <!-- /.Start Row 10------------------------------------------------------------------------------ -->     
+              <div class="row" style="margin-left: 10px;">
+                <div class="col-md-11 col-md-offset-0">
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Q0.2</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_Q02_YAXISPULSE"></div></span></h5>
+                  </div>
+                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Xung trục Y</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Q0.3</p>
+                  </div>
+                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_Q03_YAXISDIR"></div></span></h5>
+                  </div>
+                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Hướng trục Y</p>
+                  </div>
+                </div>
+            </div>
+            <!-- /.End Row 10------------------------------------------------------------------------------------- -->
+
+            <!-- /.Start Row 11----------------------------------------------------------------------------------- -->     
+            <div class="row" style="margin-left: 10px;">
+              <div class="col-md-11 col-md-offset-0">
+                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_01">
+                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >Q0.4</p>
+                </div>
+                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_02">
+                  <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_Q04_XOAYCAXUONG"></div></span></h5>
+                </div>
+                <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_03">
+                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >Xoay ca xuống</p>
+                </div>
+                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_01">
+                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >Q0.5</p>
+                </div>
+                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_02">
+                  <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_Q05_XOAYCALEN"></div></span></h5>
+                </div>
+                <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_03">
+                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >Xoay ca lên</p>
+                </div>
+              </div>
+            </div>
+            <!-- /.End Row 11------------------------------------------------------------------------------------- -->
+
+            <!-- /.Start Row 11------------------------------------------------------------------------------ -->     
+            <div class="row" style="margin-left: 10px;">
+              <div class="col-md-11 col-md-offset-0">
+                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >Q0.6</p>
+                </div>
+                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                  <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_Q06_KEPCA"></div></span></h5>
+                </div>
+                <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >Kẹp ca</p>
+                </div>
+                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_01">
+                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >Q0.7</p>
+                </div>
+                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_02">
+                  <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_Q07_NHACA"></div></span></h5>
+                </div>
+                <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H02_03">
+                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >Nhả ca</p>
+                </div>
+              </div>
+            </div>
+            <!-- /.End Row 11------------------------------------------------------------------------------------- -->
+
+            <!-- /.Start Row 12----------------------------------------------------------------------------------- -->     
+            <div class="row" style="margin-left: 10px;">
+            <div class="col-md-11 col-md-offset-0">
+              <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_01">
+                <p style="text-align:center; padding-top:7px; font-size: 14px;" >Q1.0</p>
+              </div>
+              <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_02">
+                <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_Q10_NHACA"></div></span></h5>
+              </div>
+              <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_03">
+                <p style="text-align:center; padding-top:7px; font-size: 14px;" >Nhả ca</p>
+              </div>
+              <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_01">
+                <p style="text-align:center; padding-top:7px; font-size: 14px;" >Q1.1</p>
+              </div>
+              <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_02">
+                <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_Q11_KEPCA"></div></span></h5>
+              </div>
+              <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_03">
+                <p style="text-align:center; padding-top:7px; font-size: 14px;" >Kẹp ca</p>
+              </div>
+            </div>
+            </div>
+            <!-- /.End Row 12------------------------------------------------------------------------------------- -->
+
+            <!-- /.Start Row 12----------------------------------------------------------------------------------- -->     
+            <div class="row" style="margin-left: 10px;">
+              <div class="col-md-11 col-md-offset-0">
+                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_01">
+                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >Q2.0</p>
+                </div>
+                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_02">
+                  <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_Q20_VALVEWATER"></div></span></h5>
+                </div>
+                <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_03">
+                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >Van nước</p>
+                </div>
+                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_01">
+                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >Q2.1</p>
+                </div>
+                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_02">
+                  <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="Status_Q21_LAMPSTATUS"></div></span></h5>
+                </div>
+                <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB01_H03_03">
+                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >Đèn báo</p>
+                </div>
+              </div>
+              </div>
+              <!-- /.End Row 12------------------------------------------------------------------------------------- -->
+
+                
+                  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+              </div>				
+              </div>			
+              </div>
+            </div>
+            <!-- /.End Row A06----Table Trạng thái I/O PLC------------------------------------------------------------ -->
+
+
+            <!-- /.Start Row A07----Thông số máy đo nồng độ bùn BNS------------------------------------------------------ -->
+            <div class="row">
+              <div class="col-md-11">	
+              <div class="col-md-11 col-md-offset-1">
+                  <!-- -------------------------------------------------------------------------------------- -->
+                  <div class="box box-info">
+                      <div class="box-header with-border">
+                          <i class="fa fa-industry"></i>
+                          <h3 class="box-title">TRẠNG THÁI ĐẦU VÀO RA PLC MÁY ĐO NỒNG ĐỘ BÙN</h3>
+                          <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>    
+                          </div>		
+                      </div>
+                  <!-- ------------------------------------------------------------------------------------------ -->       
+              <!-- /.box-header -->
+              <div class="box-body">
+                          <!-- /.Start Row 1------------------------------------------------------------------------------- -->   
+                          <div class="row" style="margin-left: 10px;">
+                            <div class="col-md-11 col-md-offset-0">
+                                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H01_01">
+                                  <p style="text-align:center;font-weight: bold; padding-top:7px; font-size: 14px;" >
+                                    ID</p>
+                                </div>
+                                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H01_02">
+                                  <p style="text-align:center;font-weight: bold; padding-top:7px; font-size: 14px;" >
+                                    Thông số</p>
+                                </div>
+                                <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H01_03">
+                                  <p style="text-align:center;font-weight: bold; padding-top:7px; font-size: 14px;" >
+                                    Giá trị</p>
+                                </div>
+                                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H01_04">
+                                  <p style="text-align:center;font-weight: bold; padding-top:7px; font-size: 14px;" >
+                                    Mô tả</p>
+                                </div>
+                            </div>
+                          </div>
+                          <!-- /.End Row 1-------------------------------------------------------------------------------- -->
+
+                          <!-- /.Start Row 2----------------------------------------------------------------------- -->     
+                          <div class="row" style="margin-left: 10px;">
+                                <div class="col-md-11 col-md-offset-0">
+                                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_01">
+                                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >1</p>
+                                  </div>
+                                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_02">
+                                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >p</p>
+                                  </div>
+                                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_03">
+                                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD01_1"></div></span></h5>
+                                  </div>
+                                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_04">
+                                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Nồng độ bùn</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <!-- /.End Row 2---------------------------------------------------------------------------- -->
+                            <!-- /.Start Row 3-------------------------------------------------------------------------- -->     
+                            <div class="row" style="margin-left: 10px;">
+                              <div class="col-md-11 col-md-offset-0">
+                                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_01">
+                                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >2</p>
+                                </div>
+                                <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_02">
+                                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >d</p>
+                                </div>
+                                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_03">
+                                  <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD01_2"></div></span></h5>
+                                </div>
+                                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_04">
+                                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >Tỷ trọng bùn</p>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- /.End Row 3------------------------------------------------------------------------------------- -->
+                              <!-- /.Start Row 4------------------------------------------------------------------------------ -->     
+                              <div class="row" style="margin-left: 10px;">
+                                <div class="col-md-11 col-md-offset-0">
+                                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_01">
+                                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >3</p>
+                                  </div>
+                                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_02">
+                                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >V</p>
+                                  </div>
+                                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_03">
+                                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD01_3"></div></span></h5>
+                                  </div>
+                                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_04">
+                                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Thể tích ca đo</p>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- /.End Row 4------------------------------------------------------------------------------------- -->
+                              <!-- /.Start Row 5--------------------------------------------------------------------- -->     
+                              <div class="row" style="margin-left: 10px;">
+                                <div class="col-md-11 col-md-offset-0">
+                                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_01">
+                                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >4</p>
+                                  </div>
+                                  <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_02">
+                                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Net Weight 1</p>
+                                  </div>
+                                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_03">
+                                    <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD01_4"></div></span></h5>
+                                  </div>
+                                  <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_04">
+                                    <p style="text-align:center; padding-top:7px; font-size: 14px;" >Khối lượng cân</p>
+                                  </div>
+                                </div>
+                            </div>
+                              <!-- /.End Row 5-------------------------------------------------------------------------------- -->
+
+                            <!-- /.Start Row 6------------------------------------------------------------------------------ -->     
+                            <div class="row" style="margin-left: 10px;">
+                              <div class="col-md-11 col-md-offset-0">
+                                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_01">
+                                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >5</p>
+                                </div>
+                                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_02">
+                                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >current_m0</p>
+                                </div>
+                                <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_03">
+                                  <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD01_5"></div></span></h5>
+                                </div>
+                                <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_04">
+                                  <p style="text-align:center; padding-top:7px; font-size: 14px;" >Khối lượng ca đo</p>
+                                </div>
+                              </div>
+                          </div>
+
+                          <!-- /.End Row 6------------------------------------------------------------------------------------- -->
+                          <!-- /.Start Row 7----------------------------------------------------------------------------------- -->     
+                          <div class="row" style="margin-left: 10px;">
+                            <div class="col-md-11 col-md-offset-0">
+                              <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_01">
+                                <p style="text-align:center; padding-top:7px; font-size: 14px;" >6</p>
+                              </div>
+                              <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_02">
+                                <p style="text-align:center; padding-top:7px; font-size: 14px;" >Set Minute</p>
+                              </div>
+                              <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_03">
+                                <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD01_6"></div></span></h5>
+                              </div>
+                              <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_04">
+                                <p style="text-align:center; padding-top:7px; font-size: 14px;" >Cài đặt thời gian đo</p>
+                              </div>
+                            </div>
+                        </div>
+                        <!-- /.End Row 7------------------------------------------------------------------------------------- -->
+
+                        <!-- /.Start Row 8------------------------------------------------------------------------------ -->     
+                        <div class="row" style="margin-left: 10px;">
+                          <div class="col-md-11 col-md-offset-0">
+                            <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_01">
+                              <p style="text-align:center; padding-top:7px; font-size: 14px;" >7</p>
+                            </div>
+                            <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_02">
+                              <p style="text-align:center; padding-top:7px; font-size: 14px;" >p Store</p>
+                            </div>
+                            <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_03">
+                              <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD01_7"></div></span></h5>
+                            </div>
+                            <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_04">
+                              <p style="text-align:center; padding-top:7px; font-size: 14px;" >Nồng độ đo</p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.End Row 8------------------------------------------------------------------------------------- -->
+                        <!-- /.Start Row 9--------------------------------------------------------------------------- -->     
+                        <div class="row" style="margin-left: 10px;">
+                          <div class="col-md-11 col-md-offset-0">
+                            <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_01">
+                              <p style="text-align:center; padding-top:7px; font-size: 14px;" >8</p>
+                            </div>
+                            <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_02">
+                              <p style="text-align:center; padding-top:7px; font-size: 14px;" >p Delta</p>
+                            </div>
+                            <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_03">
+                              <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD01_8"></div></span></h5>
+                            </div>
+                            <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_04">
+                              <p style="text-align:center; padding-top:7px; font-size: 14px;" >Nồng độ hiệu chỉnh</p>
+                            </div>
+                          </div>
+                      </div>
+                      <!-- /.End Row 9------------------------------------------------------------------------------------- -->
+
+                      <!-- /.Start Row 10------------------------------------------------------------------------------ -->     
+                      <div class="row" style="margin-left: 10px;">
+                        <div class="col-md-11 col-md-offset-0">
+                          <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_01">
+                            <p style="text-align:center; padding-top:7px; font-size: 14px;" >9</p>
+                          </div>
+                          <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_02">
+                            <p style="text-align:center; padding-top:7px; font-size: 14px;" >Resister Status</p>
+                          </div>
+                          <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_03">
+                            <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD01_9"></div></span></h5>
+                          </div>
+                          <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_04">
+                            <p style="text-align:center; padding-top:7px; font-size: 14px;" >Thanh ghi modbus</p>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- /.End Row 10------------------------------------------------------------------------------------- -->
+                    <!-- /.Start Row 11----------------------------------------------------------------------------------- -->     
+                    <div class="row" style="margin-left: 10px;">
+                      <div class="col-md-11 col-md-offset-0">
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_01">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >10</p>
+                        </div>
+                        <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_02">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >Total Count VT0</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_03">
+                          <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD01_10"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_04">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >Tổng số Vị trí 0</p>
+                        </div>
+                      </div>
+                  </div>
+                  <!-- /.End Row 11------------------------------------------------------------------------------------- -->
+
+
+                  <!-- /.Start Row 12------------------------------------------------------------------------------ -->     
+                  <div class="row" style="margin-left: 10px;">
+                    <div class="col-md-11 col-md-offset-0">
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_01">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >11</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_02">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >Count VT0 Hour</p>
+                      </div>
+                      <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_03">
+                        <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD01_11"></div></span></h5>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_04">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >Giờ chỉnh VT0</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- /.End Row 12------------------------------------------------------------------------------------- -->
+                    <!-- /.Start Row 13----------------------------------------------------------------------------------- -->     
+                    <div class="row" style="margin-left: 10px;">
+                        <div class="col-md-11 col-md-offset-0">
+                          <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_01">
+                            <p style="text-align:center; padding-top:7px; font-size: 14px;" >12</p>
+                          </div>
+                          <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_02">
+                            <p style="text-align:center; padding-top:7px; font-size: 14px;" >I0 Status</p>
+                          </div>
+                          <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_03">
+                            <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD05_1"></div></span></h5>
+                          </div>
+                          <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_04">
+                            <p style="text-align:center; padding-top:7px; font-size: 14px;" >Trạng thái I0</p>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- /.End Row 13------------------------------------------------------------------------------------- -->
+
+
+                    <!-- /.Start Row 14------------------------------------------------------------------------------ -->     
+                    <div class="row" style="margin-left: 10px;">
+                      <div class="col-md-11 col-md-offset-0">
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_01">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >13</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_02">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >I1 Status</p>
+                        </div>
+                        <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_03">
+                          <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD05_2"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_04">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >Trạng thái I1</p>
+                        </div>
+                      </div>
+                  </div>
+
+                  <!-- /.End Row 14------------------------------------------------------------------------------------- -->
+                  <!-- /.Start Row 15----------------------------------------------------------------------------------- -->     
+                  <div class="row" style="margin-left: 10px;">
+                    <div class="col-md-11 col-md-offset-0">
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_01">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >14</p>
+                      </div>
+                      <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_02">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >Q0 Status</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_03">
+                        <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD05_4"></div></span></h5>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_04">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >Trạng thái Q0</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.End Row 15------------------------------------------------------------------------------------- -->
+
+                    <!-- /.Start Row 16------------------------------------------------------------------------------ -->     
+                    <div class="row" style="margin-left: 10px;">
+                      <div class="col-md-11 col-md-offset-0">
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_01">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >15</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_02">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >Q1 Status</p>
+                        </div>
+                        <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_03">
+                          <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD05_5"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_04">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >Trạng thái Q1</p>
+                        </div>
+                      </div>
+                  </div>
+
+                  <!-- /.End Row 16------------------------------------------------------------------------------------- -->
+                  <!-- /.Start Row 17----------------------------------------------------------------------------------- -->     
+                  <div class="row" style="margin-left: 10px;">
+                    <div class="col-md-11 col-md-offset-0">
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_01">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >16</p>
+                      </div>
+                      <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_02">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >Step</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_03">
+                        <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD05_7"></div></span></h5>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_04">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >Step điều khiển</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.End Row 17------------------------------------------------------------------------------------- -->
+
+                    <!-- /.Start Row 18------------------------------------------------------------------------------ -->     
+                    <div class="row" style="margin-left: 10px;">
+                      <div class="col-md-11 col-md-offset-0">
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_01">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >17</p>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_02">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >Control Mode</p>
+                        </div>
+                        <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_03">
+                          <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD05_8"></div></span></h5>
+                        </div>
+                        <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_04">
+                          <p style="text-align:center; padding-top:7px; font-size: 14px;" >Chế độ điều khiển</p>
+                        </div>
+                      </div>
+                  </div>
+
+                  <!-- /.End Row 18------------------------------------------------------------------------------------- -->
+                  <!-- /.Start Row 19----------------------------------------------------------------------------------- -->     
+                  <div class="row" style="margin-left: 10px;">
+                    <div class="col-md-11 col-md-offset-0">
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_01">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >18</p>
+                      </div>
+                      <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_02">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >Net Weight 1 p Store</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_03">
+                        <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD05_9"></div></span></h5>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_04">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >Khối lượng lưu trữ</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.End Row 19------------------------------------------------------------------------------------- -->
+
+                  <!-- /.Start Row 20------------------------------------------------------------------------------ -->     
+                  <div class="row" style="margin-left: 10px;">
+                    <div class="col-md-11 col-md-offset-0">
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_01">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >19</p>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_02">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >Time p store HMI</p>
+                      </div>
+                      <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_03">
+                        <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD05_10"></div></span></h5>
+                      </div>
+                      <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H02_04">
+                        <p style="text-align:center; padding-top:7px; font-size: 14px;" >Thời gian đo lữu trữ</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- /.End Row 20------------------------------------------------------------------------------------- -->
+                  <!-- /.Start Row 21----------------------------------------------------------------------------------- -->     
+                  <div class="row" style="margin-left: 10px;">
+                  <div class="col-md-11 col-md-offset-0">
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_01">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >20</p>
+                    </div>
+                    <div class="col-md-2 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_02">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >m0 Store</p>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_03">
+                      <h5><span  style="text-align:center; padding-top:1px; font-size: 14px;"><div id="dataCD05_12"></div></span></h5>
+                    </div>
+                    <div class="col-md-1 col-md-offset-0" id="content_textBNS_Table_NDB02_H03_04">
+                      <p style="text-align:center; padding-top:7px; font-size: 14px;" >Khối lượng đo</p>
+                    </div>
+                  </div>
+                  </div>
+                  <!-- /.End Row 21------------------------------------------------------------------------------------- -->
+
+
+                
+                  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+              </div>				
+              </div>			
+              </div>
+            </div>
+        <!-- /.End Row A07----Thông số máy đo nồng độ bùn BNS---------------------------------------------- -->
+      
+   
+				
+    </section>
+  </div>
+
+  <!-- /.content-wrapper -->
+
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+<!-- Main Footer START-------------------------------->
+<footer class="main-footer">
+  <!-- To the right -->
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 2.99.25
+  </div>
+  <!-- Default to the left -->
+  <strong>Copyright &copy; 2019-2030 <a href="https://www.finet.vn">Finet Industry</a>.</strong> All rights reserved.
+</footer>
+<!-- Main Footer END-------------------------------->
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+  <!-- Control Sidebar -->
+  <!-- < include rightsidebar > -->
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/bower_components/dist/js/adminlte.min.js"></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+
+
+<!-- DataTables -->
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	
+ 
+
+	
+	
+	
+</body>	
+		
+    <script>
+      //var client = mqtt.connect('ws://192.168.1.100:1883');
+//	  var client = mqtt.connect('http://192.168.0.100:1883');
+//      console.log("Success");
+//      client.subscribe("topic1/demo");
+//
+//      client.on("message", function(topic, payload) {
+//      alert([topic, payload].join(": "));
+//      console.log(topic + " : " + payload);
+//      
+//      });
+		
+		var socket = io("http://27.71.231.45:3201");
+    
+		  socket.on('dataCD02_23', function(msg){
+      		document.getElementById("dataCD02_23").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_0', function(msg){
+      		document.getElementById("dataCD02_0").innerHTML = msg; 
+			});		
+		  socket.on('dataCD02_1', function(msg){
+      		document.getElementById("dataCD02_1").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_2', function(msg){
+      		document.getElementById("dataCD02_2").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_3', function(msg){
+      		document.getElementById("dataCD02_3").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_4', function(msg){
+      		document.getElementById("dataCD02_4").innerHTML = msg; 
+			});
+	    socket.on('dataCD02_5', function(msg){
+      		document.getElementById("dataCD02_5").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_6', function(msg){
+      		document.getElementById("dataCD02_6").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_7', function(msg){
+      		document.getElementById("dataCD02_7").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_8', function(msg){
+      		document.getElementById("dataCD02_8").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_9', function(msg){
+      		document.getElementById("dataCD02_9").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_10', function(msg){
+      		document.getElementById("dataCD02_10").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_11', function(msg){
+      		document.getElementById("dataCD02_11").innerHTML = msg;
+			});
+		
+    	socket.on('dataCD02_12', function(msg){
+      		document.getElementById("dataCD02_12").innerHTML = msg; 
+			});
+	    socket.on('dataCD02_13', function(msg){
+      		document.getElementById("dataCD02_13").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_14', function(msg){
+      		document.getElementById("dataCD02_14").innerHTML = msg; 
+			});
+		
+		  socket.on('dataCD03_15', function(msg){
+      		document.getElementById("dataCD03_15").innerHTML = msg; 
+			});
+    	socket.on('dataCD03_16', function(msg){
+      		document.getElementById("dataCD03_16").innerHTML = msg; 
+			});
+    	socket.on('dataCD03_17', function(msg){
+      		document.getElementById("dataCD03_17").innerHTML = msg; 
+			});
+    	socket.on('dataCD03_18', function(msg){
+      		document.getElementById("dataCD03_18").innerHTML = msg; 
+			});
+    	socket.on('dataCD03_19', function(msg){
+      		document.getElementById("dataCD03_19").innerHTML = msg;
+			});
+		
+    	socket.on('dataCD03_20', function(msg){
+      		document.getElementById("dataCD03_20").innerHTML = msg; 
+			});
+	    socket.on('dataCD03_21', function(msg){
+      		document.getElementById("dataCD03_21").innerHTML = msg; 
+			});
+    	socket.on('dataCD03_22', function(msg){
+      		document.getElementById("dataCD03_22").innerHTML = msg; 
+			});
+		
+		//-----------------------------------------------------------
+		  socket.on('dataCD01_1', function(msg){
+      		document.getElementById("dataCD01_1").innerHTML = msg; 
+			});
+    	socket.on('dataCD01_2', function(msg){
+      		document.getElementById("dataCD01_2").innerHTML = msg; 
+			});
+    	socket.on('dataCD01_3', function(msg){
+      		document.getElementById("dataCD01_3").innerHTML = msg; 
+			});
+    	socket.on('dataCD01_4', function(msg){
+      		document.getElementById("dataCD01_4").innerHTML = msg; 
+			});
+	    socket.on('dataCD01_5', function(msg){
+      		document.getElementById("dataCD01_5").innerHTML = msg; 
+			});
+    	socket.on('dataCD01_6', function(msg){
+      		document.getElementById("dataCD01_6").innerHTML = msg; 
+			});
+    	socket.on('dataCD01_7', function(msg){
+      		document.getElementById("dataCD01_7").innerHTML = msg; 
+			});
+    	socket.on('dataCD01_8', function(msg){
+      		document.getElementById("dataCD01_8").innerHTML = msg; 
+			});
+    	socket.on('dataCD01_9', function(msg){
+      		document.getElementById("dataCD01_9").innerHTML = msg; 
+			});
+    	socket.on('dataCD01_10', function(msg){
+      		document.getElementById("dataCD01_10").innerHTML = msg; 
+			});
+    	socket.on('dataCD01_11', function(msg){
+      		document.getElementById("dataCD01_11").innerHTML = msg;
+			});
+		
+    	socket.on('dataCD01_12', function(msg){
+      		document.getElementById("dataCD01_12").innerHTML = msg; 
+			});
+	    socket.on('dataCD01_13', function(msg){
+      		document.getElementById("dataCD01_13").innerHTML = msg; 
+			});
+    	socket.on('dataCD01_14', function(msg){
+      		document.getElementById("dataCD01_14").innerHTML = msg; 
+			});
+		
+		  socket.on('dataCD01_15', function(msg){
+      		document.getElementById("dataCD01_15").innerHTML = msg; 
+			});
+    	socket.on('dataCD01_16', function(msg){
+      		document.getElementById("dataCD01_16").innerHTML = msg; 
+			});
+      //-----------------------------------------------------------
+      //-----------------------------------------------------------
+		  socket.on('dataCD05_1', function(msg){
+      		document.getElementById("dataCD05_1").innerHTML = msg; 
+			});
+    	socket.on('dataCD05_2', function(msg){
+      		document.getElementById("dataCD05_2").innerHTML = msg; 
+			});
+    	socket.on('dataCD05_3', function(msg){
+      		document.getElementById("dataCD05_3").innerHTML = msg; 
+			});
+    	socket.on('dataCD05_4', function(msg){
+      		document.getElementById("dataCD05_4").innerHTML = msg; 
+			});
+	    socket.on('dataCD05_5', function(msg){
+      		document.getElementById("dataCD05_5").innerHTML = msg; 
+			});
+    	socket.on('dataCD05_6', function(msg){
+      		document.getElementById("dataCD05_6").innerHTML = msg; 
+			});
+    	socket.on('dataCD05_7', function(msg){
+      		document.getElementById("dataCD05_7").innerHTML = msg; 
+			});
+    	socket.on('dataCD05_8', function(msg){
+      		document.getElementById("dataCD05_8").innerHTML = msg; 
+			});
+    	socket.on('dataCD05_9', function(msg){
+      		document.getElementById("dataCD05_9").innerHTML = msg; 
+			});
+    	socket.on('dataCD05_10', function(msg){
+      		document.getElementById("dataCD05_10").innerHTML = msg; 
+			});
+    	socket.on('dataCD05_11', function(msg){
+      		document.getElementById("dataCD05_11").innerHTML = msg;
+			});
+		
+    	socket.on('dataCD05_12', function(msg){
+      		document.getElementById("dataCD05_12").innerHTML = msg; 
+			});
+	    socket.on('dataCD05_13', function(msg){
+      		document.getElementById("dataCD05_13").innerHTML = msg; 
+			});
+    	socket.on('dataCD05_14', function(msg){
+      		document.getElementById("dataCD05_14").innerHTML = msg; 
+			});
+		
+		  socket.on('dataCD05_15', function(msg){
+      		document.getElementById("dataCD05_15").innerHTML = msg; 
+			});
+    	socket.on('dataCD05_16', function(msg){
+      		document.getElementById("dataCD05_16").innerHTML = msg; 
+			});
+      //-----------------------------------------------------------
+
+      
+      // Start Trạng thái PLC máy đo nồng độ bùn
+      socket.on('Status_I00_CBAxisXa', function(msg){
+      		document.getElementById("Status_I00_CBAxisXa").innerHTML = msg; 
+			});
+      socket.on('Status_I01_CBAxisX0', function(msg){
+      		document.getElementById("Status_I01_CBAxisX0").innerHTML = msg; 
+			});
+      socket.on('Status_I02_CBAxisYa', function(msg){
+      		document.getElementById("Status_I02_CBAxisYa").innerHTML = msg; 
+			});
+      socket.on('Status_I03_CBAxisY0', function(msg){
+      		document.getElementById("Status_I03_CBAxisY0").innerHTML = msg; 
+			});
+      socket.on('Status_I04_CBCaLen', function(msg){
+      		document.getElementById("Status_I04_CBCaLen").innerHTML = msg; 
+			});
+      socket.on('Status_I05_CBCaXuong', function(msg){
+      		document.getElementById("Status_I05_CBCaXuong").innerHTML = msg; 
+			});
+      socket.on('Status_I06_CBApsuat', function(msg){
+      		document.getElementById("Status_I06_CBApsuat").innerHTML = msg; 
+			});
+      socket.on('Status_I07_CBKepCa', function(msg){
+      		document.getElementById("Status_I07_CBKepCa").innerHTML = msg; 
+			});
+      //--------------------
+      socket.on('Status_I10_CBNhaCa', function(msg){
+      		document.getElementById("Status_I10_CBNhaCa").innerHTML = msg; 
+			});
+      socket.on('Status_I11_CBCaLen', function(msg){
+      		document.getElementById("Status_I11_CBCaLen").innerHTML = msg; 
+			});
+      socket.on('Status_I12_CBCaXuong', function(msg){
+      		document.getElementById("Status_I12_CBCaXuong").innerHTML = msg; 
+			});
+      socket.on('Status_I13_AlarmAxisX', function(msg){
+      		document.getElementById("Status_I13_AlarmAxisX").innerHTML = msg; 
+			});
+      socket.on('Status_I14_AlarmAxisY', function(msg){
+      		document.getElementById("Status_I14_AlarmAxisY").innerHTML = msg; 
+			});
+      // socket.on('Status_I15_CBVTCan', function(msg){
+      // 		document.getElementById("Status_I15_CBVTCan").innerHTML = msg; 
+			// });
+      //--------------------
+      socket.on('Status_I20_CBVTCan', function(msg){
+      		document.getElementById("Status_I20_CBVTCan").innerHTML = msg; 
+			});
+      socket.on('Status_I21_CBVTLaymau', function(msg){
+      		document.getElementById("Status_I21_CBVTLaymau").innerHTML = msg; 
+			});
+      socket.on('Status_I22_CBVTRua', function(msg){
+      		document.getElementById("Status_I22_CBVTRua").innerHTML = msg; 
+			});
+      socket.on('Status_I23_CBCoCa', function(msg){
+      		document.getElementById("Status_I23_CBCoCa").innerHTML = msg; 
+			});
+      //--------------------
+      socket.on('Status_Q00_XAXISPULSE', function(msg){
+      		document.getElementById("Status_Q00_XAXISPULSE").innerHTML = msg; 
+			});
+      socket.on('Status_Q01_XAXISDIR', function(msg){
+      		document.getElementById("Status_Q01_XAXISDIR").innerHTML = msg; 
+			});
+      socket.on('Status_Q02_YAXISPULSE', function(msg){
+      		document.getElementById("Status_Q02_YAXISPULSE").innerHTML = msg; 
+			});
+      socket.on('Status_Q03_YAXISDIR', function(msg){
+      		document.getElementById("Status_Q03_YAXISDIR").innerHTML = msg; 
+			});
+      socket.on('Status_Q04_XOAYCAXUONG', function(msg){
+      		document.getElementById("Status_Q04_XOAYCAXUONG").innerHTML = msg; 
+			});
+      socket.on('Status_Q05_XOAYCALEN', function(msg){
+      		document.getElementById("Status_Q05_XOAYCALEN").innerHTML = msg; 
+			});
+      socket.on('Status_Q06_KEPCA', function(msg){
+      		document.getElementById("Status_Q06_KEPCA").innerHTML = msg; 
+			});
+      socket.on('Status_Q07_NHACA', function(msg){
+      		document.getElementById("Status_Q07_NHACA").innerHTML = msg; 
+			});
+      //--------------------
+      socket.on('Status_Q10_NHACA', function(msg){
+      		document.getElementById("Status_Q10_NHACA").innerHTML = msg; 
+			});
+      socket.on('Status_Q11_KEPCA', function(msg){
+      		document.getElementById("Status_Q11_KEPCA").innerHTML = msg; 
+			});
+      //--------------------
+      socket.on('Status_Q20_VALVEWATER', function(msg){
+      		document.getElementById("Status_Q20_VALVEWATER").innerHTML = msg; 
+			});
+      socket.on('Status_Q21_LAMPSTATUS', function(msg){
+      		document.getElementById("Status_Q21_LAMPSTATUS").innerHTML = msg; 
+			});
+    // End Trạng thái PLC máy đo nồng độ bùn
+				
+		
+</script>
+
+</html>

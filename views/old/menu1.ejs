@@ -1,0 +1,368 @@
+<html>
+<head>
+	<script src='js/mqtt.min.js'></script>
+	<script src='js/bootstrap.js'></script>
+	<script src='js/socket.io.js'></script>
+
+	<link href='css/Style_menu1.css' rel="stylesheet" type="text/css" />
+
+
+
+	
+
+
+	<!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+
+	
+	
+</head>
+		
+<body>
+
+	
+ <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Bootstrap Sidebar</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Dummy Heading</p>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Home 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li>
+                <li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+	
+<section>
+		
+	
+
+<div id="frame_test_1">  
+	<div id="frame_test_1a"> 
+	<p>
+	<h1> Wellcome to IOT</h1>
+		<div id="data"></div>
+		
+		<p>user: <span style="color:green"><%= user.username %></span></p>
+		<div><a href="/user/logout"><button>Logout</button></a></div>
+			  				
+			
+		<div id="data3"></div>
+	
+	<form>
+		<div id="mrON">ON</div>	
+	</form>
+		<form>
+		<div id="mrOFF">OFF</div>
+	</form>
+
+	<form>
+		<div> 
+			<input type="button" id="btnON" value="ON"/>
+
+			<input type="button" id="btnOFF" value="OFF"/>
+
+		</div>
+		
+		<div> 
+			<input type="text" id="Textsend"/>
+            <input type="button" id="btnSEND" value="SEND"/>
+		</div>
+			
+
+		<div>
+		 
+	Gia tri nhan duoc tu PLC la
+	<form>
+		<div id='dataH1_1'></div>
+	</form>
+		
+		<form>
+	  	<div id="Lamp_Display_Home"></div>
+		</form>
+	
+	</div>
+	</div>
+	</div>
+	
+</section>	
+	
+	
+	
+    <script>
+      //var client = mqtt.connect('ws://192.168.1.100:1883');
+//	  var client = mqtt.connect('http://192.168.0.100:1883');
+//      console.log("Success");
+//      client.subscribe("topic1/demo");
+//
+//      client.on("message", function(topic, payload) {
+//      alert([topic, payload].join(": "));
+//      console.log(topic + " : " + payload);
+//      
+//      });
+		
+		var dataH1;
+		var dataH100;
+	
+		var intH1 = 0;
+		var socket = io("http://192.168.1.100:3001");
+    	 socket.on('dataH1', function(msg){
+			//console.log('dataH1 = ' + msg)
+			dataH1 = msg;
+			dataH100 = dataH1;
+			 
+			intH1 = parseFloat(dataH1);
+			// console.log(typeof(Math.round(parseFloat(intT1) * 100)/100))
+			gaugeT1.set(intH1); 
+			document.getElementById("gaugeH1_value").innerHTML = intH1;
+			document.getElementById("dataH1_1").innerHTML = intH1;
+			 
+      		//document.getElementById("dataH1").innerHTML = msg; 
+			 status_Lamp(intH1)
+			 gauge1.update(intH1+ 30);
+			});
+    	 socket.on('dataH2', function(msg){
+      		dataH2 = msg;
+			intH2 = parseFloat(dataH2);
+			// console.log(typeof(Math.round(parseFloat(intT1) * 100)/100))
+			gaugeT2.set(intH2); 
+			document.getElementById("gaugeH2_value").innerHTML = intH2;
+			gauge2.update(intH2+ 30);
+			 			});		
+    	 socket.on('dataH3', function(msg){
+      		//document.getElementById("dataH3").innerHTML = msg; 
+			});	
+    	 socket.on('dataH4', function(msg){
+      		//document.getElementById("dataH4").innerHTML = msg; 
+			});
+		
+		socket.on('data', function(msg){
+      		document.getElementById("data").innerHTML = msg; 
+			});
+    	socket.on('data3', function(msg){
+      		document.getElementById("data3").innerHTML = msg; 
+			});
+    	socket.on('data4', function(msg){
+      		document.getElementById("data4").innerHTML = msg; 
+			});
+    	socket.on('data5', function(msg){
+      		document.getElementById("data5").innerHTML = msg; 
+			});
+    	socket.on('data6', function(msg){
+      		document.getElementById("data6").innerHTML = msg; 
+			});
+	    socket.on('data7', function(msg){
+      		document.getElementById("data7").innerHTML = msg; 
+			});
+    	socket.on('data8', function(msg){
+      		document.getElementById("data8").innerHTML = msg; 
+			});
+    	socket.on('data9', function(msg){
+      		document.getElementById("data9").innerHTML = msg; 
+			});
+    	socket.on('data10', function(msg){
+      		document.getElementById("data10").innerHTML = msg; 
+			});
+    	socket.on('data11', function(msg){
+      		document.getElementById("data11").innerHTML = msg; 
+			});
+    	socket.on('data12', function(msg){
+      		document.getElementById("data12").innerHTML = msg; 
+			});
+    	socket.on('data13', function(msg){
+      		document.getElementById("data13").innerHTML = msg; 
+			});
+    	socket.on('data14', function(msg){
+      		document.getElementById("data14").innerHTML = msg; 
+			});
+	    	socket.on('data15', function(msg){
+      		document.getElementById("data15").innerHTML = msg; 
+			});
+    	socket.on('data16', function(msg){
+      		document.getElementById("data16").innerHTML = msg; 
+			});
+    	socket.on('data17', function(msg){
+      		document.getElementById("data17").innerHTML = msg; 
+			});
+    	socket.on('data18', function(msg){
+      		document.getElementById("data18").innerHTML = msg; 
+			});
+	    	socket.on('data19', function(msg){
+      		document.getElementById("data19").innerHTML = msg; 
+			});
+    	socket.on('data20', function(msg){
+      		document.getElementById("data20").innerHTML = msg; 
+			});
+    	socket.on('data21', function(msg){
+      		document.getElementById("data21").innerHTML = msg; 
+			});
+    	socket.on('data22', function(msg){
+      		document.getElementById("data22").innerHTML = msg; 
+			});
+		
+		
+		$(document).ready(function(){
+			$("#mrON").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data30", 'on1');
+			});
+			$("#mrOFF").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data30", 'off1');
+			});
+		});
+   		$(document).ready(function(){
+			$("#btnON").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data30", 'on1');
+			});
+			$("#btnOFF").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data30", 'off1');
+			});
+		});     
+	
+		  $(document).ready(function(){
+			$("#btnSEND").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data30", $("#Textsend").val());
+			});
+		});
+		
+		function status_Lamp(data){
+			if (data == 8.2){
+			 lamp_color_home = "green";
+			   document.getElementById("Lamp_Display_Home").style.background = lamp_color_home;
+			 }else { 
+			   lamp_color_home = "red";
+			   document.getElementById("Lamp_Display_Home").style.background = lamp_color_home;
+			}
+		}
+
+ 
+   		$(document).ready(function(){
+			$("#head_frame_12").click(function(){
+    var x = document.getElementById('head_frame_12b');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+			});
+			
+		});
+		
+		
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+		
+		
+		
+
+</script>
+
+
+	
+</body>
+
+</html>

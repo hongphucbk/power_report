@@ -1,0 +1,2218 @@
+<html>
+<head>
+	<script src='js/mqtt.min.js'></script>
+	<script src='js/jquery-3.4.1.min.js'></script>
+	<script src='js/bootstrap.js'></script>
+	<script src='js/socket.io.js'></script>
+<link href='css/Style_home.css' rel="stylesheet" type="text/css" />
+	<script src="js/raphael-2.1.4.min.js"></script>
+	
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<title>SMART FACTORY | Home</title> -->
+  <!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	
+	
+	
+  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="bower_components/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="bower_components/dist/css/skins/skin-blue.min.css">
+
+<!--
+   Latest compiled and minified CSS 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+-->
+  
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	
+	<script src="js/adminlte.min.js"></script>
+	
+	
+	
+	<!-- Gause -->
+  <script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
+	<!-- Level -->
+  <script src="visualize/d3.v3.min.js"></script>
+  <script src='visualize/liquidFillGauge.js'></script>
+	
+	<!-- Chart -->
+  <script src="visualize/smoothie.js"></script>
+	  <script src="chart.js/chart/Chart.min.js"></script>
+	<script src="chart.js/chart/bootstrap.bundle.min.js"></script>
+	
+	
+	<script src="js/jquery.flot.js"></script>
+	
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/jquery.overlayScrollbars.min.js"></script>
+	
+	
+	<!-- Realtime Chart 3 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script src="https://playground.abysscorp.org/chartjs/livecharts/dist/Chart.min.js"></script>
+	
+	
+	<!-- Google gauge -->
+	 <script src="https://cdn.jsdelivr.net/npm/raphael@2.3.0/raphael.min.js"></script>
+    <script src="js/justgage.min.js"></script>
+	<script src="js/jscharting.js"></script>
+	<script src="https://code.jscharting.com/latest/jscharting.js"></script>
+	<script src="//cdn.rawgit.com/Mikhus/canvas-gauges/gh-pages/download/2.1.2/all/gauge.min.js"></script>
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script src="https://playground.abysscorp.org/chartjs/livecharts/dist/Chart.min.js"></script>
+	
+	
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	
+	
+	
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  <!-- Main Header -->
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini">S</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg">SYSTEMS</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="/image/BacNhacSon.png" class="user-image" alt="">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs" id="username1"><%= user.username %></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="/image/BacNhacSon.png" class="img-circle" alt="User Image">
+                <p>
+                  <span ><%= user.username %></span>
+				 <small>CÔNG TY APATIT VIỆT NAM</small>
+                  <small>Chi Nhánh Tuyển Cam Đường</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <!-- <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+              </li> -->
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <!-- <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div> -->
+                <div class="pull-right">
+                  <div><a href="/user/logout"><button id="button2">Logout</button></a></div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+          </li>
+        </ul>
+      </div>
+    </nav>
+ 
+  </header>
+  
+ 
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+  <!-- Sidebar Menu -->
+  <ul class="sidebar-menu" data-widget="tree">
+
+    <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> -->
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>Điện nước</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="/home01">Trang chủ</a></li>
+        <li><a href="/home12">Biểu đồ</a></li>
+		<li><a href="/home131">Đồ thị</a></li>
+		<li><a href="/home02a">Báo cáo Ca</a></li>
+		<li><a href="/home321">Báo cáo Ngày</a></li>
+		<li><a href="/home31">Báo cáo Tháng Năm</a></li>
+		<li><a href="/home02">Cài đặt</a></li>
+      </ul>
+    </li>
+
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>Hệ thống khác</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="/power">Băng Tải Xích</a></li>
+        <li><a href="/power/real">Máy Nghiền Bi</a></li>
+        <li><a href="/power/chart">Item 3</a></li>
+        <li><a href="/power/allchart">Item 4</a></li>
+      </ul>
+    </li>
+
+  </ul>
+		
+ 
+  <!-- /.sidebar-menu -->
+</section>
+    <!-- /.sidebar -->
+  </aside>
+
+	
+	
+	
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    
+<!-- Main content -->
+	  
+<section>
+		
+
+	<div class="row">
+    <div class="col-md-12">
+	
+		<p style="color:blue; padding-top:10px; text-align:center; font-size: 18px;" >HỆ THỐNG ĐO NỒNG ĐỘ BÙN</p>
+				
+		<div class="col-md-12">	
+			
+		<div class="col-md-11 col-md-offset-0">
+		<div class="box box-info">
+        <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">ĐO NỒNG ĐỘ BÙN MÁY 01</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>		
+        </div>
+			
+				
+        <!-- /.box-header -->
+        <div class="box-body">
+		<div class="row">
+            <div class="col-md-10 col-md-offset-0">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Hôm nay</p>
+            </div>
+       	</div>
+			
+			<div class="row">
+		<div class="col-md-12 col-md-offset-0">
+            <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Ca1</p>
+            </div>
+            <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >23h</p>
+            </div>
+            <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >0h</p>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >1h</p>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >2h</p>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >3h</p>
+            </div>
+				
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >4h</p>
+            </div>
+			
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >5h</p>
+            </div>
+							
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >6h</p>
+            </div>
+				
+          </div>
+			</div>
+			
+			
+          <div class="row">
+			<div class="col-md-12 col-md-offset-0">
+            <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Nồng độ</p>
+            </div>
+            <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_23"></div></span></h5>
+            </div>
+			  <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_0"></div></span></h5>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_1"></div></span></h5>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_2"></div></span></h5>
+            </div>
+			  <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_3"></div></span></h5>
+            </div>
+				  
+              <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_4"></div></span></h5>
+            </div>
+			  
+			<div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_5"></div></span></h5>
+            </div>
+			  
+			<div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_6"></div></span></h5>
+            </div>
+          </div>
+			</div>
+			<div class="row">
+			 <h5><span  style="font-size: 10px"></span></h5>
+			</div>
+			
+			
+			<div class="row">
+				<div class="col-md-12 col-md-offset-0">
+            <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Ca2</p>
+            </div>
+            <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >7h</p>
+            </div>
+            <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >8h</p>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >9h</p>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >10h</p>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >11h</p>
+            </div>
+				
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >12h</p>
+            </div>
+			
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >13h</p>
+            </div>
+							
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >14h</p>
+            </div>
+				
+          </div>
+			  </div>
+			
+			
+          <div class="row">
+			  <div class="col-md-12 col-md-offset-0">
+            <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Nồng độ</p>
+            </div>
+            <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_7"></div></span></h5>
+            </div>
+			  <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_8"></div></span></h5>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_9"></div></span></h5>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_10"></div></span></h5>
+            </div>
+			  <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_11"></div></span></h5>
+            </div>
+				  
+              <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_12"></div></span></h5>
+            </div>
+			  
+			<div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_13"></div></span></h5>
+            </div>
+			  
+			<div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD02_14"></div></span></h5>
+            </div>
+          </div>
+			</div>
+			<div class="row">
+			 <h5><span  style="font-size: 10px"></span></h5>
+			</div>
+			
+			
+			<div class="row">
+				<div class="col-md-12 col-md-offset-0">
+            <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >Ca3</p>
+            </div>
+            <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >15h</p>
+            </div>
+            <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >16h</p>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >17h</p>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >18h</p>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >19h</p>
+            </div>
+				
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >20h</p>
+            </div>
+			
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >21h</p>
+            </div>
+							
+			<div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center;font-weight: bold; padding-top:15px; font-size: 16px;" >22h</p>
+            </div>
+				
+         </div>
+				</div>
+			
+			
+          <div class="row">
+			 <div class="col-md-12 col-md-offset-0">
+            <div class="col-md-1 col-md-offset-0" id="content_textCD01">
+              <p style="text-align:center; padding-top:15px; font-size: 16px;" >Nồng độ</p>
+            </div>
+            <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD03_15"></div></span></h5>
+            </div>
+			  <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD03_16"></div></span></h5>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD03_17"></div></span></h5>
+            </div>
+			<div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD03_18"></div></span></h5>
+            </div>
+			  <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD03_19"></div></span></h5>
+            </div>
+				  
+              <div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD03_20"></div></span></h5>
+            </div>
+			  
+			<div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD03_21"></div></span></h5>
+            </div>
+			  
+			<div class="col-md-1 col-md-offset-0" id="content_textCD02">
+              <h5><span  style="font-size: 20px"><div id="dataCD03_22"></div></span></h5>
+            </div>
+          </div>
+			  </div>
+			
+		
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+				
+    </div>				
+	</div>			
+	
+	</div>
+	
+     <!-- BAR CHART Start--> 
+		<div class="col-md-12">	
+			
+		<div class="col-md-11 col-md-offset-0">
+		<div class="box box-info">
+        <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">Bar Chart</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>		
+        </div>
+	
+        <!-- /.box-header -->
+        <div class="box-body">
+			<div class="card-body">
+                <div id="bar-chart" style="height: 300px;"></div>
+              </div>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+			<!-- BAR CHART End-->
+		
+			
+		
+		<!-- Column Chart 1 Start--> 
+		<div class="col-md-12">	
+			
+		<div class="col-md-11 col-md-offset-0">
+		<div class="box box-info">
+        <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">Column Chart 1</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>		
+        </div>
+	
+        <!-- /.box-header -->
+        <div class="box-body">
+			<div class="card-body">
+ 
+  
+  	<p>JS-based approach.</p>
+  	<canvas id="gauge"></canvas>
+				
+				
+              </div>
+			
+			
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+			<!-- Column Chart 1 End-->
+		
+		
+		<!-- Column Chart 2 Start--> 
+		
+		<div class="col-md-12">	
+			
+		<div class="col-md-11 col-md-offset-0">
+		<div class="box box-info">
+        <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">Column Chart 2</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>		
+        </div>
+	
+        <!-- /.box-header -->
+        <div class="box-body">
+			<div class="card-body">
+  		<canvas id="canvas-id"></canvas>
+              </div>
+		
+        </div>
+        <!-- /.card-body -->
+        </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+		
+		<!-- Column Chart 2 End-->
+		
+		
+		
+		
+		<!-- Column Chart 2a Start--> 
+		
+		<div class="col-md-12">	
+			
+		<div class="col-md-11 col-md-offset-0">
+		<div class="box box-info">
+        <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">Column Chart 2a</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>		
+        </div>
+	
+        <!-- /.box-header -->
+        <div class="box-body">
+			<div class="card-body">
+  		<canvas id="canvas-id2a"></canvas>
+              </div>
+		
+        </div>
+        <!-- /.card-body -->
+        </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+		
+		<!-- Column Chart 2 End-->
+		
+		
+		
+		
+		<!-- Column Chart 3 Start--> 
+		
+		<div class="col-md-12">	
+			
+		<div class="col-md-11 col-md-offset-0">
+		<div class="box box-info">
+        <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">Column Chart 1</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>		
+        </div>
+	
+        <!-- /.box-header -->
+        <div class="box-body">
+			<div class="card-body">
+  		<canvas id="canvas-id2"></canvas>
+              </div>
+		
+        </div>
+        <!-- /.card-body -->
+        </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+		
+		<!-- Column Chart 3 End-->
+		
+		
+		<!-- Column Chart 4 Start--> 
+		
+		<div class="col-md-12">	
+			
+		<div class="col-md-11 col-md-offset-0">
+		<div class="box box-info">
+        <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">Column Chart 4</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>		
+        </div>
+	
+        <!-- /.box-header -->
+        <div class="box-body">
+			<div class="card-body">
+  		<canvas id="canvas-id3"></canvas>
+              </div>
+		
+        </div>
+        <!-- /.card-body -->
+        </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+		
+		<!-- Column Chart 4 End-->
+		
+		
+		
+		
+		<!-- Column Fill Gauge 1 Start--> 
+		
+		<div class="col-md-12">	
+			
+		<div class="col-md-11 col-md-offset-0">
+		<div class="box box-info">
+        <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">Fill Gauge 1</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>		
+        </div>
+	
+        <!-- /.box-header -->
+        <div class="box-body">
+			<div class="card-body">
+  		<svg id="fillgauge1" style="width: 150px; height: 150px"></svg>
+              </div>
+		
+        </div>
+        <!-- /.card-body -->
+        </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+		
+		<!-- Column Fill Gauge 1 End-->
+		
+		
+		<!-- Real time Chart 1 Start--> 
+		
+		<div class="col-md-12">	
+			
+		<div class="col-md-11 col-md-offset-0">
+		<div class="box box-info">
+        <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">Real time Chart 1</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>		
+        </div>
+	
+        <!-- /.box-header -->
+        <div class="box-body">
+		<div class="card-body">
+  		  <canvas id="mycanvas" width="800px"; height="200px"></canvas>
+          <br>
+          <button onclick="toggle(1)"><span id="btn_1"></span></button>
+          <button onclick="toggle(2)"><span id="btn_2"></span></button>
+          <button onclick="toggle(3)"><span id="btn_3"></span></button>
+          <button onclick="toggle(4)"><span id="btn_4"></span></button>
+          
+        </div>
+              </div>
+		
+        </div>
+        <!-- /.card-body -->
+        </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+      	
+		<!-- Real time Chart 1 End-->
+		
+		
+		
+		
+		<!-- Real time Chart 2 Start--> 
+		
+		<div class="col-md-12">	
+			
+		<div class="col-md-11 col-md-offset-0">
+		<div class="box box-info">
+        <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">Real time Chart 2</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>		
+        </div>
+	
+        <!-- /.box-header -->
+        <div class="box-body">
+		<div class="card-body">
+  		     <div class="card-tools">
+                  Real time
+                  <div class="btn-group" id="realtime" data-toggle="btn-toggle">
+                    <button type="button" class="btn btn-default btn-sm active" data-toggle="on">On</button>
+                    <button type="button" class="btn btn-default btn-sm" data-toggle="off">Off</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="interactive" style="height: 300px;"></div>
+              </div>
+          
+        </div>
+              </div>
+		
+        </div>
+        <!-- /.card-body -->
+        </div>
+            <!-- /.card -->
+		
+		<!-- Real time Chart 2 End-->
+		
+	
+	  		
+		<!-- Real time Chart 3 Start--> 
+		
+		<div class="col-md-12">	
+			
+		<div class="col-md-11 col-md-offset-0">
+		<div class="box box-info">
+        <div class="box-header with-border">
+          <i class="fa fa-industry"></i>
+
+          <h3 class="box-title">Real time Chart 3</h3>
+		<div class="box-tools pull-right">
+         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              
+        </div>		
+        </div>
+	
+        <!-- /.box-header -->
+        <div class="box-body">
+	 <canvas id="chart0" style="width:300px;height:150px"></canvas>
+          
+        </div>
+              </div>
+		
+        </div>
+        <!-- /.card-body -->
+        </div>
+
+		<!-- Real time Chart 3 End-->
+		
+		
+		  <!-- Box Text 1 Start--> 
+	        <!-- Info boxes -->
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-3">
+  <div class="info-box">
+  <!-- Apply any bg-* class to to the icon to color it -->
+  <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
+  <div class="info-box-content">
+    <span class="info-box-text">Likes</span>
+    <span class="info-box-number">93,139</span>
+  </div>
+  <!-- /.info-box-content -->
+</div>
+<!-- /.info-box -->
+          <!-- /.info-box -->
+        </div>
+          <!-- /.info-box -->
+			  
+			 			  
+          </div>
+          <!-- /.col -->
+         
+
+          
+          
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+		
+		<!-- Box Text 1 End-->
+		
+		
+		 <!-- Box Text 2 Start--> 
+	
+        <!-- Info boxes -->
+         <div class="col-md-4 col-md-3">
+                  <p class="text-center">
+                    <strong>Goal Completion</strong>
+                  </p>
+
+                  <div class="progress-group">
+                    <span class="progress-text">Add Products to Cart</span>
+                    <span class="progress-number"><b>160</b>/200</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                    </div>
+                  </div>
+                  <!-- /.progress-group -->
+                  <div class="progress-group">
+                    <span class="progress-text">Complete Purchase</span>
+                    <span class="progress-number"><b>310</b>/400</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-red" style="width: 80%"></div>
+                    </div>
+                  </div>
+                  <!-- /.progress-group -->
+                  <div class="progress-group">
+                    <span class="progress-text">Visit Premium Page</span>
+                    <span class="progress-number"><b>480</b>/800</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-green" style="width: 80%"></div>
+                    </div>
+                  </div>
+                  <!-- /.progress-group -->
+                  <div class="progress-group">
+                    <span class="progress-text">Send Inquiries</span>
+                    <span class="progress-number"><b>250</b>/500</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                    </div>
+                  </div>
+                  <!-- /.progress-group -->
+                </div>
+                <!-- /.col -->
+
+
+		
+		<!-- Box Text 2 End-->
+		
+				<div class="col-md-12">	
+
+				<div class="col-md-4 col-md-3">
+
+					<div class="progress">
+		  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+		  aria-valuemin="0" aria-valuemax="100" style="width:40%">
+			40% Complete (success)
+		  </div>
+		</div>
+
+		<div class="progress">
+		  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50"
+		  aria-valuemin="0" aria-valuemax="100" style="width:50%">
+			50% Complete (info)
+		  </div>
+		</div>
+
+		<div class="progress">
+		  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+		  aria-valuemin="0" aria-valuemax="100" style="width:60%">
+			60% Complete (warning)
+		  </div>
+		</div>
+
+		<div class="progress">
+		  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70"
+		  aria-valuemin="0" aria-valuemax="100" style="width:70%">
+			70% Complete (danger)
+		  </div>
+		</div>
+				 </div>	
+				<!-- /.box-body -->
+				</div>
+		
+		<div class="col-md-12">	
+			<div class="col-md-4">	
+			<!-- /.info-box -->
+          <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Direct Messages</span>
+              <span class="info-box-number">163,921</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 40%"></div>
+              </div>
+              <span class="progress-description">
+                    40% Increase in 30 Days
+                  </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+			
+		</div>	
+		</div>	
+		
+		
+		
+		<div class="col-md-12">	
+			<div class="col-md-4">
+			
+			<!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+              <p>Bounce Rate</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+				
+				
+			</div>	
+		</div>	
+		
+		
+		
+		<div class="col-md-12">	
+			<div class="col-md-3">
+		
+		<div>
+         <button type="button" class="btn btn-block btn-success btn-lg">Success</button>
+        </div>
+				
+		<div>
+         <button type="button" class="btn btn-block btn-info btn-lg">Info</button>
+        </div>
+				
+		<div>
+         <button type="button" class="btn btn-block btn-danger btn-lg">Danger</button>
+        </div>
+				
+		<a class="btn btn-app">
+                <span class="badge bg-green">300</span>
+                <i class="fa fa-barcode"></i> Products
+         </a>
+				
+				
+		              <a class="btn btn-app">
+                <i class="fa fa-play"></i> Play
+              </a>
+              <a class="btn btn-app">
+                <i class="fa fa-repeat"></i> Repeat
+              </a>
+              <a class="btn btn-app">
+                <i class="fa fa-pause"></i> Pause
+              </a>
+              <a class="btn btn-app">
+                <i class="fa fa-save"></i> Save
+              </a>
+              <a class="btn btn-app">
+                <span class="badge bg-yellow">3</span>
+                <i class="fa fa-bullhorn"></i> Notifications
+              </a>
+		</div>	
+		</div>	
+	
+		
+		<div class="col-md-12">	
+			<div class="col-md-8">
+		<div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-warning"></i> Alert!</h4>
+                Warning alert preview. This alert is dismissable.
+              </div>
+		
+		 <div class="alert alert-info alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-info"></i> Alert!</h4>
+                Info alert preview. This alert is dismissable.
+              </div>		
+				
+		</div>	
+		</div>
+		
+		
+		
+		<div class="col-md-12">	
+			<div class="col-md-6">
+		
+		<div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Progress bars</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="progress">
+                <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                  <span class="sr-only">40% Complete (success)</span>
+                </div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                  <span class="sr-only">20% Complete</span>
+                </div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                  <span class="sr-only">60% Complete (warning)</span>
+                </div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                  <span class="sr-only">80% Complete</span>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+          <!-- /.box -->
+		</div>	
+		</div>
+		
+		
+		<div class="col-md-12">	
+			<div class="col-md-8">
+		<div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Vertical Progress bars</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body text-center">
+              <p>By adding the class <code>.vertical</code> we achieve:</p>
+
+              <div class="progress vertical">
+                <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="height: 40%">
+                  <span class="sr-only">40%</span>
+                </div>
+              </div>
+              <div class="progress vertical">
+                <div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="height: 20%">
+                  <span class="sr-only">20%</span>
+                </div>
+              </div>
+              <div class="progress vertical">
+                <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%">
+                  <span class="sr-only">60%</span>
+                </div>
+              </div>
+              <div class="progress vertical">
+                <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="height: 80%">
+                  <span class="sr-only">80%</span>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+		
+		</div>	
+		</div>
+		
+		
+		<div class="col-md-12">	
+			<div class="col-md-8">
+		
+				
+		<div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Condensed Full Width Table</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <table class="table table-condensed">
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Task</th>
+                  <th>Progress</th>
+                  <th style="width: 40px">Label</th>
+                </tr>
+                <tr>
+                  <td>1.</td>
+                  <td>Update software</td>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-red">55%</span></td>
+                </tr>
+                <tr>
+                  <td>2.</td>
+                  <td>Clean database</td>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-yellow">70%</span></td>
+                </tr>
+                <tr>
+                  <td>3.</td>
+                  <td>Cron job running</td>
+                  <td>
+                    <div class="progress progress-xs progress-striped active">
+                      <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-light-blue">30%</span></td>
+                </tr>
+                <tr>
+                  <td>4.</td>
+                  <td>Fix and squish bugs</td>
+                  <td>
+                    <div class="progress progress-xs progress-striped active">
+                      <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-green">90%</span></td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+		
+		</div>	
+		</div>
+		
+		
+		<div class="col-md-12">	
+		<div class="col-md-8">
+		<div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Bordered Table</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered">
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Task</th>
+                  <th>Progress</th>
+                  <th style="width: 40px">Label</th>
+                </tr>
+                <tr>
+                  <td>1.</td>
+                  <td>Update software</td>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-red">55%</span></td>
+                </tr>
+                <tr>
+                  <td>2.</td>
+                  <td>Clean database</td>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-yellow">70%</span></td>
+                </tr>
+                <tr>
+                  <td>3.</td>
+                  <td>Cron job running</td>
+                  <td>
+                    <div class="progress progress-xs progress-striped active">
+                      <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-light-blue">30%</span></td>
+                </tr>
+                <tr>
+                  <td>4.</td>
+                  <td>Fix and squish bugs</td>
+                  <td>
+                    <div class="progress progress-xs progress-striped active">
+                      <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-green">90%</span></td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.box -->
+	
+			
+		</div>	
+		</div>
+      				
+</section>
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+  	<!-- To the right -->
+<div class="pull-right hidden-xs">
+  <b>Version</b> 2.7.20
+</div>
+<!-- Default to the left -->
+
+<strong>Copyright &copy; 2019-2020 <a href="https://www.finet.vn">Finet Industry</a>.</strong> All rights reserved.
+    
+  </footer>
+
+  <!-- Control Sidebar -->
+  <!-- < include rightsidebar > -->
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/bower_components/dist/js/adminlte.min.js"></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+
+
+<!-- DataTables -->
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	
+ <!-- AdminLTE for demo purposes -->
+<script src="js/demochart.js"></script>
+
+<script src="js/adminlte.min.js"></script>	
+	<script src="js/jquery.min.js"></script>
+	
+
+
+<!-- FLOT CHARTS -->
+<script src="js/jquery.flot.js"></script>
+
+	
+	
+</body>	
+		
+    <script>
+      //var client = mqtt.connect('ws://192.168.1.100:1883');
+//	  var client = mqtt.connect('http://192.168.0.100:1883');
+//      console.log("Success");
+//      client.subscribe("topic1/demo");
+//
+//      client.on("message", function(topic, payload) {
+//      alert([topic, payload].join(": "));
+//      console.log(topic + " : " + payload);
+//      
+//      });
+		
+		var dataCD03_21;
+		var intdataCD03_11 = 0;
+		var dataCD03_22;
+		var intdataCD03_12 = 0;
+		var dataCD02_0;
+		var intdataCD02_0 = 0;
+		var dataCD02_1;
+		var intdataCD02_1 = 0;
+		var dataCD02_2;
+		var intdataCD02_2 = 0;
+		var dataCD02_3;
+		var intdataCD02_3 = 0;
+		
+		
+		
+		
+		var socket = io("http://27.71.231.45:3201");
+		socket.on('dataCD02_23', function(msg){
+      		document.getElementById("dataCD02_23").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_0', function(msg){
+      		//document.getElementById("dataCD02_0").innerHTML = msg; 
+			dataCD02_0= msg;
+			intdataCD02_0 = parseFloat(dataCD02_0);
+			});		
+		socket.on('dataCD02_1', function(msg){
+      		//document.getElementById("dataCD02_1").innerHTML = msg;
+			dataCD02_1= msg;
+			intdataCD02_1 = parseFloat(dataCD02_1);
+			});
+    	socket.on('dataCD02_2', function(msg){
+      		//document.getElementById("dataCD02_2").innerHTML = msg;
+			dataCD02_2= msg;
+			intdataCD02_2 = parseFloat(dataCD02_2);
+			});
+    	socket.on('dataCD02_3', function(msg){
+      		//document.getElementById("dataCD02_3").innerHTML = msg;
+			dataCD02_3= msg;
+			intdataCD02_3 = parseFloat(dataCD02_3);
+			});
+    	socket.on('dataCD02_4', function(msg){
+      		document.getElementById("dataCD02_4").innerHTML = msg; 
+			});
+	    socket.on('dataCD02_5', function(msg){
+      		document.getElementById("dataCD02_5").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_6', function(msg){
+      		document.getElementById("dataCD02_6").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_7', function(msg){
+      		document.getElementById("dataCD02_7").innerHTML = msg;
+			});
+    	socket.on('dataCD02_8', function(msg){
+      		document.getElementById("dataCD02_8").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_9', function(msg){
+      		document.getElementById("dataCD02_9").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_10', function(msg){
+      		document.getElementById("dataCD02_10").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_11', function(msg){
+      		document.getElementById("dataCD02_11").innerHTML = msg;
+			});
+		
+    	socket.on('dataCD02_12', function(msg){
+      		document.getElementById("dataCD02_12").innerHTML = msg; 
+			});
+	    socket.on('dataCD02_13', function(msg){
+      		document.getElementById("dataCD02_13").innerHTML = msg; 
+			});
+    	socket.on('dataCD02_14', function(msg){
+      		document.getElementById("dataCD02_14").innerHTML = msg; 
+			});
+		
+		socket.on('dataCD03_15', function(msg){
+      		document.getElementById("dataCD03_15").innerHTML = msg; 
+			});
+    	socket.on('dataCD03_16', function(msg){
+      		document.getElementById("dataCD03_16").innerHTML = msg; 
+			});
+    	socket.on('dataCD03_17', function(msg){
+      		document.getElementById("dataCD03_17").innerHTML = msg; 
+			});
+    	socket.on('dataCD03_18', function(msg){
+      		document.getElementById("dataCD03_18").innerHTML = msg; 
+			});
+    	socket.on('dataCD03_19', function(msg){
+      		document.getElementById("dataCD03_19").innerHTML = msg;
+			});
+		
+    	socket.on('dataCD03_20', function(msg){
+      		document.getElementById("dataCD03_20").innerHTML = msg; 
+			});
+	    		socket.on('dataCD03_21', function(msg){
+			//document.getElementById("dataCD03_21").innerHTML = msg;
+      		dataCD03_21= msg;
+			intdata11 = parseFloat(dataCD03_21);
+			console.log(dataCD03_21);
+			console.log(intdata11);
+			console.log("Success");
+   		
+		socket.on('dataCD03_22', function(msg){
+			//document.getElementById("dataCD03_22").innerHTML = msg;
+      		dataCD03_22= msg;
+			intdata12 = parseFloat(dataCD03_22);
+			console.log(dataCD03_22);
+			console.log(intdata12);
+			console.log("Success");
+				})// Socket on dataCD03_22
+    	
+
+			
+
+	let count01 = 0;
+		
+		
+		//socket.on('dataCD03_21', function(msg){
+			//document.getElementById("dataCD03_21").innerHTML = msg;
+      		//dataCD03_21= msg;
+			//intdata11 = parseFloat(dataCD03_21);
+			//console.log(dataCD03_21);
+			//console.log(intdata11);
+			//console.log("Success");
+   		
+		//socket.on('dataCD03_22', function(msg){
+			//document.getElementById("dataCD03_22").innerHTML = msg;
+      		//dataCD03_22= msg;
+			//intdata12 = parseFloat(dataCD03_22);
+			//console.log(dataCD03_22);
+			//console.log(intdata12);
+			//console.log("Success");
+				//})// Socket on dataCD03_22
+	
+	$(function () {	
+	const interval01 = setInterval(() => {
+    console.log("Hello", count01++);
+		
+	if ( count01 < 2){
+		
+		//console.log(intdata11);
+		console.log("abc");
+			
+	/* BAR CHART */
+
+    var bar_data = {
+      data : [[1,intdata11], [2,intdata12], [3,4], [4,13], [5,17], [6,9]],
+      bars: { show: true }
+    }
+    $.plot('#bar-chart', [bar_data], {
+      grid  : {
+        borderWidth: 1,
+        borderColor: '#f3f3f3',
+        tickColor  : '#f3f3f3'
+      },
+      series: {
+         bars: {
+          show: true, barWidth: 0.5, align: 'center',
+        },
+      },
+      colors: ['#3c8dbc'],
+      xaxis : {
+        ticks: [[1,'January'], [2,'February'], [3,'March'], [4,'April'], [5,'May'], [6,'June']]
+      }
+    })
+    /* END BAR CHART */
+
+/* Gauge 1 Start */
+
+			var gauge = new RadialGauge({
+			renderTo: 'gauge',
+			width: 300,
+			height: 300,
+			units: "RPM",
+			value: intdata11,
+			minValue: 0,
+			startAngle: 90,
+			ticksAngle: 180,
+			valueBox: true,
+			maxValue: 100,
+			majorTicks: [
+				"0",
+				"20",
+				"40",
+				"60",
+				"80",
+				"100",
+			],
+			minorTicks: 2,
+			strokeTicks: true,
+			highlights: [
+				{
+				  "from": 0,
+				  "to": 60,
+				  "color": "rgba(100, 255, 100, .2)"
+				},
+				{
+				  "from": 60,
+				  "to": 80,
+				  "color": "rgba(220, 200, 0, .75)"
+				},
+				{
+					"from": 80,
+					"to": 100,
+					"color": "rgba(200, 50, 50, .75)"
+				}
+			],
+			colorPlate: "#fff",
+			borderShadowWidth: 0,
+			borders: false,
+			needleType: "arrow",
+			needleWidth: 5,
+			needleCircleSize: 2,
+			needleCircleOuter: true,
+			needleCircleInner: false,
+			animationDuration: 1500,
+			animationRule: "linear"
+		}).draw();
+
+
+	/* Gauge 1 End*/ 	
+
+		
+	/* Gauge 2 Start */
+		
+	var gauge = new LinearGauge({
+    renderTo: 'canvas-id',
+    width: 120,
+    height: 400,
+    units: "°C",
+    minValue: 0,
+    maxValue: 220,
+    majorTicks: [
+        "0",
+        "20",
+        "40",
+        "60",
+        "80",
+        "100",
+        "120",
+        "140",
+        "160",
+        "180",
+        "200",
+        "220"
+    ],
+    minorTicks: 2,
+    strokeTicks: true,
+    highlights: [
+        {
+            "from": 100,
+            "to": 220,
+            "color": "rgba(200, 50, 50, .75)"
+        }
+    ],
+    colorPlate: "#fff",
+    borderShadowWidth: 0,
+    borders: false,
+    needleType: "arrow",
+    needleWidth: 2,
+    animationDuration: 1500,
+    animationRule: "linear",
+    tickSide: "left",
+    numberSide: "left",
+    needleSide: "left",
+    barStrokeWidth: 7,
+    barBeginCircle: false,
+    value: intdata11
+}).draw();
+		
+	/* Gauge 2 End*/ 
+		
+		/* Gauge 2a Start */
+		
+	var gauge = new LinearGauge({
+    renderTo: 'canvas-id2a',
+    width: 150,
+    height: 400,
+    units: "°C",
+    minValue: 0,
+    maxValue: 220,
+    majorTicks: [
+        "0",
+        "20",
+        "40",
+        "60",
+        "80",
+        "100",
+        "120",
+        "140",
+        "160",
+        "180",
+        "200",
+        "220"
+    ],
+    minorTicks: 2,
+    strokeTicks: true,
+	colorMajorTicks: "#000000",
+	ticksWidth: 10,
+	ticksWidthMinor: 5,
+	highlights: [
+        {
+            "from": 180,
+            "to": 220,
+            "color": "#FF0000"
+        }
+    ],	
+    colorPlate: "#fff",
+    borderShadowWidth: 0,
+    borders: false,
+    needleType: "arrow",
+    needleWidth: 1,
+    animationDuration: 1500,
+    animationRule: "linear",
+    tickSide: "left",
+	//ticksWidth: 2,
+    numberSide: "left",
+    needleSide: "left",
+    barStrokeWidth: 1,
+	colorBarStroke: "#0000FF",
+    barBeginCircle: false,
+	colorBar: "#FFFFFF",
+	barWidth: 45,
+	//colorBarEnd: "#dc3545",
+	colorBarProgress: "#00FF00",
+	//colorBarProgressEnd: "#ffc107",
+	colorValueBoxBackground: "#00FF00",	
+	valueBoxBorderRadius: 1,
+	//borderOuterWidth: 0.2,
+	valueBoxStroke: 1.5,
+	//colorBorderOuter: "#77F38E",
+	//colorBorderMiddle: "#dc3545",
+	//colorBorderInner: "#ffc107",
+	//colorValueBoxRect: "#ffc107",
+	//colorValueBoxBackground: "#ffc107",
+	
+	fontNumbersSize: 15,
+	//fontTitle: 15,
+	fontUnitsSize: 30,
+	//fontValue: 40,
+		
+	colorValueText: "#000000",
+	colorUnits: "#00FF00",
+	//colorNumbers: "#00FF00",
+	colorMajorTicks: "#0000FF",
+	//colorMinorTicks: "#00FF00",
+	colorBorderInner: "#0000FF",
+	
+	colorNeedle: "#dc3545",
+	//colorValueBoxShadow: "#dc3545",
+	valueBox: true,
+	valueBoxStroke: 3,
+	colorValueBoxRectEnd: "#0000FF",
+	
+		
+    value: intdata11
+}).draw();
+		
+	/* Gauge 2a End*/ 
+		
+		
+		
+		
+		
+		
+		
+	/* Gauge 3 Start*/ 
+		
+	var gauge = new RadialGauge({
+    renderTo: 'canvas-id2',
+    width: 300,
+    height: 300,
+    units: "Km/h",
+    minValue: 0,
+    maxValue: 220,
+    majorTicks: [
+        "0",
+        "20",
+        "40",
+        "60",
+
+        "80",
+        "100",
+        "120",
+        "140",
+        "160",
+        "180",
+        "200",
+        "220"
+    ],
+    minorTicks: 2,
+    strokeTicks: true,
+    highlights: [
+        {
+            "from": 160,
+            "to": 220,
+            "color": "rgba(200, 50, 50, .75)"
+        }
+    ],
+    colorPlate: "#fff",
+    borderShadowWidth: 0,
+    borders: false,
+    needleType: "arrow",
+    needleWidth: 2,
+    needleCircleSize: 7,
+    needleCircleOuter: true,
+    needleCircleInner: false,
+    animationDuration: 1500,
+    animationRule: "linear",
+	value: intdata11
+}).draw();
+	/* Gauge 3 End*/ 
+	
+	/* Gauge 4 Start*/ 	
+	var gauge2 = new RadialGauge({
+    renderTo: 'canvas-id3',
+    width: 300,
+    height: 300,
+    units: "°C",
+    title: "Temperature",
+    minValue: -50,
+    maxValue: 50,
+    majorTicks: [
+        -50,
+        -40,
+        -30,
+        -20,
+        -10,
+        0,
+        10,
+        20,
+        30,
+        40,
+        50
+    ],
+    minorTicks: 2,
+    strokeTicks: true,
+    highlights: [
+        {
+            "from": -50,
+            "to": 0,
+            "color": "rgba(0,0, 255, .3)"
+        },
+        {
+            "from": 0,
+            "to": 50,
+            "color": "rgba(255, 0, 0, .3)"
+        }
+    ],
+    ticksAngle: 225,
+    startAngle: 67.5,
+    colorMajorTicks: "#ddd",
+    colorMinorTicks: "#ddd",
+    colorTitle: "#eee",
+    colorUnits: "#ccc",
+    colorNumbers: "#eee",
+    colorPlate: "#222",
+    borderShadowWidth: 0,
+    borders: true,
+    needleType: "arrow",
+    needleWidth: 2,
+    needleCircleSize: 7,
+    needleCircleOuter: true,
+    needleCircleInner: false,
+    animationDuration: 1500,
+    animationRule: "linear",
+    colorBorderOuter: "#333",
+    colorBorderOuterEnd: "#111",
+    colorBorderMiddle: "#222",
+    colorBorderMiddleEnd: "#111",
+    colorBorderInner: "#111",
+    colorBorderInnerEnd: "#333",
+    colorNeedleShadowDown: "#333",
+    colorNeedleCircleOuter: "#333",
+    colorNeedleCircleOuterEnd: "#111",
+    colorNeedleCircleInner: "#111",
+    colorNeedleCircleInnerEnd: "#222",
+    valueBoxBorderRadius: 0,
+    colorValueBoxRect: "#222",
+    colorValueBoxRectEnd: "#333",
+	value: intdata11
+}).draw();
+		
+	/* Gauge 4 End*/ 
+		
+	/* Gauge fillgauge 1 Start*/
+		
+	
+
+
+  gauge1.update(intdata11);
+  
+		
+	/* Gauge fillgauge 1 End*/
+	
+	/* Real time 2 Start*/
+		
+	$(function () {
+    /*
+     * Flot Interactive Chart
+     * -----------------------
+     */
+    // We use an inline data source in the example, usually data would
+    // be fetched from a server
+    var data        = [],
+	//var data2        = [],
+        totalPoints = 100
+
+    function getRandomData() {
+
+      if (data.length > 0) {
+        data = data.slice(1)
+      }
+
+      // Do a random walk
+      while (data.length < totalPoints) {
+
+        //var prev = data.length > 0 ? data[data.length - 1] : 50,
+          y1    = intdata11 + Math.random() * 3 - 1
+		  //y1    = intdata12 + Math.random() * 3 - 1
+        data.push(y1)
+		//data.push(y2)
+      }
+
+      // Zip the generated y values with the x values
+      var res = []
+      for (var i = 0; i < data.length; ++i) {
+        res.push([i, data[i]])
+      }
+
+      return res
+    }
+
+    var interactive_plot = $.plot('#interactive', [
+        {
+          data: getRandomData(),
+        }
+      ],
+      {
+        grid: {
+          borderColor: '#f3f3f3',
+          borderWidth: 1,
+          tickColor: '#f3f3f3'
+        },
+        series: {
+          color: '#3c8dbc',
+          lines: {
+            lineWidth: 2,
+            show: true,
+            fill: true,
+          },
+        },
+        yaxis: {
+          min: 0,
+          max: 200,
+          show: true
+        },
+        xaxis: {
+          show: true
+        }
+      }
+    )
+
+    var updateInterval = 500 //Fetch data ever x milliseconds
+    var realtime       = 'on' //If == to on then fetch data every x seconds. else stop fetching
+    function update() {
+
+      interactive_plot.setData([getRandomData()])
+
+      // Since the axes don't change, we don't need to call plot.setupGrid()
+      interactive_plot.draw()
+      if (realtime === 'on') {
+        setTimeout(update, updateInterval)
+      }
+    }
+
+    //INITIALIZE REALTIME DATA FETCHING
+    if (realtime === 'on') {
+      update()
+    }
+    //REALTIME TOGGLE
+    $('#realtime .btn').click(function () {
+      if ($(this).data('toggle') === 'on') {
+        realtime = 'on'
+      }
+      else {
+        realtime = 'off'
+      }
+      update()
+    })
+    /*
+     * END INTERACTIVE CHART
+     */	
+	})
+	/* Real time 2 End*/
+		
+	} // if	
+
+		if ( count01 > 5){
+        count01 = 0;
+    	}	
+	}, 5000);
+			
+	}); // function
+			
+	})// Socket on
+
+
+		
+ // FillGauge 1 start
+  var config1 = liquidFillGaugeDefaultSettings();
+  config1.displayPercent = false;
+  var gauge1 = loadLiquidFillGauge("fillgauge1", 0, config1);
+ // FillGauge 1 End
+
+	</script>	
+<!-- Chart Start -->
+  <script type="text/javascript"> 
+	  
+  var arrLine = [
+      objL0 = {isDiplay: 0},
+      objL1 = {isDiplay: 1, tooltipLabel: 'LINE 1', color: 'blue', value : intdataCD02_0},
+      objL2 = {isDiplay: 1, tooltipLabel: 'LINE 2', color:'green', value : intdataCD02_1},
+      objL3 = {isDiplay: 1, tooltipLabel: 'LINE 3',color:'pink', value : intdataCD02_2},
+      objL4 = {isDiplay: 1, tooltipLabel: 'LINE 4', color:'red', value : intdataCD02_3},
+    ];
+
+  // Data
+  var line0 = new TimeSeries();
+  var line1 = new TimeSeries();
+  var line2 = new TimeSeries();
+  var line3 = new TimeSeries();
+  var line4 = new TimeSeries();
+	  
+	  
+	setInterval(function() {
+	  line1.append(new Date().getTime(), intdataCD02_0, 'h1');
+	  line2.append(new Date().getTime(), intdataCD02_1, 'h2');	
+	  line3.append(new Date().getTime(), intdataCD02_2, 'h2');
+	  line4.append(new Date().getTime(), intdataCD02_3, 'h3');
+		
+	}, 1000);	  
+
+  var arrLineInst = [line0, line1, line2, line3, line4 ];
+  for (let i = 1; i <= 4; i++) {
+    document.getElementById("btn_"+i).innerHTML = arrLine[i].tooltipLabel
+  }
+
+
+  
+  // function myYRangeFunction(range) {
+  //   // TODO implement your calculation using range.min and range.max
+  //   var min = 0;
+  //   var max = 1000;
+  //   return {min: min, max: max};
+  // }
+
+//  var chart = new SmoothieChart({millisPerPixel:21,maxValueScale:1.22,scaleSmoothing:0.098,grid:{fillStyle:'#ffffff',strokeStyle:'#c0c0c0',sharpLines:true,millisPerLine:3000},tooltip:true,timestampFormatter:SmoothieChart.timeFormatter,yRangeFunction:myYRangeFunction,horizontalLines:[{color:'#ffffff',lineWidth:1,value:0},{color:'#880000',lineWidth:2,value:3333},{color:'#880000',lineWidth:2,value:-3333}]}),
+//  canvas = document.getElementById('smoothie-chart'),
+//  series = new TimeSeries();
+
+  // chart.addTimeSeries(series, {lineWidth:2,strokeStyle:'#ff0000',fillStyle:'rgba(0,255,0,0.30)'});
+  // chart.streamTo(canvas, 500);
+  function myYRangeFunction(range) {
+    // TODO implement your calculation using range.min and range.max
+    var min = 0;
+    var max = 100;
+    return {min: min, max: max}
+  };
+
+
+
+  var smoothie = new SmoothieChart({
+                      tooltip:true,
+                      timestampFormatter:SmoothieChart.timeFormatter,
+                      grid: { strokeStyle:'rgb(215, 227, 245)', 
+                              fillStyle:'rgb(255, 255, 255)',
+                              lineWidth: 1, 
+                              millisPerLine: 250, 
+                              verticalSections: 6,
+                              millisPerLine:2000,
+                              maxValue:100,
+                              minValue:0,
+                              yRangeFunction:myYRangeFunction,
+                            },
+                      labels: { fillStyle:'rgb(60, 0, 0)' }
+                    });
+  smoothie.streamTo(document.getElementById("mycanvas"));
+
+  
+
+  // Add a random value to each line every second
+
+
+  // Add to SmoothieChart
+  //smoothie.addTimeSeries(arrLineInst[1], { strokeStyle:'rgb(0, 255, 0)', lineWidth:3, tooltipLabel:'LINE 1' });
+  //smoothie.addTimeSeries(arrLineInst[2], { strokeStyle:'rgb(255, 0, 255)', lineWidth:3, tooltipLabel:'LINE 2' }); //fillStyle:'rgba(0, 255, 0, 0.3)'
+
+  //smoothie.streamTo(document.getElementById("mycanvas"), 1000 /*delay*/); 
+ 
+
+
+
+    
+
+ 
+
+  /*
+   * Custom Label formatter
+   * ----------------------
+   */
+
+</script>
+
+<script type="text/javascript">
+  function toggle(i){
+    if(arrLine[i].isDisplay == 1){
+      arrLine[i].isDisplay = 0;
+      smoothie.removeTimeSeries(arrLineInst[i], { strokeStyle:'rgb(43, 76, 181)', lineWidth:3,  });
+      
+    }else{
+      arrLine[i].isDisplay = 1;
+      smoothie.addTimeSeries(arrLineInst[i], { strokeStyle:arrLine[i].color , lineWidth:3, tooltipLabel:arrLine[i].tooltipLabel });
+    }
+    
+  }
+
+  toggle(1);
+  toggle(2);
+  toggle(3);
+  toggle(4);
+
+  
+
+</script>    <!-- /.content -->
+
+<!-- Chart End -->
+
+<script>
+
+  var samples = 20;
+var speed = 250;
+let timeout = samples * speed;
+var values = [];
+var labels = [];
+var charts = [];
+var value = 0;
+var scale = 1;
+
+addEmptyValues(values, samples);
+
+
+
+var originalCalculateXLabelRotation = Chart.Scale.prototype.calculateXLabelRotation
+
+function initialize() {
+  charts.push(new Chart(document.getElementById("chart0"), {
+    type: 'line',
+    data: {
+      //labels: labels,
+      datasets: [{
+        data: values,
+        backgroundColor: '#17a2b8',
+        borderColor: 'rgb(255, 99, 132)',
+        borderWidth: 2,
+        lineTension: 0.25,
+        pointRadius: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      animation: {
+        duration: speed * 1.5,
+        easing: 'linear'
+      },
+      legend: false,
+      scales: {
+        xAxes: [{
+          type: "time",
+          display: true
+        }],
+        yAxes: [{
+          ticks: {
+            max: 50,
+            min: 0
+          }
+        }]
+      }
+    }
+  }), 
+			 );
+}
+
+function addEmptyValues(arr, n) {
+  for(var i = 0; i < n; i++) {
+    arr.push({
+      x: moment().subtract((n - i) * speed, 'milliseconds').toDate(),
+      y: null
+    });
+  }
+}
+
+function rescale() {
+  var padding = [];
+  
+  addEmptyValues(padding, 10);
+  values.splice.apply(values, padding);
+  
+  scale++;
+}
+
+function updateCharts(){
+  charts.forEach(function(chart) {
+    chart.update();
+  });
+}
+
+function progress() {
+  value = intdataCD02_0 + Math.random() * 3 - 1
+  values.push({
+    x: new Date(),
+    y: value
+  });
+  values.shift();
+}
+
+function advance() {
+  if (values[0] !== null && scale < 4) {
+    //rescale();
+    updateCharts();
+  }
+  
+  progress();
+  updateCharts();
+  
+  setTimeout(function() {
+    requestAnimationFrame(advance);
+  }, speed);
+}
+
+window.onload = function() {
+  initialize();
+  advance();
+};
+</script>
+
+
+</html>

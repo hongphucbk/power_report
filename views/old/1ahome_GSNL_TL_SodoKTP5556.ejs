@@ -1,0 +1,851 @@
+<html>
+<head>
+	<script src='js/mqtt.min.js'></script>
+	<script src='js/jquery-3.4.1.min.js'></script>
+	<script src='js/bootstrap.js'></script>
+	<script src='js/socket.io.js'></script>
+  <link href='css/Style_home.css' rel="stylesheet" type="text/css" />
+	<script src="js/raphael-2.1.4.min.js"></script>
+	
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<title>SMART FACTORY | Home</title> -->
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	
+	
+	
+  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="bower_components/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="bower_components/dist/css/skins/skin-blue.min.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+	</script>
+	<!-- Gause -->
+  <script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
+	<!-- Level -->
+  <script src="visualize/d3.v3.min.js"></script>
+  <script src='visualize/liquidFillGauge.js'></script>
+	
+	<!-- Chart -->
+  <script src="visualize/smoothie.js"></script>
+	
+	<!-- font manu awesome -->
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	
+	<!-- font user awesome -->
+	
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+	
+</head>
+		
+<body class="hold-transition skin-blue sidebar-mini">
+
+  <div class="wrapper">
+
+   <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+ <!-- Main Header -->
+<header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini">S</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg">SYSTEMS</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="/image/TangLoong.png" class="user-image" alt="">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs" id="username1"><%= user.username %></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="/image/TangLoong.png" class="img-circle" alt="User Image">
+                <p>
+                  <span ><%= user.username %></span>
+					        <small>CÔNG TY APATIT VIỆT NAM</small>
+                  <small>Chi Nhánh Tuyển Tằng Loỏng</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <!-- <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+              </li> -->
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <!-- <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div> -->
+                <div class="pull-right">
+                  <div><a href="/user/logout"><button id="button2">Logout</button></a></div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+          </li>
+        </ul>
+      </div>
+    </nav>
+ 
+  </header>
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+
+
+ 
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- Sidebar Menu -->
+          <ul class="sidebar-menu" data-widget="tree">
+
+            <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> -->          
+
+            <li class="treeview">
+              <a href="#"><i class="fa fa-industry"></i> <span>Giám sát Năng Lượng</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="/1ahome_GSNL_TL_01">Thông số Online</a></li>
+                <li><a href="/1ahome_GSNL_TL_SodoRP1">Sơ đồ cung cấp điện</a></li>
+                <li><a href="/1ahome_GSNL_TL_KwhCa">Kwh theo Ca</a></li>
+                <li><a href="/1ahome_GSNL_TL_BieudoCa_TramRP1_A51_MV01">Biểu đồ Kwh Ca</a></li>
+                <li><a href="/1ahome_GSNL_TL_BieudoNgay_TramRP1_A51MV01">Biểu đồ Kwh Ngày</a></li>
+                <li><a href="/1ahome_GSNL_TL_BieudoThang_TramRP1_A51MV01">Biểu đồ Kwh Tháng</a></li>
+                <li><a href="/1ahome_GSNL_TL_BaocaoExcell_Kwh">Báo cáo Excell Kwh</a></li>
+                <li><a href="/1ahome_GSNL_TL_BaocaoExcell_KwhDay">Báo cáo Excell Kwh Day</a></li>
+                <li><a href="/1ahome_GSNL_TL_BaocaoExcell_Cosphi">Báo cáo Excell Cosphi</a></li>
+              </ul>
+            </li>
+
+          </ul>       
+        <!-- /.sidebar-menu -->
+      </section>
+      <!-- /.sidebar -->
+</aside>
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+	
+	
+	
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    
+<!-- Main content -->
+	  
+<section>
+  <div class="row">
+      <div class="col-md-12">		
+        <div class="col-md-10 col-md-offset-1">
+            <div class="box box-info">
+                  <div class="box-header with-border">
+                    <i class="fa fa-industry"></i>
+                    <h3 class="box-title">SƠ ĐỒ TRẠM ĐIỆN KTP 55 56 CN TẰNG LOỎNG</h3>
+                    <div class="box-tools pull-right">
+                      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                      <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>     
+                    </div>
+                  </div>
+                <!-- /.box-header -->
+                  <div class="box-body" style="background-image: url('/image/Ve tram CN Tang Loong KTP 55 56.svg'); margin-top:0px; margin-left: 10px;margin-right: 5px; height: 583px; resize: both; background-repeat: no-repeat; background-size: 100%">
+                  </div>
+                   <div class="box-body" style="background-image: url('/image/Ve tram CN Tang Loong Ky hieu ban ve.svg'); margin-top:0px; margin-left: 10px;margin-right: 5px; height: 583px; resize: both; background-repeat: no-repeat; background-size: 100%">
+                  </div>	
+            </div>	
+        </div>
+            <!-- /.box-body -->
+      </div>
+
+      <div class="row">
+        <!-- /Start Dieu huong 01---------------------------------------------------->
+              <div class="col-md-10 col-md-offset-1" style="padding-bottom:20px;">
+                  <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong11()">Trạm MBA 110KV</button>
+                  <script>
+                      function dieu_huong11(){
+                      location.assign("/1ahome_GSNL_TL_SodoMBA110KV");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong12()">Trạm RP1</button>
+                  <script>
+                      function dieu_huong12(){
+                      location.assign("/1ahome_GSNL_TL_SodoRP1");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong13()">Trạm RP2</button>
+                  <script>
+                      function dieu_huong13(){
+                      location.assign("/1ahome_GSNL_TL_SodoRP2");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong14()">Trạm RP3</button>
+                  <script>
+                      function dieu_huong14(){
+                      location.assign("/1ahome_GSNL_TL_SodoRP3");
+                      }
+                  </script>
+                </div>
+                <!----->
+                
+              </div>
+              <!-- /End Dieu huong 01--------------------------------------->
+      </div>
+      <div class="row">
+        <!-- /Start Dieu huong 02---------------------------------------------------->
+              <div class="col-md-10 col-md-offset-1" style="padding-bottom:20px;">
+                    <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong21()">Trạm KTP 55-56</button>
+                  <script>
+                      function dieu_huong21(){
+                      location.assign("/1ahome_GSNL_TL_SodoKTP5556");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong22()">Trạm KTP7</button>
+                  <script>
+                      function dieu_huong22(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_TramKTP7");
+                      }
+                  </script>
+                </div>
+                <!----->
+                <div class="col-md-1 col-md-offset-1">	
+                  <button type="button" style="width: 120px; height:30px;" onclick="dieu_huong23()">Trạm 1306B</button>
+                  <script>
+                      function dieu_huong23(){
+                      location.assign("/1ahome_GSNL_TL_BieudoThang_Tram1306B");
+                      }
+                  </script>
+                </div>
+                <!----->
+                
+              </div>
+              <!-- /End Dieu huong 2--------------------------------------->
+      </div> 
+      
+                
+     
+
+
+  </div>
+</section>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+
+
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+<!-- Main Footer START-------------------------------->
+<footer class="main-footer">
+  <!-- To the right -->
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 2.99.25
+  </div>
+  <!-- Default to the left -->
+  <strong>Copyright &copy; 2019-2030 <a href="https://www.finet.vn">Finet Industry</a>.</strong> All rights reserved.
+</footer>
+<!-- Main Footer END-------------------------------->
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+  <!-- Control Sidebar -->
+  <!-- < include rightsidebar > -->
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/bower_components/dist/js/adminlte.min.js"></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+
+
+<!-- DataTables -->
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	
+ 
+
+	
+	
+	
+</body>	
+	
+    <script>
+      //var client = mqtt.connect('ws://192.168.1.100:1883');
+//	  var client = mqtt.connect('http://192.168.0.100:1883');
+//      console.log("Success");
+//      client.subscribe("topic1/demo");
+//
+//      client.on("message", function(topic, payload) {
+//      alert([topic, payload].join(": "));
+//      console.log(topic + " : " + payload);
+//      
+//      });
+		
+
+var socket2 = io("http://27.71.231.45:3006");
+
+//PLC A51 MV01 02 03 04 Start -----------------------------------------------------------------------------------------------
+      let dataCD_A51_MV01_Dienap;
+      let int_dataCD_A51_MV01_Dienap;
+      let dataCD_A51_MV01_Cosphi;
+      let int_dataCD_A51_MV01_Cosphi;
+
+      let dataCD_A51_MV02_Dienap;
+      let int_dataCD_A51_MV02_Dienap;
+      let dataCD_A51_MV02_Cosphi;
+      let int_dataCD_A51_MV02_Cosphi;
+
+      let dataCD_A51_MV03_Dienap;
+      let int_dataCD_A51_MV03_Dienap;
+      let dataCD_A51_MV03_Cosphi;
+      let int_dataCD_A51_MV03_Cosphi;
+
+      let dataCD_A51_MV04_Dienap;
+      let int_dataCD_A51_MV04_Dienap;
+      let dataCD_A51_MV04_Cosphi;
+      let int_dataCD_A51_MV04_Cosphi;
+
+
+      socket2.on('dataCD_A51_MV01_Dienap', function(msg){
+      		document.getElementById("dataCD_A51_MV01_Dienap").innerHTML = msg;
+          dataCD_A51_MV01_Dienap =msg;
+          int_dataCD_A51_MV01_Dienap = parseFloat(dataCD_A51_MV01_Dienap);
+          status_Lamp_A51_MV01_Dienap(int_dataCD_A51_MV01_Dienap);
+			});
+    	socket2.on('dataCD_A51_MV01_Dongdien', function(msg){
+      		document.getElementById("dataCD_A51_MV01_Dongdien").innerHTML = msg; 
+			});		
+      socket2.on('dataCD_A51_MV01_Kw', function(msg){
+      		document.getElementById("dataCD_A51_MV01_Kw").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A51_MV01_Kwh', function(msg){
+      		document.getElementById("dataCD_A51_MV01_Kwh").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A51_MV01_Cosphi', function(msg){
+      		document.getElementById("dataCD_A51_MV01_Cosphi").innerHTML = msg;
+          dataCD_A51_MV01_Cosphi =msg;
+          int_dataCD_A51_MV01_Cosphi = parseFloat(dataCD_A51_MV01_Cosphi);
+          status_Lamp_A51_MV01_Cosphi(int_dataCD_A51_MV01_Cosphi);
+			});
+      //-----------------------------------------------------------------------
+      socket2.on('dataCD_A51_MV02_Dienap', function(msg){
+      		document.getElementById("dataCD_A51_MV02_Dienap").innerHTML = msg;
+          data_A51_MV02_Dienap =msg;
+          int_data_A51_MV02_Dienap = parseFloat(data_A51_MV02_Dienap);
+          status_Lamp_A51_MV02_Dienap(int_data_A51_MV02_Dienap);
+			});
+    	socket2.on('dataCD_A51_MV02_Dongdien', function(msg){
+      		document.getElementById("dataCD_A51_MV02_Dongdien").innerHTML = msg; 
+			});		
+      socket2.on('dataCD_A51_MV02_Kw', function(msg){
+      		document.getElementById("dataCD_A51_MV02_Kw").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A51_MV02_Kwh', function(msg){
+      		document.getElementById("dataCD_A51_MV02_Kwh").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A51_MV02_Cosphi', function(msg){
+      		document.getElementById("dataCD_A51_MV02_Cosphi").innerHTML = msg;
+          dataCD_A51_MV02_Cosphi =msg;
+          int_dataCD_A51_MV02_Cosphi = parseFloat(dataCD_A51_MV02_Cosphi);
+          status_Lamp_A51_MV02_Cosphi(int_dataCD_A51_MV02_Cosphi);
+			});
+
+      //-----------------------------------------------------------------------
+      socket2.on('dataCD_A51_MV03_Dienap', function(msg){
+      		document.getElementById("dataCD_A51_MV03_Dienap").innerHTML = msg;
+          data_A51_MV03_Dienap =msg;
+          int_data_A51_MV03_Dienap = parseFloat(data_A51_MV03_Dienap);
+          status_Lamp_A51_MV03_Dienap(int_data_A51_MV03_Dienap);
+			});
+    	socket2.on('dataCD_A51_MV03_Dongdien', function(msg){
+      		document.getElementById("dataCD_A51_MV03_Dongdien").innerHTML = msg; 
+			});		
+      socket2.on('dataCD_A51_MV03_Kw', function(msg){
+      		document.getElementById("dataCD_A51_MV03_Kw").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A51_MV03_Kwh', function(msg){
+      		document.getElementById("dataCD_A51_MV03_Kwh").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A51_MV03_Cosphi', function(msg){
+      		document.getElementById("dataCD_A51_MV03_Cosphi").innerHTML = msg;
+          dataCD_A51_MV03_Cosphi =msg;
+          int_dataCD_A51_MV03_Cosphi = parseFloat(dataCD_A51_MV03_Cosphi);
+          status_Lamp_A51_MV03_Cosphi(int_dataCD_A51_MV03_Cosphi);
+			});
+
+       //-----------------------------------------------------------------------
+       socket2.on('dataCD_A51_MV04_Dienap', function(msg){
+      		document.getElementById("dataCD_A51_MV04_Dienap").innerHTML = msg;
+          data_A51_MV04_Dienap =msg;
+          int_data_A51_MV04_Dienap = parseFloat(data_A51_MV04_Dienap);
+          status_Lamp_A51_MV04_Dienap(int_data_A51_MV04_Dienap);
+			});
+    	socket2.on('dataCD_A51_MV04_Dongdien', function(msg){
+      		document.getElementById("dataCD_A51_MV04_Dongdien").innerHTML = msg; 
+			});		
+      socket2.on('dataCD_A51_MV04_Kw', function(msg){
+      		document.getElementById("dataCD_A51_MV04_Kw").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A51_MV04_Kwh', function(msg){
+      		document.getElementById("dataCD_A51_MV04_Kwh").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A51_MV04_Cosphi', function(msg){
+      		document.getElementById("dataCD_A51_MV04_Cosphi").innerHTML = msg;
+          dataCD_A51_MV04_Cosphi =msg;
+          int_dataCD_A51_MV04_Cosphi = parseFloat(dataCD_A51_MV04_Cosphi);
+          status_Lamp_A51_MV04_Cosphi(int_dataCD_A51_MV04_Cosphi);
+			});
+    	
+
+//------------------------------------------------------------------------
+      socket2.on('StatusCD_Cosphi_A51_MV01', function(msg){
+      		document.getElementById("StatusCD_Cosphi_A51_MV01").innerHTML = msg;
+			});
+    	socket2.on('StatusCD_Cosphi_A51_MV02', function(msg){
+      		document.getElementById("StatusCD_Cosphi_A51_MV02").innerHTML = msg; 
+			});
+	    socket2.on('StatusCD_Cosphi_A51_MV03', function(msg){
+      		document.getElementById("StatusCD_Cosphi_A51_MV03").innerHTML = msg; 
+			});
+    	socket2.on('StatusCD_Cosphi_A51_MV04', function(msg){
+      		document.getElementById("StatusCD_Cosphi_A51_MV04").innerHTML = msg; 
+			});	
+//------------------------------------------------------------------------
+
+//------------------------------------------------------------------------
+      socket2.on('StatusCD_Dienap_A51_MV01', function(msg){
+      		document.getElementById("StatusCD_Dienap_A51_MV01").innerHTML = msg;
+			});
+    	socket2.on('StatusCD_Dienap_A51_MV02', function(msg){
+      		document.getElementById("StatusCD_Dienap_A51_MV02").innerHTML = msg; 
+			});
+	    socket2.on('StatusCD_Dienap_A51_MV03', function(msg){
+      		document.getElementById("StatusCD_Dienap_A51_MV03").innerHTML = msg; 
+			});
+    	socket2.on('StatusCD_Dienap_A51_MV04', function(msg){
+      		document.getElementById("StatusCD_Dienap_A51_MV04").innerHTML = msg; 
+			});	
+//------------------------------------------------------------------------
+    function status_Lamp_A51_MV01_Dienap(data){
+      if (data <= 200){
+        document.getElementById("Lamp_A51_MV01_Dienap").style.background = "red";
+      }else { 
+        document.getElementById("Lamp_A51_MV01_Dienap").style.background = "green";
+      }
+    }
+    function status_Lamp_A51_MV01_Cosphi(data){
+      if (data <= 0.9){
+        document.getElementById("Lamp_A51_MV01_Cosphi").style.background = "red";       
+      }else { 
+        document.getElementById("Lamp_A51_MV01_Cosphi").style.background = "green";
+      }
+    }
+    function status_Lamp_A51_MV02_Dienap(data){
+      if (data <= 200){
+        document.getElementById("Lamp_A51_MV02_Dienap").style.background = "red";
+      }else { 
+        document.getElementById("Lamp_A51_MV02_Dienap").style.background = "green";
+      }
+    }
+    function status_Lamp_A51_MV02_Cosphi(data){
+      if (data <= 0.9){
+        document.getElementById("Lamp_A51_MV02_Cosphi").style.background = "red";       
+      }else { 
+        document.getElementById("Lamp_A51_MV02_Cosphi").style.background = "green";
+      }
+    }
+    function status_Lamp_A51_MV03_Dienap(data){
+      if (data <= 200){
+        document.getElementById("Lamp_A51_MV03_Dienap").style.background = "red";
+      }else { 
+        document.getElementById("Lamp_A51_MV03_Dienap").style.background = "green";
+      }
+    }
+    function status_Lamp_A51_MV03_Cosphi(data){
+      if (data <= 0.9){
+        document.getElementById("Lamp_A51_MV03_Cosphi").style.background = "red";       
+      }else { 
+        document.getElementById("Lamp_A51_MV03_Cosphi").style.background = "green";
+      }
+    }
+    function status_Lamp_A51_MV04_Dienap(data){
+      if (data <= 200){
+        document.getElementById("Lamp_A51_MV04_Dienap").style.background = "red";
+      }else { 
+        document.getElementById("Lamp_A51_MV04_Dienap").style.background = "green";
+      }
+    }
+    function status_Lamp_A51_MV04_Cosphi(data){
+      if (data <= 0.9){
+        document.getElementById("Lamp_A51_MV04_Cosphi").style.background = "red";       
+      }else { 
+        document.getElementById("Lamp_A51_MV04_Cosphi").style.background = "green";
+      }
+    }
+//PLC A51 MV01 02 03 04 End -----------------------------------------------------------------------------------------------
+
+//PLC A52 MV01 02 03 04 Start -----------------------------------------------------------------------------------------------
+      let dataCD_A52_MV01_Dienap;
+      let int_dataCD_A52_MV01_Dienap;
+      let dataCD_A52_MV01_Cosphi;
+      let int_dataCD_A52_MV01_Cosphi;
+
+      let dataCD_A52_MV02_Dienap;
+      let int_dataCD_A52_MV02_Dienap;
+      let dataCD_A52_MV02_Cosphi;
+      let int_dataCD_A52_MV02_Cosphi;
+
+
+      socket2.on('dataCD_A52_MV01_Dienap', function(msg){
+      		document.getElementById("dataCD_A52_MV01_Dienap").innerHTML = msg;
+          dataCD_A52_MV01_Dienap =msg;
+          int_dataCD_A52_MV01_Dienap = parseFloat(dataCD_A52_MV01_Dienap);
+          status_Lamp_A52_MV01_Dienap(int_dataCD_A52_MV01_Dienap);
+			});
+    	socket2.on('dataCD_A52_MV01_Dongdien', function(msg){
+      		document.getElementById("dataCD_A52_MV01_Dongdien").innerHTML = msg; 
+			});		
+      socket2.on('dataCD_A52_MV01_Kw', function(msg){
+      		document.getElementById("dataCD_A52_MV01_Kw").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A52_MV01_Kwh', function(msg){
+      		document.getElementById("dataCD_A52_MV01_Kwh").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A52_MV01_Cosphi', function(msg){
+      		document.getElementById("dataCD_A52_MV01_Cosphi").innerHTML = msg;
+          dataCD_A52_MV01_Cosphi =msg;
+          int_dataCD_A52_MV01_Cosphi = parseFloat(dataCD_A52_MV01_Cosphi);
+          status_Lamp_A52_MV01_Cosphi(int_dataCD_A52_MV01_Cosphi);
+			});
+      //-----------------------------------------------------------------------
+      socket2.on('dataCD_A52_MV02_Dienap', function(msg){
+      		document.getElementById("dataCD_A52_MV02_Dienap").innerHTML = msg;
+          data_A52_MV02_Dienap =msg;
+          int_data_A52_MV02_Dienap = parseFloat(data_A52_MV02_Dienap);
+          status_Lamp_A52_MV02_Dienap(int_data_A52_MV02_Dienap);
+			});
+    	socket2.on('dataCD_A52_MV02_Dongdien', function(msg){
+      		document.getElementById("dataCD_A52_MV02_Dongdien").innerHTML = msg; 
+			});		
+      socket2.on('dataCD_A52_MV02_Kw', function(msg){
+      		document.getElementById("dataCD_A52_MV02_Kw").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A52_MV02_Kwh', function(msg){
+      		document.getElementById("dataCD_A52_MV02_Kwh").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A52_MV02_Cosphi', function(msg){
+      		document.getElementById("dataCD_A52_MV02_Cosphi").innerHTML = msg;
+          dataCD_A52_MV02_Cosphi =msg;
+          int_dataCD_A52_MV02_Cosphi = parseFloat(dataCD_A52_MV02_Cosphi);
+          status_Lamp_A52_MV02_Cosphi(int_dataCD_A52_MV02_Cosphi);
+			});
+
+
+//------------------------------------------------------------------------
+      socket2.on('StatusCD_Cosphi_A52_MV01', function(msg){
+      		document.getElementById("StatusCD_Cosphi_A52_MV01").innerHTML = msg;
+			});
+    	socket2.on('StatusCD_Cosphi_A52_MV02', function(msg){
+      		document.getElementById("StatusCD_Cosphi_A52_MV02").innerHTML = msg; 
+			});	
+//------------------------------------------------------------------------
+
+//------------------------------------------------------------------------
+      socket2.on('StatusCD_Dienap_A52_MV01', function(msg){
+      		document.getElementById("StatusCD_Dienap_A52_MV01").innerHTML = msg;
+			});
+    	socket2.on('StatusCD_Dienap_A52_MV02', function(msg){
+      		document.getElementById("StatusCD_Dienap_A52_MV02").innerHTML = msg; 
+			});
+//------------------------------------------------------------------------
+    function status_Lamp_A52_MV01_Dienap(data){
+      if (data <= 200){
+        document.getElementById("Lamp_A52_MV01_Dienap").style.background = "red";
+      }else { 
+        document.getElementById("Lamp_A52_MV01_Dienap").style.background = "green";
+      }
+    }
+    function status_Lamp_A52_MV01_Cosphi(data){
+      if (data <= 0.9){
+        document.getElementById("Lamp_A52_MV01_Cosphi").style.background = "red";       
+      }else { 
+        document.getElementById("Lamp_A52_MV01_Cosphi").style.background = "green";
+      }
+    }
+    function status_Lamp_A52_MV02_Dienap(data){
+      if (data <= 200){
+        document.getElementById("Lamp_A52_MV02_Dienap").style.background = "red";
+      }else { 
+        document.getElementById("Lamp_A52_MV02_Dienap").style.background = "green";
+      }
+    }
+    function status_Lamp_A52_MV02_Cosphi(data){
+      if (data <= 0.9){
+        document.getElementById("Lamp_A52_MV02_Cosphi").style.background = "red";       
+      }else { 
+        document.getElementById("Lamp_A52_MV02_Cosphi").style.background = "green";
+      }
+    }
+//PLC A52 MV01 02 03 04 End -----------------------------------------------------------------------------------------------
+
+//PLC A53 MV01 02 03 04 Start -----------------------------------------------------------------------------------------------
+let dataCD53_A53_MV01_Dienap;
+      let int_dataCD_A53_MV01_Dienap;
+      let dataCD_A53_MV01_Cosphi;
+      let int_dataCD_A53_MV01_Cosphi;
+
+
+      socket2.on('dataCD_A53_MV01_Dienap', function(msg){
+      		document.getElementById("dataCD_A53_MV01_Dienap").innerHTML = msg;
+          dataCD_A53_MV01_Dienap =msg;
+          int_dataCD_A53_MV01_Dienap = parseFloat(dataCD_A53_MV01_Dienap);
+          status_Lamp_A53_MV01_Dienap(int_dataCD_A53_MV01_Dienap);
+			});
+    	socket2.on('dataCD_A53_MV01_Dongdien', function(msg){
+      		document.getElementById("dataCD_A53_MV01_Dongdien").innerHTML = msg; 
+			});		
+      socket2.on('dataCD_A53_MV01_Kw', function(msg){
+      		document.getElementById("dataCD_A53_MV01_Kw").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A53_MV01_Kwh', function(msg){
+      		document.getElementById("dataCD_A53_MV01_Kwh").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A53_MV01_Cosphi', function(msg){
+      		document.getElementById("dataCD_A53_MV01_Cosphi").innerHTML = msg;
+          dataCD_A53_MV01_Cosphi =msg;
+          int_dataCD_A53_MV01_Cosphi = parseFloat(dataCD_A53_MV01_Cosphi);
+          status_Lamp_A53_MV01_Cosphi(int_dataCD_A53_MV01_Cosphi);
+			});
+      //----------------------------------------------------------------------
+
+//------------------------------------------------------------------------
+      socket2.on('StatusCD_Cosphi_A53_MV01', function(msg){
+      		document.getElementById("StatusCD_Cosphi_A53_MV01").innerHTML = msg;
+			});
+//------------------------------------------------------------------------
+
+//------------------------------------------------------------------------
+      socket2.on('StatusCD_Dienap_A53_MV01', function(msg){
+      		document.getElementById("StatusCD_Dienap_A53_MV01").innerHTML = msg;
+			});
+//------------------------------------------------------------------------
+    function status_Lamp_A53_MV01_Dienap(data){
+      if (data <= 200){
+        document.getElementById("Lamp_A53_MV01_Dienap").style.background = "red";
+      }else { 
+        document.getElementById("Lamp_A53_MV01_Dienap").style.background = "green";
+      }
+    }
+    function status_Lamp_A53_MV01_Cosphi(data){
+      if (data <= 0.9){
+        document.getElementById("Lamp_A53_MV01_Cosphi").style.background = "red";       
+      }else { 
+        document.getElementById("Lamp_A53_MV01_Cosphi").style.background = "green";
+      }
+    }
+    
+//PLC A53 MV01 02 03 04 End -----------------------------------------------------------------------------------------------
+
+//PLC A54 MV01 02 03 04 Start -----------------------------------------------------------------------------------------------
+      let dataCD_A54_MV01_Dienap;
+      let int_dataCD_A54_MV01_Dienap;
+      let dataCD_A54_MV01_Cosphi;
+      let int_dataCD_A54_MV01_Cosphi;
+
+
+      socket2.on('dataCD_A54_MV01_Dienap', function(msg){
+      		document.getElementById("dataCD_A54_MV01_Dienap").innerHTML = msg;
+          dataCD_A54_MV01_Dienap =msg;
+          int_dataCD_A54_MV01_Dienap = parseFloat(dataCD_A54_MV01_Dienap);
+          status_Lamp_A54_MV01_Dienap(int_dataCD_A54_MV01_Dienap);
+			});
+    	socket2.on('dataCD_A54_MV01_Dongdien', function(msg){
+      		document.getElementById("dataCD_A54_MV01_Dongdien").innerHTML = msg; 
+			});		
+      socket2.on('dataCD_A54_MV01_Kw', function(msg){
+      		document.getElementById("dataCD_A54_MV01_Kw").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A54_MV01_Kwh', function(msg){
+      		document.getElementById("dataCD_A54_MV01_Kwh").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A54_MV01_Cosphi', function(msg){
+      		document.getElementById("dataCD_A54_MV01_Cosphi").innerHTML = msg;
+          dataCD_A54_MV01_Cosphi =msg;
+          int_dataCD_A54_MV01_Cosphi = parseFloat(dataCD_A54_MV01_Cosphi);
+          status_Lamp_A54_MV01_Cosphi(int_dataCD_A54_MV01_Cosphi);
+			});
+      //----------------------------------------------------------------------
+
+//------------------------------------------------------------------------
+      socket2.on('StatusCD_Cosphi_A54_MV01', function(msg){
+      		document.getElementById("StatusCD_Cosphi_A54_MV01").innerHTML = msg;
+			});
+//------------------------------------------------------------------------
+
+//------------------------------------------------------------------------
+      socket2.on('StatusCD_Dienap_A54_MV01', function(msg){
+      		document.getElementById("StatusCD_Dienap_A54_MV01").innerHTML = msg;
+			});
+//------------------------------------------------------------------------
+    function status_Lamp_A54_MV01_Dienap(data){
+      if (data <= 200){
+        document.getElementById("Lamp_A54_MV01_Dienap").style.background = "red";
+      }else { 
+        document.getElementById("Lamp_A54_MV01_Dienap").style.background = "green";
+      }
+    }
+    function status_Lamp_A54_MV01_Cosphi(data){
+      if (data <= 0.9){
+        document.getElementById("Lamp_A54_MV01_Cosphi").style.background = "red";       
+      }else { 
+        document.getElementById("Lamp_A54_MV01_Cosphi").style.background = "green";
+      }
+    }
+    
+//PLC A54 MV01 02 03 04 End -----------------------------------------------------------------------------------------------
+
+//PLC A55 MV01 02 03 04 Start -----------------------------------------------------------------------------------------------
+      let dataCD_A55_MV01_Dienap;
+      let int_dataCD_A55_MV01_Dienap;
+      let dataCD_A55_MV01_Cosphi;
+      let int_dataCD_A55_MV01_Cosphi;
+
+
+      socket2.on('dataCD_A55_MV01_Dienap', function(msg){
+      		document.getElementById("dataCD_A55_MV01_Dienap").innerHTML = msg;
+          dataCD_A55_MV01_Dienap =msg;
+          int_dataCD_A55_MV01_Dienap = parseFloat(dataCD_A55_MV01_Dienap);
+          status_Lamp_A55_MV01_Dienap(int_dataCD_A55_MV01_Dienap);
+			});
+    	socket2.on('dataCD_A55_MV01_Dongdien', function(msg){
+      		document.getElementById("dataCD_A55_MV01_Dongdien").innerHTML = msg; 
+			});		
+      socket2.on('dataCD_A55_MV01_Kw', function(msg){
+      		document.getElementById("dataCD_A55_MV01_Kw").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A55_MV01_Kwh', function(msg){
+      		document.getElementById("dataCD_A55_MV01_Kwh").innerHTML = msg; 
+			});
+    	socket2.on('dataCD_A55_MV01_Cosphi', function(msg){
+      		document.getElementById("dataCD_A55_MV01_Cosphi").innerHTML = msg;
+          dataCD_A55_MV01_Cosphi =msg;
+          int_dataCD_A55_MV01_Cosphi = parseFloat(dataCD_A55_MV01_Cosphi);
+          status_Lamp_A55_MV01_Cosphi(int_dataCD_A55_MV01_Cosphi);
+			});
+      //----------------------------------------------------------------------
+
+//------------------------------------------------------------------------
+      socket2.on('StatusCD_Cosphi_A55_MV01', function(msg){
+      		document.getElementById("StatusCD_Cosphi_A55_MV01").innerHTML = msg;
+			});
+//------------------------------------------------------------------------
+
+//------------------------------------------------------------------------
+      socket2.on('StatusCD_Dienap_A55_MV01', function(msg){
+      		document.getElementById("StatusCD_Dienap_A55_MV01").innerHTML = msg;
+			});
+//------------------------------------------------------------------------
+    function status_Lamp_A55_MV01_Dienap(data){
+      if (data <= 200){
+        document.getElementById("Lamp_A55_MV01_Dienap").style.background = "red";
+      }else { 
+        document.getElementById("Lamp_A55_MV01_Dienap").style.background = "green";
+      }
+    }
+    function status_Lamp_A55_MV01_Cosphi(data){
+      if (data <= 0.9){
+        document.getElementById("Lamp_A55_MV01_Cosphi").style.background = "red";       
+      }else { 
+        document.getElementById("Lamp_A55_MV01_Cosphi").style.background = "green";
+      }
+    }
+    
+//PLC A55 MV01 02 03 04 End -----------------------------------------------------------------------------------------------
+</script>
+		
+
+
+
+</html>

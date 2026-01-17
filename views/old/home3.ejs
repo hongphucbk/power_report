@@ -1,0 +1,722 @@
+<html>
+<head>
+	<script src='js/mqtt.min.js'></script>
+	<script src='js/jquery-3.4.1.min.js'></script>
+	<script src='js/bootstrap.js'></script>
+	<script src='js/socket.io.js'></script>
+	<link href='css/Style_data.css' rel="stylesheet" type="text/css" />
+		<script src="js/raphael-2.1.4.min.js"></script>
+	
+	
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<title>SMART FACTORY | Home</title> -->
+  <!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="bower_components/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="bower_components/dist/css/skins/skin-blue.min.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=33wK4pHCQwmEvEnf0tMHp2mvQ3nMuVXExrN0EphNHmDrLKd6kRbyMVkWvZX1JAlcMhyt8xrcDHFr9eANUJp5dA" charset="UTF-8"></script>
+	<script type="text/javascript" src="/chart/js/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+	<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<!-- Chartjs -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+	  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!--  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>-->
+
+  <!-- Optional theme -->
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+	<!-- font manu awesome -->
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	
+	<!-- font user awesome -->
+	
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+</head>	
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  <!-- Main Header -->
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini">S</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg">SYSTEMS</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="/image/Cargo.png" class="user-image" alt="">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs" id="username1"><%= user.username %></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="/image/Cargo.png" class="img-circle" alt="User Image">
+                <p>
+                  <span ><%= user.username %></span>
+                  <small>User </small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <!-- <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+              </li> -->
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <!-- <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div> -->
+                <div class="pull-right">
+                  <div><a href="/user/logout"><button>Logout</button></a></div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+          </li>
+        </ul>
+      </div>
+    </nav>
+ 
+  </header>
+  
+ 
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+  <!-- Sidebar Menu -->
+  <ul class="sidebar-menu" data-widget="tree">
+
+    <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> -->
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>Thuốc tuyển</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="/home01">Trang chủ</a></li>
+        <li><a href="/home12">Biểu đồ</a></li>
+		<li><a href="/home131">Đồ thị</a></li>
+		<li><a href="/home02a">Báo cáo Ca</a></li>
+		<li><a href="/home321">Báo cáo Ngày</a></li>
+		<li><a href="/home31">Báo cáo Tháng Năm</a></li>
+		<li><a href="/home02">Cài đặt</a></li>
+      </ul>
+    </li>
+
+    <li class="treeview">
+      <a href="#"><i class="fa fa-industry"></i> <span>Hệ thống khác</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="/power">Băng Tải Xích</a></li>
+        <li><a href="/power/real">Máy Nghiền Bi</a></li>
+        <li><a href="/power/chart">Item 3</a></li>
+        <li><a href="/power/allchart">Item 4</a></li>
+      </ul>
+    </li>
+
+  </ul>
+		
+ 
+  <!-- /.sidebar-menu -->
+</section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    
+<!-- Main content -->
+
+	
+	
+	<section>
+		
+
+	<div class="row">
+    <div class="col-md-12">
+	
+		<p style="color:blue; text-align:center; font-size: 18px;" >Giá trị điện năng tiêu thụ hiện tại</p>
+		
+		<p>
+		<table border="1" width="600px" style="margin-left: 25%; margin-top: 0px;text-align:center;">
+		
+		<tr>		
+			<tr>
+			<th style="width:200px; text-align:top";>Xưởng sản xuất </th>
+			<th>Công suất Kw</th>
+			<th>Công suất Kvar</th>
+			<th>Dòng điện Ampe</th>
+			<th>Cosphi</th>
+			</tr>
+		
+			<tr>
+			<th>Xưởng 1 </th>	
+			<td class="output_field">
+				<div id="data3"></div>
+			</td>
+			
+			<td class="output_field">
+				<div id="data4"></div>
+			</td>
+			<td class="output_field">
+				<div id="data5"></div>
+			</td>
+			<td class="output_field">
+				<div id="data6"></div>
+			</td>
+           </tr>
+	        <tr>
+			<th>Xưởng 2</th>	
+			<td class="output_field">
+				<div id="data7"></div>
+			</td>
+			
+			<td class="output_field">
+				<div id="data8"></div>
+			</td>
+			<td class="output_field">
+				<div id="data9"></div>
+			</td>
+			<td class="output_field">
+				<div id="data10"></div>
+			</td>
+           </tr>
+		        <tr>
+			<th>Xưởng 3</th>	
+			<td class="output_field">
+				<div id="data11"></div>
+			</td>
+			
+			<td class="output_field">
+				<div id="data12"></div>
+			</td>
+			<td class="output_field">
+				<div id="data13"></div>
+			</td>
+			<td class="output_field">
+				<div id="data14"></div>
+			</td>
+           </tr>
+		        <tr>
+			<th>Xưởng 4</th>	
+			<td class="output_field">
+				<div id="data15"></div>
+			</td>
+			
+			<td class="output_field">
+				<div id="data16"></div>
+			</td>
+			<td class="output_field">
+				<div id="data17"></div>
+			</td>
+			<td class="output_field">
+				<div id="data18"></div>
+			</td>
+           </tr>
+		        <tr>
+			<th>Xưởng 5</th>	
+			<td class="output_field">
+				<div id="data19"></div>
+			</td>
+			
+			<td class="output_field">
+				<div id="data20"></div>
+			</td>
+			<td class="output_field">
+				<div id="data21"></div>
+			</td>
+			<td class="output_field">
+				<div id="data22"></div>
+			</td>
+           </tr>
+        </tr>
+		</table>
+		</p>
+	
+	</div>
+</div>
+	
+	<div class="row">
+   <div class="col-md-12">
+	
+ 
+	<div id="frame_export_2"> 
+
+	<form action="home3" method="post">
+		<div class='col-md-3'>
+		EXPORT DATA: From 
+		</div>
+<!--		<input type="date" name="date_from">-->
+		<div class='col-md-3'>
+          <div class="form-group">
+            <div class='input-group date' id='datetimepicker2'>
+              <input type='text' class="form-control" id="" name="date_from" value="<%= moment(startdate).format('DD-MMM-YYYY') %>" />
+              <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+		<div class='col-md-1'>
+		To
+		</div>
+		<div class='col-md-3'>
+          <div class="form-group">
+            <div class='input-group date' id='datetimepicker3'>
+              <input type='text' class="form-control" id="" name="date_to" value="<%= moment(startdate).format('DD-MMM-YYYY') %>" />
+              <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+		
+<!--		To <input type="date" name="date_to">-->
+		<button type="submit">Download</button>
+	</form>
+
+	
+	</div>
+</div>	
+	</div>				
+				
+		<div class="row">
+            <div class="col-md-12">			
+
+	Kết quả:
+	<table border=1 width="700px" style="margin-left: 23%; margin-top: 0px;text-align:center">
+		<tr>
+			<th style="width:200px">Timestamp</th>
+			<th style="width:100px">Xưởng 1</th>
+			<th style="width:100px">Xưởng 2</th>
+			<th style="width:100px">Xưởng 3</th>
+			<th style="width:100px">Xưởng 4</th>
+			<th style="width:100px">Xưởng 5</th>
+		</tr>
+		<% data.forEach(function(dt) { %>
+		<tr>
+			<td ><%= moment(dt.timestamp).format('DD-MMM-YYYY HH:mm:SS')  %></td>
+			<td><%= dt.station %></td>
+			<td><%= dt.nhietdo %></td>
+			<td><%= dt.pH %></td>
+			<td><%= dt.oxy %></td>
+			<td><%= dt.doman %></td>
+		</tr>
+		<% }) %>
+	</table>
+	<% if (pages > 0) { %>
+        <ul class="pagination text-center">
+            <% if (current == 1) { %>
+                <li class="disabled"><a>First</a></li>
+            <% } else { %>
+                <li><a href="/home3?page=1">First</a></li>
+            <% } %>
+            <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+            <% if (i !== 1) { %>
+                <li class="disabled"><a>...</a></li>
+            <% } %>
+            <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                <% if (i == current) { %>
+                    <li class="active"><a><%= i %></a></li>
+                <% } else { %>
+                    <li><a href="/home3?page=<%= i %>"><%= i %></a></li>
+                <% } %>
+                <% if (i == Number(current) + 4 && i < pages) { %>
+                    <li class="disabled"><a>...</a></li>
+                <% } %>
+            <% } %>
+            <% if (current == pages) { %>
+                <li class="disabled"><a>Last</a></li>
+            <% } else { %>
+                <li><a href="/home3?page=<%= pages %>">Last</a></li>
+            <% } %>
+        </ul>
+      <% } %>
+	
+</div>
+			</div>
+	
+<div class="row">
+<div class="col-md-12">	
+	
+	<div id="chart2">
+		<div class="row">
+		<p style="text-align: center">Thống kê trong ngày:</p>
+		</div>
+		
+		<div class='col-md-3'>
+          <div class="form-group">
+            <div class='input-group date' id='datetimepicker6'>
+              <input type='text' class="form-control" id="startdate1" name="startdate" value="<%= moment(startdate).format('DD-MMM-YYYY') %>" />
+              <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-2">
+          <button onclick="updateChart()" class="form-control">View</button>
+        </div>
+
+        <div class="col-md-2">
+        	<a href="/home3">
+          	<button class="form-control">Today</button>
+          </a>
+        </div>
+		<canvas id="myChart"></canvas>
+		
+
+	</div>
+	</div>
+	</div>
+		
+	</section>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+	
+<footer class="main-footer">
+  	<!-- To the right -->
+<div class="pull-right hidden-xs">
+  abc
+</div>
+<!-- Default to the left -->
+
+<strong>Copyright &copy; 2019 - 2020 <a href="#"></a>.</strong>
+    
+  </footer>
+
+  <!-- Control Sidebar -->
+  <!-- < include rightsidebar > -->
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/bower_components/dist/js/adminlte.min.js"></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+
+
+<!-- DataTables -->
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+</body>	
+
+
+    <script>
+      //var client = mqtt.connect('ws://192.168.1.100:1883');
+//	  var client = mqtt.connect('http://192.168.0.100:1883');
+//      console.log("Success");
+//      client.subscribe("topic1/demo");
+//
+//      client.on("message", function(topic, payload) {
+//      alert([topic, payload].join(": "));
+//      console.log(topic + " : " + payload);
+//      
+//      });
+		
+		var socket = io("http://27.71.231.45:3001");
+    	 socket.on('dataH1', function(msg){
+			//console.log('dataH1 = ' + msg)
+			document.getElementById("dataH1").innerHTML = msg;
+			});
+    	 socket.on('dataH2', function(msg){
+			 document.getElementById("dataH2").innerHTML = msg;
+			});		
+    	 socket.on('dataH3', function(msg){
+      		document.getElementById("dataH3").innerHTML = msg; 
+			});	
+    	 socket.on('dataH4', function(msg){
+      		document.getElementById("dataH4").innerHTML = msg; 
+			});
+		
+	
+    	socket.on('data3', function(msg){
+      		document.getElementById("data3").innerHTML = msg; 
+			});
+    	socket.on('data4', function(msg){
+      		document.getElementById("data4").innerHTML = msg; 
+			});
+    	socket.on('data5', function(msg){
+      		document.getElementById("data5").innerHTML = msg; 
+			});
+    	socket.on('data6', function(msg){
+      		document.getElementById("data6").innerHTML = msg; 
+			});
+	    socket.on('data7', function(msg){
+      		document.getElementById("data7").innerHTML = msg; 
+			});
+    	socket.on('data8', function(msg){
+      		document.getElementById("data8").innerHTML = msg; 
+			});
+    	socket.on('data9', function(msg){
+      		document.getElementById("data9").innerHTML = msg; 
+			});
+    	socket.on('data10', function(msg){
+      		document.getElementById("data10").innerHTML = msg; 
+			});
+    	socket.on('data11', function(msg){
+      		document.getElementById("data11").innerHTML = msg; 
+			});
+    	socket.on('data12', function(msg){
+      		document.getElementById("data12").innerHTML = msg; 
+			});
+    	socket.on('data13', function(msg){
+      		document.getElementById("data13").innerHTML = msg; 
+			});
+    	socket.on('data14', function(msg){
+      		document.getElementById("data14").innerHTML = msg; 
+			});
+	    	socket.on('data15', function(msg){
+      		document.getElementById("data15").innerHTML = msg; 
+			});
+    	socket.on('data16', function(msg){
+      		document.getElementById("data16").innerHTML = msg; 
+			});
+    	socket.on('data17', function(msg){
+      		document.getElementById("data17").innerHTML = msg; 
+			});
+    	socket.on('data18', function(msg){
+      		document.getElementById("data18").innerHTML = msg; 
+			});
+	    	socket.on('data19', function(msg){
+      		document.getElementById("data19").innerHTML = msg; 
+			});
+    	socket.on('data20', function(msg){
+      		document.getElementById("data20").innerHTML = msg; 
+			});
+    	socket.on('data21', function(msg){
+      		document.getElementById("data21").innerHTML = msg; 
+			});
+    	socket.on('data22', function(msg){
+      		document.getElementById("data22").innerHTML = msg; 
+			});
+		  
+	
+		  $(document).ready(function(){
+			$("#btnDOWNLOAD").click(function(){
+			//alert(1);
+			//console.log("Clicked")
+			socket.emit("data30", $("#Textsend").val());
+			});
+		});
+
+
+</script>
+
+	<script type="text/javascript">
+		let labels = []; let vals = []; let tblData = [];
+  		var ctx = document.getElementById('myChart').getContext('2d');
+		var chart = new Chart(ctx, {
+			// The type of chart we want to create
+			type: 'line',
+
+			// The data for our dataset
+			data: {
+				labels: [],
+				datasets: [{
+					label: 'Nhiet do [DEG.C]',
+					backgroundColor: 'rgba(255, 255, 255, 0.1)',
+					borderColor: 'rgb(255, 99, 132)',
+					data: []
+				}]
+			},
+
+			// Configuration options go here
+			options: {
+				legend: {
+			  display: true,
+			  labels: {
+				  fontColor: 'rgb(255, 99, 1)'
+			  }
+			}
+			}
+		});
+
+
+	$.ajax({
+    url: '/apiGetDataChart',
+    method: 'post',
+    data: { id: 1}
+    }).done(function(res) {
+        if (true) {
+	        console.log(res);
+	        res.forEach(function(dt){
+	        	labels.push(dt.timestamp)
+	        	vals.push(dt.value)
+
+	        	tblData.push({ time: dt.timestamp, val:dt.value})
+	        })
+	        console.log(vals)
+	        chart.data.labels = labels;
+	        chart.data.datasets[0].data = vals;
+	      	chart.update();
+					
+		    } else {
+		        console.log('error...ajax');
+		    }
+		  });
+
+  function updateChart(){
+  	let startDate = $('#startdate1').val();
+
+  	console.log(startDate)
+  	$.ajax({
+    url: '/apiGetDataChart',
+    method: 'post',
+    data: { startDate: startDate}
+    }).done(function(res) {
+        if (true) {
+        	labels = []; vals = []; tblData = [];
+	        console.log(res);
+	        res.forEach(function(dt){
+	        	labels.push(dt.timestamp)
+	        	vals.push(dt.value)
+	        	tblData.push({ time: dt.timestamp, val:dt.value})
+	        })
+	      	chart.data.datasets[0].data = vals;
+	      	chart.update();
+	      	
+	        //window.location.reload();
+		    } else {
+		        console.log('error...ajax');
+		    }
+		  });
+  }
+		
+</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+  
+
+  <script type="text/javascript">
+      $('#startdate').datetimepicker({
+          useCurrent: false,
+          format: 'DD-MMM-YYYY',
+          minDate: moment()
+      });
+   
+      $('#startdate').datetimepicker().on('dp.change', function (e) {
+          var incrementDay = moment(new Date(e.date));
+          incrementDay.add(-1, 'days');
+          $(this).data("DateTimePicker").hide();
+      });
+	  
+	  $('#fromdate').datetimepicker({
+          useCurrent: false,
+          format: 'DD-MMM-YYYY',
+          minDate: moment()
+      });
+	  
+	  $('#todate1').datetimepicker({
+          useCurrent: false,
+          format: 'DD-MMM-YYYY',
+          minDate: moment()
+      });
+   
+      
+	  
+    $(document).ready(function() {
+      $(function() {
+        $('#datetimepicker6').datetimepicker({format: 'DD-MMM-YYYY'});
+        $('#datetimepicker2').datetimepicker({format: 'DD-MMM-YYYY'});
+		$('#datetimepicker3').datetimepicker({format: 'DD-MMM-YYYY'});
+
+        
+      });
+    });
+
+$(document).ready(function(){
+			$("#head_frame_12").click(function(){
+    var x = document.getElementById('head_frame_12b');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+			});
+			
+		});
+  </script>
+
+	
+
+
+</html>
