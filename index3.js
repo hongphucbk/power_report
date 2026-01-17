@@ -188,7 +188,7 @@ module.exports = { calcKwhByDayAndSaveReport };
 // =====================
 app.get("/rp", async function (req, res) {
   try {
-    var output = await calcKwhByDayAndSaveReport("2025-12-24");
+    var output = [] //await calcKwhByDayAndSaveReport("2025-12-24");
     return res.render("a", { output: output });
   } catch (err) {
     console.log(err);
@@ -196,124 +196,35 @@ app.get("/rp", async function (req, res) {
   }
 });
 
-app.get("/rp/excel1", async function (req, res) {
-  try {
-    var fromStr = req.query.from || "2025-12-01";
-    var toStr = req.query.to || "2025-12-24";
 
-    // 1) Tính report từ ngày -> đến ngày
-    var cur = moment(fromStr, "YYYY-MM-DD");
-    var endMoment = moment(toStr, "YYYY-MM-DD");
-
-    while (cur.isSameOrBefore(endMoment, "day")) {
-      await calcKwhByDayAndSaveReport(cur.format("YYYY-MM-DD"));
-      cur.add(1, "day");
-    }
-
-    // 2) Query report để export
-    var start = new Date(fromStr + "T00:00:00.000+07:00");
-    var end = new Date(toStr + "T23:59:59.999+07:00");
-
-    var rows = await CdKwhCaRp.find({ date: { $gte: start, $lte: end } })
-      .sort({ date: 1 })
-      .lean();
-
-    // styles (node-excel-export)
-    var styles = {
-      header: { font: { bold: true }, alignment: { horizontal: "center" } },
-      number: { numFmt: "0.00" },
-      text: {}
-    };
-
-    var specification = {
-      date: {
-        displayName: "Ngày",
-        headerStyle: styles.header,
-        width: 150,
-        cellFormat: function (value) {
-          return moment(value).format("YYYY-MM-DD");
-        }
-      },
-      data_CD_Tram01_A51_MV01_Kwh_Ca1: {
-        displayName: "MV01 (kWh)",
-        headerStyle: styles.header,
-        cellStyle: styles.number,
-        width: 80
-      },
-      data_CD_Tram01_A51_MV02_Kwh_Ca1: {
-        displayName: "MV02 (kWh)",
-        headerStyle: styles.header,
-        cellStyle: styles.number,
-        width: 80
-      },
-      data_CD_Tram01_A51_MV03_Kwh_Ca1: {
-        displayName: "MV03 (kWh)",
-        headerStyle: styles.header,
-        cellStyle: styles.number,
-        width: 100
-      },
-      note: {
-        displayName: "Ghi chú",
-        headerStyle: styles.header,
-        cellStyle: styles.text,
-        width: 130
-      }
-    };
-
-    // map data đúng key của specification
-    var dataset = rows.map(function (r) {
-      return {
-        date: r.date,
-        data_CD_Tram01_A51_MV01_Kwh_Ca1: nvl(r.data_CD_Tram01_A51_MV01_Kwh_Ca1, 0),
-        data_CD_Tram01_A51_MV02_Kwh_Ca1: nvl(r.data_CD_Tram01_A51_MV02_Kwh_Ca1, 0),
-        data_CD_Tram01_A51_MV03_Kwh_Ca1: nvl(r.data_CD_Tram01_A51_MV03_Kwh_Ca1, 0),
-        note: nvl(r.note, "")
-      };
-    });
-
-    var report = excel.buildExport([
-      {
-        name: "Report_" + fromStr + "_" + toStr,
-        specification: specification,
-        data: dataset
-      }
-    ]);
-
-    var filename = "Report_" + fromStr + "_" + toStr + ".xlsx";
-    res.setHeader(
-      "Content-Type",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    );
-    res.setHeader("Content-Disposition", 'attachment; filename="' + filename + '"');
-
-    return res.send(report);
-  } catch (err) {
-    console.log(err);
-    return res.status(500).send("Error!");
-  }
-});
 
 app.get("/rp/excel", async function (req, res) {
   try {
     var fromStr = req.query.from || "2025-12-01";
     var toStr = req.query.to || "2025-12-24";
 
-    // 1) Tính report từ ngày -> đến ngày
-    var cur = moment(fromStr, "YYYY-MM-DD");
-    var endMoment = moment(toStr, "YYYY-MM-DD");
+    var startFrom = new Date(fromStr + "T00:00:00.000+07:00");
+    var endFrom = new Date(fromStr + "T23:59:59.999+07:00");
+    var startTo = new Date(toStr + "T00:00:00.000+07:00");
+    var endTo = new Date(toStr + "T23:59:59.999+07:00");
 
-    while (cur.isSameOrBefore(endMoment, "day")) {
-      await calcKwhByDayAndSaveReport(cur.format("YYYY-MM-DD"));
-      cur.add(1, "day");
-    }
-
-    // 2) Query report để export
-    var start = new Date(fromStr + "T00:00:00.000+07:00");
-    var end = new Date(toStr + "T23:59:59.999+07:00");
-
-    var rows = await CdKwhCaRp.find({ date: { $gte: start, $lte: end } })
-      .sort({ date: 1 })
+    // 1) record đầu ngày from
+    var firstDoc = await CdKwhCa.findOne({
+      CD_Kwh_Ca_timestamp: { $gte: startFrom, $lte: endFrom }
+    })
+      .sort({ CD_Kwh_Ca_timestamp: 1 })
       .lean();
+
+    // 2) record cuối ngày to
+    var lastDoc = await CdKwhCa.findOne({
+      CD_Kwh_Ca_timestamp: { $gte: startTo, $lte: endTo }
+    })
+      .sort({ CD_Kwh_Ca_timestamp: -1 })
+      .lean();
+
+    if (!firstDoc || !lastDoc) {
+      return res.status(400).send("Không có đủ dữ liệu để xuất (thiếu record ngày đầu hoặc ngày cuối).");
+    }
 
     // 3) List field cần xuất
     var fields = [
@@ -327,7 +238,6 @@ app.get("/rp/excel", async function (req, res) {
       "data_CD_Tram03_A51_MV01_Kwh_Ca1",
       "data_CD_Tram04_A51_MV01_Kwh_Ca1",
       "data_CD_Tram05_A51_MV01_Kwh_Ca1",
-
       // Ca2
       "data_CD_Tram01_A51_MV01_Kwh_Ca2",
       "data_CD_Tram01_A51_MV02_Kwh_Ca2",
@@ -338,7 +248,6 @@ app.get("/rp/excel", async function (req, res) {
       "data_CD_Tram03_A51_MV01_Kwh_Ca2",
       "data_CD_Tram04_A51_MV01_Kwh_Ca2",
       "data_CD_Tram05_A51_MV01_Kwh_Ca2",
-
       // Ca3
       "data_CD_Tram01_A51_MV01_Kwh_Ca3",
       "data_CD_Tram01_A51_MV02_Kwh_Ca3",
@@ -351,21 +260,57 @@ app.get("/rp/excel", async function (req, res) {
       "data_CD_Tram05_A51_MV01_Kwh_Ca3"
     ];
 
-    // 4) Styles
+    // 4) Build 3 rows
+    function pickValues(doc) {
+      var obj = {};
+      fields.forEach(function (f) {
+        obj[f] = nvl(doc[f], 0);
+      });
+      return obj;
+    }
+
+    var row1 = {
+      type: "Dòng 1",
+      label: "Ngày đầu (record đầu ngày)",
+      date: firstDoc.CD_Kwh_Ca_timestamp
+    };
+    Object.assign(row1, pickValues(firstDoc));
+
+    var row2 = {
+      type: "Dòng 2",
+      label: "Ngày cuối (record cuối ngày)",
+      date: lastDoc.CD_Kwh_Ca_timestamp
+    };
+    Object.assign(row2, pickValues(lastDoc));
+
+    var row3 = {
+      type: "Dòng 3",
+      label: "Chênh lệch (Ngày cuối - Ngày đầu)",
+      date: null
+    };
+    fields.forEach(function (f) {
+      row3[f] = nvl(row2[f], 0) - nvl(row1[f], 0);
+    });
+
+    var dataset = [row1, row2, row3];
+
+    // 5) Styles
     var styles = {
       header: { font: { bold: true }, alignment: { horizontal: "center" } },
       number: { numFmt: "0.00" },
       text: {}
     };
 
-    // 5) Specification
+    // 6) Specification
     var specification = {
+      type: { displayName: "Dòng", headerStyle: styles.header, cellStyle: styles.text, width: 60 },
+      label: { displayName: "Mô tả", headerStyle: styles.header, cellStyle: styles.text, width: 220 },
       date: {
-        displayName: "Ngày",
+        displayName: "Thời điểm",
         headerStyle: styles.header,
-        width: 140,
+        width: 160,
         cellFormat: function (value) {
-          return moment(value).format("YYYY-MM-DD");
+          return value ? moment(value).format("YYYY-MM-DD HH:mm:ss") : "";
         }
       }
     };
@@ -379,39 +324,17 @@ app.get("/rp/excel", async function (req, res) {
       };
     });
 
-    specification.note = {
-      displayName: "Ghi chú",
-      headerStyle: styles.header,
-      cellStyle: styles.text,
-      width: 40
-    };
-
-    // 6) Dataset
-    var dataset = rows.map(function (r) {
-      var obj = { date: r.date };
-      fields.forEach(function (f) {
-        obj[f] = nvl(r[f], 0);
-      });
-      obj.note = nvl(r.note, "");
-      return obj;
-    });
-
     // 7) Export
     var report = excel.buildExport([
-      {
-        name: "Report_" + fromStr + "_" + toStr,
-        specification: specification,
-        data: dataset
-      }
+      { name: "Report_" + fromStr + "_" + toStr, specification: specification, data: dataset }
     ]);
 
-    var filename = "Report_" + fromStr + "_" + toStr + ".xlsx";
+    var filename = "Report_3rows_" + fromStr + "_" + toStr + ".xlsx";
     res.setHeader(
       "Content-Type",
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     );
     res.setHeader("Content-Disposition", 'attachment; filename="' + filename + '"');
-
     return res.send(report);
   } catch (err) {
     console.log(err);
