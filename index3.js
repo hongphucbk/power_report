@@ -8,7 +8,7 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 
 var server = require("http").Server(app);
-app.listen(3000);
+app.listen(4400);
 
 // Body parser
 var bodyParser = require("body-parser");
