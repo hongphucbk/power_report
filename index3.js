@@ -99,6 +99,32 @@ var dataBNSA51KwhDaySchema = new mongoose.Schema(
 
 var DataBNSA51KwhDay = mongoose.model("data_BNSA51_KwhDay", dataBNSA51KwhDaySchema, "data_BNSA51_KwhDay");
 
+var DelHistorySchema = new mongoose.Schema({
+    from: { type: String, required: true }, // "YYYY-MM-DD"
+    to: { type: String, required: true },
+
+    start: { type: Date, required: true }, // from 00:00:00+07
+    end: { type: Date, required: true },   // to 23:59:59+07
+
+    collections: [
+      {
+        name: { type: String, required: true }, // "CdKwhCa" / "DataBNSA51KwhDay"
+        deletedCount: { type: Number, default: 0 }
+      }
+    ],
+
+    note: { type: String, default: "" },
+
+    // audit
+    ip: { type: String, default: "" },
+    user: { type: String, default: "" }, // nếu bạn có auth thì set req.user.username/email
+    userAgent: { type: String, default: "" }
+  },
+  { timestamps: true, collection: "del_history" } // ✅ tên collection đúng yêu cầu
+);
+
+var DelHistory = mongoose.model("DelHistory", DelHistorySchema);
+
 // =====================
 // Routes
 // =====================
@@ -656,6 +682,80 @@ app.get("/rp/excel3", async function (req, res) {
     return res.status(500).send("Export Excel Error!");
   }
 });
+
+
+app.get("/del", async function (req, res) {
+  try {
+    var output = [] //await calcKwhByDayAndSaveReport("2025-12-24");
+    return res.render("del", { output: output });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send("Error!");
+  }
+});
+
+app.post("/del", async function (req, res) {
+  try {
+    var fromStr = req.query.from || "2020-12-01";
+    var toStr = req.query.to || "2020-12-01";
+    var note = req.query.note || "";
+
+    // thời gian đầu ngày và cuối ngày (GMT+7)
+    var start = new Date(fromStr + "T00:00:00.000+07:00");
+    var end = new Date(toStr + "T23:59:59.999+07:00");
+
+    // validate
+    if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+      return res.status(400).send("Sai định dạng ngày. Dùng YYYY-MM-DD");
+    }
+    if (start > end) {
+      return res.status(400).send("Sai ngày: from phải nhỏ hơn hoặc bằng to.");
+    }
+
+    // ✅ XÓA CD
+    var delCd = await CdKwhCa.deleteMany({
+      CD_Kwh_Ca_timestamp: { $gte: start, $lte: end }
+    });
+
+    // ✅ XÓA DAY
+    var delDay = await DataBNSA51KwhDay.deleteMany({
+      BNSA51_KwhDay_timestamp: { $gte: start, $lte: end }
+    });
+
+    // ✅ LƯU LỊCH SỬ
+    // (tùy hệ thống auth, bạn có thể set user từ req.user)
+    var history = await DelHistory.create({
+      from: fromStr,
+      to: toStr,
+      start: start,
+      end: end,
+      collections: [
+        { name: "CdKwhCa", deletedCount: delCd.deletedCount || 0 },
+        { name: "DataBNSA51KwhDay", deletedCount: delDay.deletedCount || 0 }
+      ],
+      note: note,
+
+      ip: (req.headers["x-forwarded-for"] || req.socket.remoteAddress || "").toString(),
+      user: (req.user && (req.user.username || req.user.email)) ? (req.user.username || req.user.email) : "",
+      userAgent: req.headers["user-agent"] || ""
+    });
+
+    return res.json({
+      message: "Xóa dữ liệu thành công!",
+      from: fromStr,
+      to: toStr,
+      deleted: {
+        CdKwhCa: delCd.deletedCount || 0,
+        DataBNSA51KwhDay: delDay.deletedCount || 0
+      },
+      historyId: history._id
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send("Delete Error!");
+  }
+});
+
 
 
 
