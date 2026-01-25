@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Xuất Excel KWh</title>
+
+  <style>
+    :root{
+      --bg1:#0f172a;
+      --bg2:#111827;
+      --card:#0b1220;
+      --border:rgba(255,255,255,.10);
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --primary:#22c55e;
+      --primary2:#16a34a;
+      --danger:#ef4444;
+      --shadow: 0 20px 40px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 20% 10%, #1f2937 0%, var(--bg1) 45%, var(--bg2) 100%);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    .container{
+      width:100%;
+      max-width:860px;
+    }
+
+    .header{
+      text-align:center;
+      margin-bottom:18px;
+    }
+
+    .header h1{
+      margin:0;
+      font-size:28px;
+      letter-spacing:.2px;
+      font-weight:800;
+    }
+    .header p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.03) 100%);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      padding:22px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top:16px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    label{
+      font-size:13px;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .input-wrap{
+      position:relative;
+    }
+
+    input[type="date"]{
+      width:100%;
+      padding:12px 12px 12px 42px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      color:var(--text);
+      outline:none;
+      font-size:14px;
+      transition:.2s;
+    }
+
+    input[type="date"]:focus{
+      border-color: rgba(34,197,94,.55);
+      box-shadow: 0 0 0 3px rgba(34,197,94,.18);
+      background: rgba(0,0,0,.35);
+    }
+
+    .icon{
+      position:absolute;
+      left:12px;
+      top:50%;
+      transform:translateY(-50%);
+      width:18px;
+      height:18px;
+      opacity:.9;
+      color:var(--muted);
+      pointer-events:none;
+    }
+
+    .row{
+      display:flex;
+      gap:12px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+
+    button{
+      border:0;
+      border-radius:12px;
+      padding:12px 16px;
+      font-weight:800;
+      cursor:pointer;
+      font-size:14px;
+      transition:.18s ease;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-width:160px;
+      user-select:none;
+    }
+
+    .btn-primary{
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary2) 100%);
+      color:#04110a;
+      box-shadow: 0 12px 30px rgba(34,197,94,.18);
+    }
+    .btn-primary:hover{
+      transform:translateY(-1px);
+      filter:saturate(1.05);
+    }
+    .btn-primary:active{
+      transform:translateY(0px);
+    }
+
+    .btn-ghost{
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--text);
+    }
+    .btn-ghost:hover{
+      background: rgba(255,255,255,.09);
+    }
+
+    .hint{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:14px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(34,197,94,.12);
+      border:1px solid rgba(34,197,94,.22);
+      color: #b7f7cc;
+      font-size:12px;
+      font-weight:700;
+      margin-top:12px;
+    }
+
+    .footer{
+      margin-top:14px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    @media (max-width:720px){
+      .grid{ grid-template-columns: 1fr; }
+      .header h1{ font-size:24px; }
+      button{ width:100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="header">
+      <h1>Xuất Excel KWh Tổng 2 trạm</h1>
+      <p>Chọn khoảng thời gian cần xuất báo cáo. File Excel sẽ được tạo từ dữ liệu MongoDB.</p>
+      <div class="badge">⚡ Report tự động từ dữ liệu kWh 2</div>
+    </div>
+
+    <div class="card">
+      <!-- FORM: bạn có thể đổi action để call API -->
+      <form id="exportForm" action="rp/excel3" method="GET">
+
+        <div class="grid">
+
+          <div class="field">
+            <label for="fromDate">Từ ngày</label>
+            <div class="input-wrap">
+              <span class="icon">📅</span>
+              <input type="date" id="fromDate" name="from" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="toDate">Đến ngày</label>
+            <div class="input-wrap">
+              <span class="icon">📅</span>
+              <input type="date" id="toDate" name="to" required />
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <button type="submit" class="btn-primary">
+            📥 Xuất Excel
+          </button>
+
+          <!-- <button type="button" class="btn-ghost" onclick="setToday()">
+            ⏱️ Hôm nay
+          </button> -->
+
+          <button type="button" class="btn-ghost" onclick="setThisMonth()">
+            🗓️ Tháng này
+          </button>
+        </div>
+
+        <div class="hint">
+          <b>Gợi ý:</b> Bạn có thể xuất nhiều ngày liên tiếp.  
+          Dữ liệu sẽ tính theo công thức <i>kWh = cuối ngày - đầu ngày</i> cho từng cột.
+        </div>
+
+        <div class="footer">
+          <div>✅ Định dạng ngày: YYYY-MM-DD</div>
+          <div>📌 Tip: Chọn khoảng 1–31 ngày để xuất nhanh</div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    // Set mặc định: từ đầu tháng đến hôm nay
+    const pad = (n) => String(n).padStart(2, "0");
+    const formatDate = (d) =>
+      `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+
+    function setToday(){
+      const today = new Date();
+      document.getElementById("fromDate").value = formatDate(today);
+      document.getElementById("toDate").value = formatDate(today);
+    }
+
+    function setThisMonth(){
+      const now = new Date();
+      const yesterday = new Date(now);
+      yesterday.setDate(now.getDate() - 1);
+
+      const first = new Date(now.getFullYear(), now.getMonth(), 1);
+      document.getElementById("fromDate").value = formatDate(first);
+      document.getElementById("toDate").value = formatDate(yesterday);
+    }
+
+    // chạy khi load
+    setThisMonth();
+
+    // kiểm tra từ ngày <= đến ngày
+    document.getElementById("exportForm").addEventListener("submit", function(e){
+      const from = document.getElementById("fromDate").value;
+      const to = document.getElementById("toDate").value;
+      if(from > to){
+        e.preventDefault();
+        alert("❌ 'Từ ngày' phải nhỏ hơn hoặc bằng 'Đến ngày'!");
+      }
+    });
+  </script>
+</body>
+</html>
