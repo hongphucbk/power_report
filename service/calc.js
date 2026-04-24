@@ -160,7 +160,7 @@ async function calcAndSaveKwh(inDate) {
 //===========
 
 //Every 1h
-var jobE1h = new job('*/30  * * * * *', async function() {
+var jobE1h = new job('*/20  * * * *', async function() {
   await syncDevice()
   await calcAndSaveKwh(moment())
 

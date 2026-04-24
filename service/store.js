@@ -36,7 +36,7 @@ client.on("connect", ack => {
     // console.log(`MQTT Client Message.  Topic: ${topic}.`);
     try{
       let str_topic = topic.split('/');
-      if(str_topic[0] == "IOT2"  && str_topic[3] != 'KVARH' && moment().second() < 30 && moment().minute() % 2 == 0){
+      if(str_topic[0] == "IOT2"  && str_topic[3] != 'KVARH' && moment().second() < 30 && moment().minute() % 10 == 0){
 
         console.log(`MQTT Client Message.  Topic: ${topic}. Message: ${message.toString()}`);
 
