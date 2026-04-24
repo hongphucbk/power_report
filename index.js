@@ -8,13 +8,13 @@ app.set("views","./views");
 
 var server = require("http").Server(app);
 var io = require('socket.io')(server);
-app.listen(5001);
+app.listen(5501);
 
 var bodyParser = require('body-parser');
 
 //-------------------------------------------------------------------
 //Socket IO
-server.listen(5002, function(){
+server.listen(5502, function(){
 	console.log('Socket io listening on *:3008');
 });
 
